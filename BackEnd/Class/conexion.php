@@ -1,7 +1,9 @@
 <?php
 
+//Clases
 class conexion {
-
+     
+    //Atributos
     private $server;
     private $user;
     private $password;
@@ -9,7 +11,7 @@ class conexion {
     private $port;
     private $conexion;
     
-    
+    //Funciones
     function __construct(){
         $listadatos = $this->datosConexion();
         foreach ($listadatos as $key => $value) {
@@ -21,7 +23,7 @@ class conexion {
         }
         $this->conexion = new mysqli($this->server,$this->user,$this->password,$this->database,$this->port);
         if($this->conexion->connect_errno){
-            echo "algo va mal con la conexion";
+            echo "Algo va mal con la conexion";
             die();
         }
         
