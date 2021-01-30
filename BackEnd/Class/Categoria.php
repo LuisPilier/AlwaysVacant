@@ -1,8 +1,14 @@
 <?
 
+class Categoria{
 
 //Atributos
-private ID_Categoria;
+private $ID_Categoria;
+
+
+
+}
+
 
 
 ?>

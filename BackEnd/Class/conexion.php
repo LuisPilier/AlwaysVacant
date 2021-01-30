@@ -1,7 +1,7 @@
 <?php
 
 //Clases
-class conexion {
+class Conexion {
      
     //Atributos
     private $server;
