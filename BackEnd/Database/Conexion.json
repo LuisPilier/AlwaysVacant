@@ -1,0 +1,9 @@
+{
+    "conexion":{
+        "server" : "freedb",
+        "user" : "freedbtech_rootJ",
+        "password" : "Masdacx9",
+        "database" : "freedbtech_Always_Vacant",
+        "port": "3306"
+    }
+}
