@@ -1,9 +1,13 @@
 <?php
 
 
-//Atributos 
-private User;
-private contrasena;
+Class Auth{
 
+//Atributos 
+private $User;
+private $Contrasena;
+
+
+}
 
 ?>
