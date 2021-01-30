@@ -24,9 +24,7 @@ class conexion {
             echo "algo va mal con la conexion";
             die();
         }
-        else{
-            echo "Conexion Exitosa";
-        }
+        
     
     }
 
