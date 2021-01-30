@@ -1,12 +1,13 @@
 <?php
 
-//Atributos
-protected e ID_Usuario;
-protected Nombre;
+//Atributos 
+protected ID_Usuario;
 protected Apellido;
 protected Usuario;
+protected Contrasena;
 protected ID_Rol;
 protected Correo;
+
 
 
 ?>
