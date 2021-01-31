@@ -1,12 +1,11 @@
 <?php
 
 
-
 //Header
 header("Content-Type: application/json");
 
 //Include
-include('../Class/Vacante.php');
+include('../Class/Ciudades.php');
 
 
 //Switch(Desicion)
@@ -17,21 +16,6 @@ switch([$_SERVER['REQUEST_METHOD']]){
     case 'GET':
 
         break;
-    
-    case 'POST':
-
-        break;
-
-
-    case 'PUT':
-
-      break;   
-         
-         
-    case 'DELETE':
-
-       break;
-
 
     //Solicitud no encontrada  
     default:
@@ -42,8 +26,6 @@ switch([$_SERVER['REQUEST_METHOD']]){
 
 
 }
-
-
 
 
 ?>

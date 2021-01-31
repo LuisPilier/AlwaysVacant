@@ -1,12 +1,11 @@
 <?php
 
 
-
 //Header
 header("Content-Type: application/json");
 
 //Include
-include('../Class/Vacante.php');
+include('../Class/Categoria.php');
 
 
 //Switch(Desicion)
@@ -42,6 +41,8 @@ switch([$_SERVER['REQUEST_METHOD']]){
 
 
 }
+
+
 
 
 

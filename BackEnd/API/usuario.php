@@ -1,12 +1,10 @@
 <?php
 
-
-
 //Header
 header("Content-Type: application/json");
 
 //Include
-include('../Class/Vacante.php');
+include('../Class/Usuario.php');
 
 
 //Switch(Desicion)
@@ -17,12 +15,11 @@ switch([$_SERVER['REQUEST_METHOD']]){
     case 'GET':
 
         break;
-    
+
     case 'POST':
 
         break;
-
-
+    
     case 'PUT':
 
       break;   
@@ -31,8 +28,7 @@ switch([$_SERVER['REQUEST_METHOD']]){
     case 'DELETE':
 
        break;
-
-
+    
     //Solicitud no encontrada  
     default:
         $resultado["mensaje"] = "Enviaste una solicitud incorrecta";
@@ -42,8 +38,5 @@ switch([$_SERVER['REQUEST_METHOD']]){
 
 
 }
-
-
-
 
 ?>
