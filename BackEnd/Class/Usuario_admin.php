@@ -1,8 +1,11 @@
 <?php
 
-class Usuario_admin{
+include('Usuario.php');
 
+class Usuario_admin extends Usuario{
 
+       
+        
 
 
 }
