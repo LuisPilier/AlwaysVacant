@@ -1,5 +1,7 @@
 <?php
 
+include('Respuestas.php');
+
 //Clases
 class Conexion {
      
