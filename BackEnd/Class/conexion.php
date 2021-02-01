@@ -42,7 +42,7 @@ class Conexion {
         return json_decode($jsondata, true);
     }
 
-    public function obtenerDatos($sqlstr){
+    public function Query($sqlstr){
         $results = $this->conexion->query($sqlstr);
         $resultArray = array();
         foreach ($results as $key) {

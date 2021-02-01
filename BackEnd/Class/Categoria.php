@@ -1,14 +1,40 @@
 <?php
 
-class Categoria{
+include('IEntidad.php');
+include('Conexion.php');
 
-//Atributos
-private $ID_Categoria;
+class Categoria implements IEntidad{
 
+        //Atributos
+        private $ID_Categoria;
+
+        public function Guardar($conn)
+        {
+            echo '';
+        }
+
+        public static function ObtenerTodo($conn)
+        {
+            echo '';
+        }
+
+        public static function Obtener($conn,$id)
+        {
+            echo '';
+        }
+
+        public function Actualizar($conn,$id)
+        {
+            echo '';
+        }
+
+        public static function Eliminar($conn,$id)
+        {
+            echo '';
+        }
 
 
 }
-
 
 
 ?>

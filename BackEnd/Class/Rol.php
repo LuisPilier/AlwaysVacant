@@ -1,5 +1,8 @@
 <?php
 
+include('Conexion.php');
+
+
 
 class Rol{
 
@@ -8,7 +11,10 @@ class Rol{
   private $Nombre;
 
 
-
+  public function ObtenerRoles($conn)
+  {
+      echo '';
+  }
 
   
 

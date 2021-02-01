@@ -1,7 +1,9 @@
 <?php
 
+include('IEntidad.php');
+include('Conexion.php');
 
-class Vacante
+class Vacante implements IEntidad
 {
     
 
@@ -15,6 +17,32 @@ class Vacante
         private $ID_Categoria;
         private $ID_Tipo_Vacante;
         private $ID_Ciudad; 
+
+        
+        public function Guardar($conn)
+        {
+            echo '';
+        }
+
+        public static function ObtenerTodo($conn)
+        {
+            echo '';
+        }
+
+        public static function Obtener($conn,$id)
+        {
+            echo '';
+        }
+
+        public function Actualizar($conn,$id)
+        {
+            echo '';
+        }
+
+        public static function Eliminar($conn,$id)
+        {
+            echo '';
+        }
 
 
 }

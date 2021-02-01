@@ -43,28 +43,27 @@ Class Usuario implements IEntidad{
 			. ' VALUES ('    . implode(', ', array_values($insert_fields)) . ')';
 
          echo $conn->nonQuery($insert_sql);
-
-        
-        
     }
 
     public static function ObtenerTodo($conn)
     {
         $query = "SELECT * FROM Usuario";
-        return $conn->obtenerDatos($query);
+        return $conn->Query($query);
     }
 
-    public function Obtener($conn,$id)
+    public static function Obtener($conn,$id)
     {
-        echo '';
+        $query = "SELECT * FROM Usuario WHERE ID_Usuario = $id";
+        return $conn->Query($query);
     }
     public function Actualizar($conn,$id)
     {
         echo '';
     }
-    public function Eliminar($conn,$id)
+    public static function Eliminar($conn,$id)
     {
-        echo '';
+        $delete_sql = "Delete from Usuario WHERE ID_Usuario = $id";
+        echo $conn->nonQuery($delete_sql);
     }
 
 }
