@@ -38,6 +38,11 @@ switch($_SERVER['REQUEST_METHOD']){
          
     case 'DELETE':
 
+        $id = $_GET['id'];
+
+        $Usuarios = Usuario::Eliminar($conn,$id);
+        echo json_encode($Usuarios);
+
        break;
     
     //Solicitud no encontrada  
