@@ -1,7 +1,6 @@
 <?php
 
 
-
 //Header
 header("Content-Type: application/json");
 
@@ -12,7 +11,6 @@ include('../Class/Vacante.php');
 //Switch(Desicion)
 
 switch([$_SERVER['REQUEST_METHOD']]){
-
 
     case 'GET':
 

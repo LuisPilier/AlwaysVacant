@@ -1,7 +1,6 @@
 <?php
 
-include('IEntidad.php');
-include('Conexion.php');
+include('../Includes/IEntidad.php');
 
 Class Usuario implements IEntidad{
 
@@ -22,7 +21,6 @@ Class Usuario implements IEntidad{
         $this->Contrasena = $Contrasena;
         $this->ID_Rol     = $ID_Rol;
         $this->Correo     = $Correo;
-           
     }
 
     public function Guardar($conn)

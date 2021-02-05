@@ -1,8 +1,6 @@
 <?php
 
-include('Conexion.php');
-
-
+include('../Includes/IEntidad.php');
 
 class Rol{
 

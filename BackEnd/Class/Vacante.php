@@ -1,12 +1,9 @@
 <?php
 
-include('IEntidad.php');
-include('Conexion.php');
+include('Includes/IEntidad.php');
 
 class Vacante implements IEntidad
 {
-    
-
         //Atributos
         private $ID_Vacante;
         private $Compania;
@@ -18,7 +15,6 @@ class Vacante implements IEntidad
         private $ID_Tipo_Vacante;
         private $ID_Ciudad; 
 
-        
         public function Guardar($conn)
         {
             echo '';
