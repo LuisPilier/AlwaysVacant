@@ -5,7 +5,7 @@
 header("Content-Type: application/json");
 
 //Include
-include('../Class/Ciudades.php');
+include('../Class/Localidades/Ciudades.php');
 
 
 //Switch(Desicion)
