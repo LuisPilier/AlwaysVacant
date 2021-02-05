@@ -89,4 +89,6 @@ class Conexion {
 
 }
 
+$conn  = new Conexion();
+
 ?>
