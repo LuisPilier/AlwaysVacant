@@ -40,7 +40,7 @@ class Conexion {
     
     private function datosConexion()
     {    
-        $jsondata = file_get_contents("../Database/Conexion.json");
+        $jsondata = file_get_contents("../../Database/Conexion.json");
         return json_decode($jsondata, true);
     }
 
@@ -87,12 +87,6 @@ class Conexion {
         }
     }
 
-
-
-    
-
 }
-
-$conn = new Conexion();
 
 ?>

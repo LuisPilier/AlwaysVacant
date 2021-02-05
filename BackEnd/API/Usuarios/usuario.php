@@ -1,11 +1,15 @@
 <?php
 
 //Header
-header("Content-Type: application/json");
+//header("Content-Type: application/json");
 
 //Include
 
-include('../Class/Usuarios/Usuario.php');
+ini_set('display_errors',1); 
+ error_reporting(E_ALL);
+
+
+include('../../Class/Usuario.php');
 
 $conn = new Conexion();
 

@@ -1,6 +1,8 @@
 <?php
 
-include('../Includes/IEntidad.php');
+
+include('Includes/IEntidad.php');
+
 
 Class Usuario implements IEntidad{
 
@@ -65,6 +67,15 @@ Class Usuario implements IEntidad{
     }
 
 }
+
+$Nombre = '';
+$Apellido = '';
+$Usuario = '';
+$Contrasena = '';
+$ID_Rol = '';
+$Correo = '';
+
+$user = new Usuario($Nombre, $Apellido,$Usuario,$Contrasena,$ID_Rol,$Correo);
 
 
 ?>

@@ -21,6 +21,22 @@ class Vacante implements IEntidad
             echo '';
         }
 
+        private function insertar_vacante($conn)
+        {
+            $query = "INSERT INTO ".$this->table. " (DNI,Nombre,Direccion,CodigoPostal,Telefono,Genero,FechaNacimiento,Correo,Imagen) VALUES('".$this->dni."','".$this->nombre."','".$this->direccion."','".$this->codigoPostal."', '".$this->telefono."','".$this->genero."','".$this->fechaNacimiento."', '".$this->correo."','".$this->imagen."')";
+        
+            $resp = $conn->nonQueryId($query);
+    
+            if($resp)
+            {
+                return $resp;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
         public static function ObtenerTodo($conn)
         {
             echo '';
