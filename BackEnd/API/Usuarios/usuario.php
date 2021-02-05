@@ -5,7 +5,7 @@ header("Content-Type: application/json");
 
 //Include
 
-include('../Class/Usuario.php');
+include('../Class/Usuarios/Usuario.php');
 
 $conn = new Conexion();
 

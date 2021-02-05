@@ -6,7 +6,7 @@
 header("Content-Type: application/json");
 
 //Include
-include('../Class/Usuario_poster.php');
+include('../Class/Usuarios/Usuario_poster.php');
 
 
 //Switch(Desicion)
