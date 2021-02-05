@@ -44,6 +44,16 @@ class Conexion {
         return json_decode($jsondata, true);
     }
 
+    private function convertirUTF8($array){
+        array_walk_recursive($array,function(&$item,$key){
+            if(!mb_detect_encoding($item,'utf-8',true)){
+                $item = utf8_encode($item);
+            }
+        });
+        return $array;
+    }
+
+    //SELECT
     public function Query($sqlstr){
         $results = $this->conexion->query($sqlstr);
         $resultArray = array();
@@ -54,19 +64,30 @@ class Conexion {
 
     }
 
-    private function convertirUTF8($array){
-        array_walk_recursive($array,function(&$item,$key){
-            if(!mb_detect_encoding($item,'utf-8',true)){
-                $item = utf8_encode($item);
-            }
-        });
-        return $array;
-    }
 
+    //UPDATE Y DELETE
     public function nonQuery($sqlstr){
         $results = $this->conexion->query($sqlstr);
         return $this->conexion->affected_rows;
     }
+
+    //INSERT
+    public function nonQueryId($sqlstr)
+    {
+        $results = $this->conexion->query($sqlstr);
+        $filas   = $this->conexion->affected_rows;
+
+        if($filas >= 1)
+        {
+            return $this->conexion->insert_id;
+        }
+        else {
+            // code...
+            return 0;
+        }
+    }
+
+
 
     
 

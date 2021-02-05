@@ -14,6 +14,7 @@ class Vacante implements IEntidad
         private $ID_Categoria;
         private $ID_Tipo_Vacante;
         private $ID_Ciudad; 
+        private $Token;
 
         public function Guardar($conn)
         {
