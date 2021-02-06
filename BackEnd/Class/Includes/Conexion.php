@@ -4,7 +4,7 @@
 ini_set('display_errors',1); 
 error_reporting(E_ALL);
 
-include($_SERVER['DOCUMENT_ROOT'].'/BOLSAEMPLEOSKLK/BackEnd/Class/Includes/Respuestas.php');
+include($_SERVER['DOCUMENT_ROOT'].'/AlwaysVacant/BackEnd/Class/Includes/Respuestas.php');
 
 //Clases
 class Conexion {
@@ -44,7 +44,7 @@ class Conexion {
     
     private function datosConexion()
     {    
-        $jsondata = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/BOLSAEMPLEOSKLK/Backend/Database/Conexion.Json');
+        $jsondata = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/AlwaysVacant/Backend/Database/Conexion.Json');
         return json_decode($jsondata, true);
     }
 

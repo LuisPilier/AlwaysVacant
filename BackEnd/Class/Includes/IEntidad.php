@@ -1,6 +1,6 @@
 <?php
 
-include($_SERVER['DOCUMENT_ROOT'].'/BOLSAEMPLEOSKLK/Backend/Class/Includes/Conexion.php');
+include($_SERVER['DOCUMENT_ROOT'].'/AlwaysVacant/Backend/Class/Includes/Conexion.php');
 
 interface IEntidad
 {
