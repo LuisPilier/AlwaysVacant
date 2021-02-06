@@ -15,7 +15,7 @@ class Conexion {
     private $password;
     private $database;
     private $port;
-    public $conexion;
+    public  $conexion;
     
     //Funciones
     function __construct(){

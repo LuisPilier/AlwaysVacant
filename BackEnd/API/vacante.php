@@ -15,6 +15,18 @@ ini_set('display_errors',1);
 switch($_SERVER['REQUEST_METHOD']){
 
     case 'GET':
+        $array = json_decode(file_get_contents("php://input"),true);
+
+        if(isset($array['ID_Vacante']))
+        {
+          $listaVacantes = $_vacante->Obtener($conn,$array);
+        }
+        else
+        {
+          $listaVacantes = $_vacante->ObtenerTodo($conn,$array);
+        }
+        
+        echo json_encode($listaVacantes);
 
         break;
     

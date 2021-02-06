@@ -5,10 +5,10 @@ include($_SERVER['DOCUMENT_ROOT'].'/AlwaysVacant/Backend/Class/Includes/Conexion
 interface IEntidad
 {
     function Guardar($conn,$json);
-    static function ObtenerTodo($conn,$json);
-    static function Obtener($conn,$json);
+    static function ObtenerTodo($conn,$array);
+    static function Obtener($conn,$array);
     function Actualizar($conn,$json);
-    static function Eliminar($conn,$json);
+    static function Eliminar($conn,$array);
     
 }
 
