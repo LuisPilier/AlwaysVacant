@@ -2,7 +2,6 @@
 
 
 class respuestas{
-
     
     public  static $response = [
         'status' => "ok",

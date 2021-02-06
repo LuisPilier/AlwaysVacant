@@ -1,6 +1,6 @@
 <?php
 
-include('IEntidad.php');
+include('Includes/IEntidad.php');
 
 class Categoria implements IEntidad{
 

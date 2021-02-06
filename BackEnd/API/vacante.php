@@ -4,13 +4,12 @@
 //Header
 header("Content-Type: application/json");
 
-//Include
-include('../Class/Vacante.php');
-
-$_vacante = new Vacante();
-
 ini_set('display_errors',1); 
  error_reporting(E_ALL);
+
+ include('../Class/Vacante.php');
+
+ $_vacante = new Vacante();
 
 //Switch(Desicion)
 switch($_SERVER['REQUEST_METHOD']){
@@ -30,12 +29,10 @@ switch($_SERVER['REQUEST_METHOD']){
             http_response_code($responseCode);
           } else {
             // code...
-            //http_response_code(200);
+            http_response_code(200);
           }
 
-          $conn->conexion->connect_errno;
-         echo json_encode($datosArray);
-
+        echo json_encode($datosArray);
 
         break;
 
