@@ -1,19 +1,25 @@
 <?php
 
-include('../Includes/IEntidad.php');
+include('../../Class/Includes/Conexion.php');
+
+
 
 class Rol{
 
   //Atributos
-  private $ID_Rol;
-  private $Nombre;
+    private $Tabla = "Rol";
 
 
+  //Clases
   public function ObtenerRoles($conn)
   {
-      echo '';
-  }
+      $query = "select * from $this->Tabla";  
+      $datos = $conn->Query($query);
+      return $datos;
 
+
+  }
+  
   
 
 

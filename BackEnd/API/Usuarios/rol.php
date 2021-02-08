@@ -8,14 +8,18 @@ header("Content-Type: application/json");
 //Include
 include('../../Class/Usuarios/Rol.php');
 
+//Instancia
+$_rol = new Rol();
 
 //Switch(Desicion)
 
-switch([$_SERVER['REQUEST_METHOD']]){
+switch($_SERVER['REQUEST_METHOD']){
 
 
     case 'GET':
-
+      
+        $lista_rol = $_rol->ObtenerRoles($conn);
+        echo json_encode($lista_rol);
         break;
 
 
