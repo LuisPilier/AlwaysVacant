@@ -21,6 +21,11 @@ switch($_SERVER['REQUEST_METHOD']){
         {
           $listaVacantes = $_vacante->Obtener($conn,$array);
         }
+        elseif (isset($array['ID_Categoria']))
+         {
+          # code...
+          $listaVacantes = $_vacante->Vacantes_Categoria($conn,$array);
+        }
         else
         {
           $listaVacantes = $_vacante->ObtenerTodo($conn,$array);
@@ -51,10 +56,41 @@ switch($_SERVER['REQUEST_METHOD']){
 
     case 'PUT':
 
+      $postBody = file_get_contents("php://input");
+
+      $datosArray = $_vacante->Actualizar($conn,$postBody);
+
+      if (isset($datosArray["result"]["error_id"])) {
+          // code...
+          $responseCode = $datosArray["result"]["error_id"];
+          http_response_code($responseCode);
+        } else {
+          // code...
+          http_response_code(200);
+        }
+
+       echo json_encode($datosArray);
+    
+
       break;   
          
          
     case 'DELETE':
+
+      $postBody = file_get_contents("php://input");
+      
+      $datosArray = $_vacante->Eliminar($conn,$postBody);
+
+      if (isset($datosArray["result"]["error_id"])) {
+          // code...
+          $responseCode = $datosArray["result"]["error_id"];
+          http_response_code($responseCode);
+        } else {
+          // code...
+          http_response_code(200);
+        }
+
+       echo json_encode($datosArray);
 
        break;
 
