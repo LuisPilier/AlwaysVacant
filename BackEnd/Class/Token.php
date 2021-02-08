@@ -4,7 +4,7 @@
 class Token
 {
 
-    private function insertarToken($conn,$usuarioid)
+    public function insertarToken($conn,$usuarioid)
     {
       $val    = true;
       $token  = bin2hex(openssl_random_pseudo_bytes(16,$val));
@@ -27,7 +27,7 @@ class Token
 
     }
 
-    private function buscarToken($conn)
+    public function buscarToken($conn)
     {
         $query = "SELECT TokenId,UsuarioId,Estado FROM usuarios_token WHERE Token = '$this->token'
         and ESTADO = 'Activo'";
@@ -44,7 +44,7 @@ class Token
     }
 
 
-    private function actualizarToken($conn,$tokenid)
+    public function actualizarToken($conn,$tokenid)
     {
         $date = date("Y-m-d H:i");
         $query = "UPDATE usuarios_token SET fecha = '$date' WHERE TokenId = '$tokenid'";
