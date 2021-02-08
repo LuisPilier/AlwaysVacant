@@ -17,7 +17,7 @@ class Vacante implements IEntidad
         private $Ubicacion;
         private $Token;
         private $Email;
-        private $Table = 'Vacante';
+        private static $Table = 'Vacante';
 
         public function Guardar($conn,$json)
         {
@@ -91,14 +91,35 @@ class Vacante implements IEntidad
             }
         }
 
-        public static function ObtenerTodo($conn,$json)
+        public static function ObtenerTodo($conn,$array)
         {
-            echo '';
+            $query = self::Query_Vacante();
+            $datos = $conn->Query($query);
+            return $datos;
+       
         }
 
-        public static function Obtener($conn,$json)
+        public static function Obtener($conn,$array)
         {
-            echo '';
+            $id = $array['ID_Vacante'];
+            $query = self::Query_Vacante(). ' WHERE v.ID_Vacante = '.$id;
+            $datos = $conn->Query($query);
+            return $datos;
+        }
+
+        private static function Query_Vacante()
+        {
+            $query = "
+            SELECT v.Compania ,v.Logo ,v.URL URL,v.Posicion Posicion,v.Descripcion
+            ,ci.Nombre Ciudad,c.Nombre Categoria,
+            tv.Nombre TipoVacante,v.Email Email,v.Ubicacion Ubicacion
+            FROM Vacante v
+            INNER JOIN Categoria c on c.ID_Categoria = v.ID_Categoria
+            INNER JOIN Ciudades ci on ci.ID_Ciudad = v.ID_Ciudad
+            INNER JOIN Tipo_Vacante tv on tv.ID_Tipo_Vacante = v.ID_Tipo_Vacante
+             ";
+
+             return $query;
         }
 
         public function Actualizar($conn,$json)
