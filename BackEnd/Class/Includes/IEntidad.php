@@ -8,7 +8,7 @@ interface IEntidad
     static function ObtenerTodo($conn,$array);
     static function Obtener($conn,$array);
     function Actualizar($conn,$json);
-    static function Eliminar($conn,$array);
+    function Eliminar($conn,$array);
     
 }
 
