@@ -106,8 +106,8 @@ class Categoria implements IEntidad{
                  // Array con datos
                  $data = json_decode($json,true);
 
-                 //Comprobar campos requeridos
-                if( !isset($data['ID_Categoria']))
+                 //Comprobar campos requerido
+                if( !isset($data['ID_Categoria']) ||  !isset($data['Nombre']))
                 {      
                        //Campo requido no enviado     
                        return Respuestas::error_400();
@@ -126,14 +126,19 @@ class Categoria implements IEntidad{
                          //EXISTE
                          $resp = $this->Actualizar_Categoria($conn);
                         
-                          return "Registro actualizado";
+                        $respuesta = Respuestas::$response;
+                        $respuesta['result'] = array(
+                            "ID_Categoria" => $this->ID_Categoria,
+                            "Nombre"       => $this->Nombre
+                        );
+                        return $respuesta;
           
                            
                     }
                     else
                     {
-                        //Error al momento de insertar
-                        return "El ID de la categoria introducida no esta registrado";
+                             //Error al momento de insertar
+                             return  Respuestas::error_500();
                    }  
                }
            }  
@@ -144,15 +149,24 @@ class Categoria implements IEntidad{
                            
                //Lamando la funcion que esta en la interface
              
-                $conn->nonQueryId($query);
-            
-              
+                $resp =  $conn->nonQuery($query);
+    
+                if($resp >= 1)
+                {
+                    return $resp;
+                }
+                else
+                {
+                    return 0;
+                }
+    
    
            }
    
 
     
-        public function Eliminar($conn,$json)
+      
+           public function Eliminar($conn,$json)
         {
                 // Array con datos
             $data = json_decode($json,true);
@@ -174,15 +188,19 @@ class Categoria implements IEntidad{
                if($ID)
                {
                     //EXISTE
-                     $this->Delete_Categoria($conn);
+                    $resp = $this->Delete_Categoria($conn);
                    
-                     return "Categoria Eliminada";
+                     $respuesta = Respuestas::$response;
+                     $respuesta['result'] = array(
+                         "ID_Categoria" => $this->ID_Categoria
+                     );
+                     return $respuesta;
                       
                }
                else
                {
                    //Error al momento de insertar
-                   return "El ID de la categoria introducida no esta registrado";
+                   return  Respuestas::error_500();
                }
         }
     }
@@ -192,7 +210,16 @@ class Categoria implements IEntidad{
             $query = "DELETE FROM $this->Tabla where ID_Categoria = $this->ID_Categoria";
                         
             //Lamando la funcion que esta en la interface
-             $conn->nonQueryId($query);
+            $resp = $conn->nonQuery($query);
+             
+            if($resp >= 1)
+            {
+                return $resp;
+            }
+            else
+            {
+                return 0;
+            }
 
         }
 
