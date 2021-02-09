@@ -3590,7 +3590,7 @@ License - nucleoapp.com/license/
   display: inline-block;
   font: normal normal normal 14px/1 'nucleo-icons';
   font-size: inherit;
-  speak: none;
+  speak-as: none;
   text-transform: none;
   /* Better Font Rendering */
   -webkit-font-smoothing: antialiased;
@@ -5848,10 +5848,7 @@ License - nucleoapp.com/license/
 
 .footer .copyright {
   color: #777777;
-  padding: 10px 0px;
   font-size: 14px;
-  margin: 15px 3px;
-  line-height: 20px;
   text-align: center;
 }
 
@@ -5862,6 +5859,7 @@ License - nucleoapp.com/license/
 .footer {
   background-color: #FFFFFF;
   line-height: 36px;
+  margin-bottom: 0;
 }
 
 .footer.footer-black h4 {
@@ -5918,7 +5916,7 @@ License - nucleoapp.com/license/
 }
 
 .footer .social-area {
-  padding: 15px 0;
+
 }
 
 .footer .social-area .btn {
@@ -5934,8 +5932,6 @@ License - nucleoapp.com/license/
 .footer hr {
   border-color: #DDDDDD;
   border-width: 1px 0 0;
-  margin-top: 5px;
-  margin-bottom: 5px;
 }
 
 .footer .copyright {
@@ -6616,8 +6612,8 @@ License - nucleoapp.com/license/
   background-color: #B2AFAB;
   background-position: center center;
   background-size: cover;
-  min-height: 100vh;
-  max-height: 999px;
+  min-height: 87.5vh;
+  max-height: 669px;
   overflow: hidden;
   position: relative;
   width: 100%;
@@ -6784,7 +6780,6 @@ License - nucleoapp.com/license/
 }
 
 .title-brand {
-  max-width: 730px;
   margin: 0 auto;
   position: relative;
   text-align: center;
@@ -6806,14 +6801,14 @@ License - nucleoapp.com/license/
 
 .presentation-title {
   font-size: 8em;
-  font-weight: 700;
+  font-weight: 1000;
   margin: 0;
   color: #FFFFFF;
-  background: #fbf8ec;
-  background: -moz-linear-gradient(top, #FFFFFF 35%, #4e6773 100%);
-  background: -webkit-linear-gradient(top, #FFFFFF 35%, #4e6773 100%);
-  background: -ms-linear-gradient(top, #FFFFFF 35%, #4e6773 100%);
-  background: linear-gradient(to bottom, #FFFFFF 35%, #4e6773 100%);
+  background: #813772;
+  background: -moz-linear-gradient(top, #FFFFFF 35%, #B82601  100%);
+  background: -webkit-linear-gradient(top, #FFFFFF 35%, #B82601 100%);
+  background: -ms-linear-gradient(top, #FFFFFF 35%, #B82601  100%);
+  background: linear-gradient(to bottom, #FFFFFF 35%, #B82601  100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -6861,6 +6856,10 @@ License - nucleoapp.com/license/
 
 .page-header .content-center {
   margin-top: 85px;
+}
+
+.content-center{
+  margin-left: -800px;
 }
 
 .moving-clouds {
@@ -7021,7 +7020,10 @@ License - nucleoapp.com/license/
 .section-login {
   min-height: 700px;
 }
-
+.content{
+  z-index: 1;
+  margin: 0;
+}
 @media all and (-ms-high-contrast: none),
 (-ms-high-contrast: active) {
   /* IE10+ CSS styles go here */
