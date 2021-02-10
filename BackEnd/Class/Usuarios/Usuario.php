@@ -9,6 +9,7 @@ Class Usuario implements IEntidad{
 
     //Atributos 
     private $Tabla = "Usuario";
+    private $datos ;
     protected $ID_Usuario ="";
     protected $Nombre ="";
     protected $Apellido = "";
@@ -43,7 +44,7 @@ Class Usuario implements IEntidad{
                   // Llamar funcion privada Insert_Categoria
 
 
-                  $comprobaruser = $this->Comprobar_Usario($conn);
+                  $comprobaruser = $this->Comprobar_Usuario($conn);
 
 
                   
@@ -150,85 +151,59 @@ Class Usuario implements IEntidad{
 
 
 
-    public function Actualizar($conn,$json)
+
+    public function Eliminar($conn,$json)
     {
-        //
         $data = json_decode($json,true);
 
-        if( !isset($data['Nombre']) || !isset($data['Apellido']) || !isset($data['Usuario']) || !isset($data['Contrasena']) || !isset($data['ID_Rol']) || !isset($data['Correo']) ) 
-        {      
-               //Campo requido no enviado     
-               return Respuestas::error_400();
-        }
-        else
-        {
-                //Campo requido enviado  
-                $this->Nombre             = $data["Nombre"];
-                $this->Apellido           = $data["Apellido"];
-                $this->Usuario            = $data["Usuario"];
-                $this->Contrasena         = $data["Contrasena"];
-                $this->ID_Rol             = $data["ID_Rol"];
-                $this->Correo             = $data["Correo"];
-                $this->ID_Usuario         = $data["ID_Usuario"];
-
-                  // Llamar funcion privada Insert_Categoria
-                  $this->Contrasena = $this->EncriptarContrasena($this->Contrasena);  
-                  $resp = $this->Actualizar_Usuario($conn);
-                
-
-
-                  $comprobaruser = $this->Comprobar_Usario($conn);
-
-                  if($comprobaruser >=1 && )
-
-
-
-                  if($resp >= 1)
-                  {
-
-                    $respuesta = Respuestas::$response;
-                    $respuesta['result'] = array(
-                        "ID_Usuario" => $this->ID_Usuario
-                    );
-                    return $respuesta;
-
-                  }
-                  else
-                  {
-                    return Respuestas::error_500();
-                  }
-       
-       
-       
+        //Comprobar campos requeridos
+       if( !isset($data['ID_Usuario']))
+       {      
+              //Campo requido no enviado     
+              return Respuestas::error_400();
        }
+       else
+       {
+           //Campo requido enviado  
+             $this->ID_Usuario        = $data['ID_Usuario'];
+           
+           // Llamar funcion privada Insert_Categoria
+           $ID = self::Obtener($conn,$data);
 
-
+           if($ID)
+           {
+                //EXISTE
+                $resp = $this->Delete_Usuario($conn);
+               
+                 $respuesta = Respuestas::$response;
+                 $respuesta['result'] = array(
+                     "ID_Usuario" => $this->ID_Usuario  
+                 );
+                 return $respuesta;
+                  
+           }
+           else
+           {
+               //Error al momento de insertar
+               return  Respuestas::error_500();
+           }
+       }
     }
 
-    private function Actualizar_Usuario($conn)
+    private function Delete_Usuario($conn)
     {
-        $query = "Update Usuario SET 
-                 Nombre = '$this->Nombre', Apellido = '$this->Apellido', Usuario = '$this->Usuario',
-                 Contrasena = '$this->Contrasena', ID_Rol = $this->ID_Rol, Correo = '$this->Correo'
-                 where ID_Usuario = $this->ID_Usuario ";  
+           $query = "DELETE FROM $this->Tabla where ID_Usuario = $this->ID_Usuario";
 
-        $id = $conn->nonQuery($query);
-        
-       
-        if($id >= 1)
-        {
-            return $id;
-        }
-        else
-        {
-            return 0;
-        }
-    }
+           $id = $conn->nonQuery($query);
 
-    public function Eliminar($conn,$id)
-    {
-        $delete_sql = "Delete from Usuario WHERE ID_Usuario = $id";
-        echo $conn->nonQuery($delete_sql);
+           if($id >= 1)
+           {
+              return $id;
+           }
+           else
+           {
+              return 0;
+           }
     }
 
 
@@ -252,14 +227,16 @@ Class Usuario implements IEntidad{
 
     }
 
-    private function Comprobar_Usario($conn)
+    public function Comprobar_Usuario($conn)
     {
+      
         $query = "Select * from $this->Tabla where Usuario = '$this->Usuario'";
          
         $buscaruser = $conn->Query($query);
         
         if($buscaruser != [])
         {
+             $this->datos = $buscaruser;
             return 0;
         }
         else
@@ -287,11 +264,8 @@ Class Usuario implements IEntidad{
     {
         return md5($Contrasena);
     }
+
+
 }
-
-
-
-
-
 
 ?>

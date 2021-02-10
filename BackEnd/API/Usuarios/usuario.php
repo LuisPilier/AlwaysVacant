@@ -34,6 +34,7 @@ switch($_SERVER['REQUEST_METHOD']){
         
     
         echo json_encode($listaUsuario);
+      
         break;
 
     case 'POST':
@@ -58,25 +59,7 @@ switch($_SERVER['REQUEST_METHOD']){
 
         break;
     
-    case 'PUT':
-     
-        $postBody = file_get_contents("php://input");
-                    
-        $datosArray = $_usuario->Actualizar($conn,$postBody);
-
-        if (isset($datosArray["result"]["error_id"])) {
-            // code...
-            $responseCode = $datosArray["result"]["error_id"];
-            http_response_code($responseCode);
-        } else {
-            // code...
-            http_response_code(200);
-        }
-
-        echo json_encode($datosArray);
-
-      break;   
-         
+ 
          
     case 'DELETE':
 

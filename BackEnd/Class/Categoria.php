@@ -202,7 +202,7 @@ class Categoria implements IEntidad{
                    //Error al momento de insertar
                    return  Respuestas::error_500();
                }
-        }
+           }
     }
         private function Delete_Categoria($conn)
         {
