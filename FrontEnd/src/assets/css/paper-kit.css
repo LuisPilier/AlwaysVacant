@@ -1,4 +1,4 @@
-/*!
+/*
 
  =========================================================
  * Paper Kit - v2.2.0
@@ -5808,7 +5808,7 @@ License - nucleoapp.com/license/
 .footer {
   background-attachment: fixed;
   position: relative;
-  line-height: 20px;
+
 }
 
 .footer .footer-nav ul {
@@ -5858,7 +5858,6 @@ License - nucleoapp.com/license/
 
 .footer {
   background-color: #FFFFFF;
-  line-height: 36px;
   margin-bottom: 0;
 }
 
@@ -5915,13 +5914,8 @@ License - nucleoapp.com/license/
   margin-top: 0px;
 }
 
-.footer .social-area {
-
-}
-
 .footer .social-area .btn {
   margin-bottom: 3px;
-  padding: 8px;
 }
 
 .footer .social-area .btn i {
