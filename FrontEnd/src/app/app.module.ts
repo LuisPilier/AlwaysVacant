@@ -10,13 +10,15 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AdminpageComponent } from './components/adminpage/adminpage.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { PagepostjobComponent } from './components/pagepostjob/pagepostjob.component';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
     HomepageComponent,
-    AdminpageComponent
+    AdminpageComponent,
+    PagepostjobComponent
   ],
   imports: [
     BrowserModule,
