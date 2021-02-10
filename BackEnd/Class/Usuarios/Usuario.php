@@ -142,7 +142,7 @@ Class Usuario implements IEntidad{
 
     private static function Select_Usuario()
     {
-         $query = "select u.ID_Usuario,u.Nombre, u.Apellido, u.Usuario, r.Nombre Rol, u.Correo
+         $query = "select u.ID_Usuario,u.Nombre, u.Apellido, u.Usuario, r.Nombre Rol, u.Correo, u.Contrasena
                   from Usuario u
                   JOIN Rol r on (u.ID_Rol=r.ID_Rol)";
 
@@ -151,7 +151,13 @@ Class Usuario implements IEntidad{
 
 
 
+    public function Actualizar($conn,$json)
+    {
+      
 
+    }
+
+ 
     public function Eliminar($conn,$json)
     {
         $data = json_decode($json,true);
@@ -264,8 +270,11 @@ Class Usuario implements IEntidad{
     {
         return md5($Contrasena);
     }
-
-
 }
+
+
+
+
+
 
 ?>

@@ -1,7 +1,7 @@
 <?php
 
 //Header
-//header("Content-Type: application/json");
+header("Content-Type: application/json");
 
 //Include
 

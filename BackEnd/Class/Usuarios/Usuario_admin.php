@@ -1,15 +1,15 @@
 <?php
 
-//include('Usuario.php');
+include('../Includes/IEntidad.php');
 
-/*class Usuario_admin extends Usuario{
+class Usuario_admin extends Usuario{
 
        
         
 
 
 }
-*/ 
+
 
 
 ?>
