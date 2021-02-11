@@ -4,14 +4,14 @@
 class Token
 {
 
-    public function insertarToken($conn,$usuarioid)
+    public static function insertarToken($conn,$usuarioid)
     {
       $val    = true;
       $token  = bin2hex(openssl_random_pseudo_bytes(16,$val));
       $date   = date("Y-m-d");
       $estado = "Activo";
 
-      $query = "INSERT INTO usuarios_token(UsuarioId,Token,Estado,Fecha) VALUES
+      $query = "INSERT INTO Usuarios_token(ID_Usuario,Token,Estado,Fecha) VALUES
       ('$usuarioid','$token','$estado','$date')";
 
       $verifica = $conn->nonQuery($query);
@@ -27,9 +27,9 @@ class Token
 
     }
 
-    public function buscarToken($conn)
+    public static function buscarToken($conn,$token)
     {
-        $query = "SELECT TokenId,UsuarioId,Estado FROM usuarios_token WHERE Token = '$this->token'
+        $query = "SELECT TokenId,UsuarioId,Estado FROM usuarios_token WHERE Token = '$token'
         and ESTADO = 'Activo'";
         $resp = $conn->obtenerDatos($query);
 
@@ -44,7 +44,7 @@ class Token
     }
 
 
-    public function actualizarToken($conn,$tokenid)
+    public static function actualizarToken($conn,$tokenid)
     {
         $date = date("Y-m-d H:i");
         $query = "UPDATE usuarios_token SET fecha = '$date' WHERE TokenId = '$tokenid'";
@@ -58,7 +58,7 @@ class Token
         }
     }
 
-    public function InactivarToken($conn,$fecha)
+    public static function InactivarToken($conn,$fecha)
     {
         $query = "UPDATE usuarios_token SET Estado = 'Inactivo' WHERE Fecha < '$fecha' AND Estado = 'Activo'";
         $verificar = $conn->nonQuery($query);
@@ -74,7 +74,7 @@ class Token
 
     }
 
-    public function EliminarToken($conn,$fecha)
+    public static function EliminarToken($conn,$fecha)
     {
 
         $query = "DELETE FROM usuarios_token WHERE Fecha < '$fecha' AND Estado = 'Activo'";

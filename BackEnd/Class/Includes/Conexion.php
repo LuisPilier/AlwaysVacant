@@ -6,6 +6,9 @@ error_reporting(E_ALL);
 
 include($_SERVER['DOCUMENT_ROOT'].'/AlwaysVacant/BackEnd/Class/Includes/Respuestas.php');
 
+include($_SERVER['DOCUMENT_ROOT'].'/AlwaysVacant/BackEnd/Class/Token.php');
+
+
 //Clases
 class Conexion {
      
@@ -89,6 +92,11 @@ class Conexion {
             // code...
             return 0;
         }
+    }
+
+    public function encriptar($password)
+    {
+        return md5($password);
     }
 
 }

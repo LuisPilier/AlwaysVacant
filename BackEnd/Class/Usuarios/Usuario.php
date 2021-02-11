@@ -18,9 +18,6 @@ Class Usuario implements IEntidad{
     protected $ID_Rol;
     protected $Correo = "";
 
-
-  
-
     public function Guardar($conn,$json)
     { 
         
@@ -45,7 +42,6 @@ Class Usuario implements IEntidad{
 
 
                   $comprobaruser = $this->Comprobar_Usuario($conn);
-
 
                   
                   if($comprobaruser >= 1)
@@ -93,10 +89,6 @@ Class Usuario implements IEntidad{
                   {
                     return  Respuestas::error_500("El Usuario introducido ya existe");
                   }
-
-                  
-
-               
   
         }
     }

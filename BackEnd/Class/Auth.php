@@ -13,19 +13,36 @@ Class Auth{
         {
 
             $datos = json_decode($json,true);
-            if(!isset($datos['usuario']) || !isset($datos["password"])){
+            if(!isset($datos['Usuario']) || !isset($datos["Contrasena"])){
                 //error con los campos
                 return respuestas::error_400();
             }else{
+
+
                 //todo esta bien 
-                $usuario = $datos['usuario'];
-                $password = $datos['password'];
-                $password = $this->encriptar($password);
-                $datos = $this->obtenerDatosUsuario($conn,$usuario);
-                if($datos){
+                $usuario  = $datos['Usuario'];
+                $password = $datos['Contrasena'];
+                $password = $conn->encriptar($password);
+                $user_info = $this->obtenerDatosUsuario($conn,$usuario);
+                
+                if($user_info){
                     //verificar si la contraseña es igual
-                        if($password == $datos[0]['Password']){
-                                return $datos;
+                        if($password == $user_info[0]['Contrasena']){
+                            
+                            $verifica = Token::insertarToken($conn,$user_info[0]['ID_Usuario']);
+
+                            if ($verifica) {
+                              // code...
+                              $result = Respuestas::$response;
+              
+                              $result['result'] = array(
+                                  "Token" => $verifica
+                              );
+              
+                              return $result;
+
+                            }
+              
                         }else{
                             //la contraseña no es igual
                             return respuestas::error_200("El password es invalido");
@@ -41,7 +58,7 @@ Class Auth{
 
           private function obtenerDatosUsuario($conn,$usuario){
             $query = "SELECT ID_Usuario,Nombre,Apellido,Usuario,Contrasena,ID_Rol,Correo FROM Usuario WHERE Usuario = '$usuario'";
-            $datos = $conn->NonQuery($query);
+            $datos = $conn->Query($query);
             if($datos){
                 return $datos;
             }else{
@@ -49,9 +66,6 @@ Class Auth{
             }
         }
 
-        private function encriptar($string){
-            return md5($string);
-        }
 
 
 }
