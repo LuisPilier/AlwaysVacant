@@ -29,9 +29,9 @@ class Token
 
     public static function buscarToken($conn,$token)
     {
-        $query = "SELECT TokenId,UsuarioId,Estado FROM usuarios_token WHERE Token = '$token'
+        $query = "SELECT ID_Token,ID_Usuario,Estado,Fecha,Token FROM Usuarios_token WHERE Token = '$token'
         and ESTADO = 'Activo'";
-        $resp = $conn->obtenerDatos($query);
+        $resp = $conn->Query($query);
 
         if($resp)
         {

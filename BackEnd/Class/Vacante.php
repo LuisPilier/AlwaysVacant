@@ -23,42 +23,58 @@ class Vacante implements IEntidad
         {
             $datos = json_decode($json,true);
 
-            if(!isset($datos['Compania']) || !isset($datos['ID_Tipo_Vacante']) || !isset($datos['Posicion']) || !isset($datos['ID_Ciudad']) || !isset($datos['Ubicacion']) || !isset($datos['ID_Categoria']))
+            if(!isset($datos['Token']))
             {
-                return respuestas::error_400();
+               return Respuestas::error_401();
             }
+
             else
             {
-                $this->Compania        = $datos['Compania'];
-                $this->ID_Tipo_Vacante = $datos['ID_Tipo_Vacante'];
-                $this->Posicion        = $datos['Posicion'];
-                $this->ID_Ciudad       = $datos['ID_Ciudad'];
-                $this->Ubicacion       = $datos['Ubicacion'];
-                $this->ID_Categoria    = $datos['ID_Categoria'];
-                $this->Email           = isset($datos['Email']) ? $datos['Email'] : '';
-                $this->Logo            = isset($datos['Logo'])  ? $datos['Logo']  : '';
-                $this->URL             = isset($datos['URL'])   ? $datos['URL']   : '';
-
-                if(isset($datos['Logo']))
-                {
-                    $resp = $this->procesarImagen($datos['Logo']);
-                    $this->Logo = $resp;
-                }
+                $arrayToken  = Token::buscarToken($conn,$datos['Token']);
                 
-                $resp = $this->insertar_vacante($conn);
+                if($arrayToken)
+                {
+                    if(!isset($datos['Compania']) || !isset($datos['ID_Tipo_Vacante']) || !isset($datos['Posicion']) || !isset($datos['ID_Ciudad']) || !isset($datos['Ubicacion']) || !isset($datos['ID_Categoria']))
+                    {
+                        return respuestas::error_400();
+                    }
+                    else
+                    {
+                        $this->Compania        = $datos['Compania'];
+                        $this->ID_Tipo_Vacante = $datos['ID_Tipo_Vacante'];
+                        $this->Posicion        = $datos['Posicion'];
+                        $this->ID_Ciudad       = $datos['ID_Ciudad'];
+                        $this->Ubicacion       = $datos['Ubicacion'];
+                        $this->ID_Categoria    = $datos['ID_Categoria'];
+                        $this->Email           = isset($datos['Email']) ? $datos['Email'] : '';
+                        $this->Logo            = isset($datos['Logo'])  ? $datos['Logo']  : '';
+                        $this->URL             = isset($datos['URL'])   ? $datos['URL']   : '';
 
-                if($resp)
-                {
-                    $respuesta = respuestas::$response;
-                    $respuesta['result'] = array(
-                        "ID_Vacante" => $resp
-                    );
-                    return $respuesta;
-                }
-                else
-                {
-                    //return respuestas::error_500();
-                    return $resp;
+                        if(isset($datos['Logo']))
+                        {
+                            $resp = $this->procesarImagen($datos['Logo']);
+                            $this->Logo = $resp;
+                        }
+                        
+                        $resp = $this->insertar_vacante($conn);
+
+                        if($resp)
+                        {
+                            $respuesta = respuestas::$response;
+                            $respuesta['result'] = array(
+                                "ID_Vacante" => $resp
+                            );
+                            return $respuesta;
+                        }
+                        else
+                        {
+                            //return respuestas::error_500();
+                            return $resp;
+                        }
+                    }
+                }    
+                else{
+                    return Respuestas::error_401("El Token que envio es invalido o ha caducado");
                 }
             }
 
