@@ -1,6 +1,6 @@
 <?php
 
-include($_SERVER['DOCUMENT_ROOT'].'/AlwaysVacant/Backend/Class/Includes/Conexion.php');
+include($_SERVER['DOCUMENT_ROOT'].'/AlwaysVacant/BackEnd/Class/Includes/Conexion.php');
 
 interface IEntidad
 {
@@ -11,5 +11,6 @@ interface IEntidad
     function Eliminar($conn,$json);
     
 }
+
 
 ?>

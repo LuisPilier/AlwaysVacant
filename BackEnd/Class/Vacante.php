@@ -1,7 +1,9 @@
 <?php
 
+//INCLUYENDO INTERFACE
 include('Includes/IEntidad.php');
 
+//CLASE VACANTE
 class Vacante implements IEntidad
 {
         //Atributos
@@ -19,67 +21,73 @@ class Vacante implements IEntidad
         private $Email;
         private static $Table = 'Vacante';
 
+        //METODOS
+
+        //METODO HEREDADO DE LA INTERFACE
         public function Guardar($conn,$json)
         {
             $datos = json_decode($json,true);
 
-            if(!isset($datos['Token']))
-            {
-               return Respuestas::error_401();
-            }
-
-            else
-            {
-                $arrayToken  = Token::buscarToken($conn,$datos['Token']);
-                
-                if($arrayToken)
+            //Metodo de la Clase Token para validar si fue enviado o si es valido.
+            $token = Token::validarToken($conn,$datos);
+           
+           if(is_bool($token))
+           {
+                //Campos Obligatorios
+                if(!isset($datos['Compania']) || !isset($datos['ID_Tipo_Vacante']) || !isset($datos['Posicion']) || !isset($datos['ID_Ciudad']) || !isset($datos['Ubicacion']) || !isset($datos['ID_Categoria']))
                 {
-                    if(!isset($datos['Compania']) || !isset($datos['ID_Tipo_Vacante']) || !isset($datos['Posicion']) || !isset($datos['ID_Ciudad']) || !isset($datos['Ubicacion']) || !isset($datos['ID_Categoria']))
+                    //Datos enviados incompletos o con formato incorrecto
+                    return respuestas::error_400();
+                }
+                else
+                {
+                    $this->Compania        = $datos['Compania'];
+                    $this->ID_Tipo_Vacante = $datos['ID_Tipo_Vacante'];
+                    $this->Posicion        = $datos['Posicion'];
+                    $this->ID_Ciudad       = $datos['ID_Ciudad'];
+                    $this->Ubicacion       = $datos['Ubicacion'];
+                    $this->ID_Categoria    = $datos['ID_Categoria'];
+                    $this->Email           = isset($datos['Email']) ? $datos['Email'] : '';
+                    $this->Logo            = isset($datos['Logo'])  ? $datos['Logo']  : '';
+                    $this->URL             = isset($datos['URL'])   ? $datos['URL']   : '';
+
+                    if(isset($datos['Logo']))
                     {
-                        return respuestas::error_400();
+                        //Metodo para recibir la imagen y guardarla en el servidor
+                        $resp = $this->procesarImagen($datos['Logo']);
+                        $this->Logo = $resp;
+                    }
+                    
+                    //Query para insertar la vacante
+                    $resp = $this->insertar_vacante($conn);
+
+                    //Si se insertaron registros exitosamente
+                    if($resp)
+                    {
+                        $respuesta = respuestas::$response;
+                        $respuesta['result'] = array(
+                            "ID_Vacante" => $resp
+                        );
+                        return $respuesta;
                     }
                     else
                     {
-                        $this->Compania        = $datos['Compania'];
-                        $this->ID_Tipo_Vacante = $datos['ID_Tipo_Vacante'];
-                        $this->Posicion        = $datos['Posicion'];
-                        $this->ID_Ciudad       = $datos['ID_Ciudad'];
-                        $this->Ubicacion       = $datos['Ubicacion'];
-                        $this->ID_Categoria    = $datos['ID_Categoria'];
-                        $this->Email           = isset($datos['Email']) ? $datos['Email'] : '';
-                        $this->Logo            = isset($datos['Logo'])  ? $datos['Logo']  : '';
-                        $this->URL             = isset($datos['URL'])   ? $datos['URL']   : '';
-
-                        if(isset($datos['Logo']))
-                        {
-                            $resp = $this->procesarImagen($datos['Logo']);
-                            $this->Logo = $resp;
-                        }
-                        
-                        $resp = $this->insertar_vacante($conn);
-
-                        if($resp)
-                        {
-                            $respuesta = respuestas::$response;
-                            $respuesta['result'] = array(
-                                "ID_Vacante" => $resp
-                            );
-                            return $respuesta;
-                        }
-                        else
-                        {
-                            //return respuestas::error_500();
-                            return $resp;
-                        }
+                        //return respuestas::error_500();
+                        return $resp;
                     }
-                }    
-                else{
-                    return Respuestas::error_401("El Token que envio es invalido o ha caducado");
                 }
-            }
+            
+
+           }
+           else
+           {
+               //Retornar Error en caso de que el Token no fue enviado o No es Valido
+               return $token;
+           }
 
         }
 
+        //Query para insertar vacantes
         private function insertar_vacante($conn)
         {
             $insert_fields = array(
@@ -99,7 +107,8 @@ class Vacante implements IEntidad
             $insert_sql = 'INSERT INTO ' . Vacante::$Table
                 . ' ('   . implode(', ', array_keys($insert_fields))   . ')'
                 . ' VALUES ('    . implode(', ', array_values($insert_fields)) . ')';
-    
+             
+            //Metodo de la Clase Conexion. Retornar el ID insertado    
             $resp = $conn->nonQueryId($insert_sql);
     
             if($resp)
@@ -130,22 +139,43 @@ class Vacante implements IEntidad
     
         }
 
+        //METODO HEREDADO DE LA INTERFACE
         public static function ObtenerTodo($conn,$array)
         {
-            $query = self::Query_Vacante();
-            $datos = $conn->Query($query);
-            return $datos;
-       
-        }
+            $token = Token::validarToken($conn,$datos);
+           
+            if(is_bool($token))
+            {
+                $query = self::Query_Vacante();
+                $datos = $conn->Query($query);
+                return $datos;
+            }
+            else
+            {
+                return $token;
+            }
 
+        }    
+
+        //METODO HEREDADO DE LA INTERFACE
         public static function Obtener($conn,$array)
         {
-            $id = $array['ID_Vacante'];
-            $query = self::Query_Vacante(). ' WHERE v.ID_Vacante = '.$id;
-            $datos = $conn->Query($query);
-            return $datos;
+            $token = Token::validarToken($conn,$datos);
+           
+            if(is_bool($token))
+            {
+                $id = $array['ID_Vacante'];
+                $query = self::Query_Vacante(). ' WHERE v.ID_Vacante = '.$id;
+                $datos = $conn->Query($query);
+                return $datos;
+            }
+            else
+            {
+                return $token
+            }    
         }
 
+        //Retorna las Vacantes por Categoria
         public static function Vacantes_Categoria($conn,$array)
         {
             $id = $array['ID_Categoria'];
@@ -155,7 +185,7 @@ class Vacante implements IEntidad
         }
 
         
-
+        //Query General para retornar todos los datos de la vacante
         private static function Query_Vacante()
         {
             $query = "
@@ -172,49 +202,67 @@ class Vacante implements IEntidad
              return $query;
         }
 
+        //METOOD HEREDADO DE LA INTERFACE
         public function Actualizar($conn,$json)
         {
             $datos = json_decode($json,true);
 
-            if(!isset($datos['ID_Vacante']) || !isset($datos['Compania']) || !isset($datos['ID_Tipo_Vacante']) || !isset($datos['Posicion']) || !isset($datos['ID_Ciudad']) || !isset($datos['Ubicacion']) || !isset($datos['ID_Categoria']))
+            $token = Token::validarToken($conn,$datos);
+           
+            if(is_bool($token))
             {
-                return respuestas::error_400();
-            }
-            else{
-                $this->ID_Vacante      = $datos['ID_Vacante'];
-                $this->Compania        = $datos['Compania'];
-                $this->ID_Tipo_Vacante = $datos['ID_Tipo_Vacante'];
-                $this->Posicion        = $datos['Posicion'];
-                $this->ID_Ciudad       = $datos['ID_Ciudad'];
-                $this->Ubicacion       = $datos['Ubicacion'];
-                $this->ID_Categoria    = $datos['ID_Categoria'];
-                $this->Email           = isset($datos['Email']) ? $datos['Email'] : '';
-                $this->Logo            = isset($datos['Logo'])  ? $datos['Logo']  : '';
-                $this->URL             = isset($datos['URL'])   ? $datos['URL']   : '';
-            }
+                    //Campos Obligatorios
+                    if(!isset($datos['ID_Vacante']) || !isset($datos['Compania']) || !isset($datos['ID_Tipo_Vacante']) || !isset($datos['Posicion']) || !isset($datos['ID_Ciudad']) || !isset($datos['Ubicacion']) || !isset($datos['ID_Categoria']))
+                    {
+                        //Datos enviados incompletos o con formato incorrecto
+                        return respuestas::error_400();
+                    }
+                    else{
+                        $this->ID_Vacante      = $datos['ID_Vacante'];
+                        $this->Compania        = $datos['Compania'];
+                        $this->ID_Tipo_Vacante = $datos['ID_Tipo_Vacante'];
+                        $this->Posicion        = $datos['Posicion'];
+                        $this->ID_Ciudad       = $datos['ID_Ciudad'];
+                        $this->Ubicacion       = $datos['Ubicacion'];
+                        $this->ID_Categoria    = $datos['ID_Categoria'];
+                        $this->Email           = isset($datos['Email']) ? $datos['Email'] : '';
+                        $this->Logo            = isset($datos['Logo'])  ? $datos['Logo']  : '';
+                        $this->URL             = isset($datos['URL'])   ? $datos['URL']   : '';
+                    }
 
-            if(isset($datos['Logo']))
-            {
-                $resp = $this->procesarImagen($datos['Logo']);
-                $this->Logo = $resp;
+                    if(isset($datos['Logo']))
+                    {
+                        $resp = $this->procesarImagen($datos['Logo']);
+                        $this->Logo = $resp;
+                    }
+
+                    //Query para actualizar la vacante
+                    $resp =  $this->Query_Modificar_Vacante($conn);
+
+                    if($resp)
+                    {
+                        $respuesta = respuestas::$response;
+                        $respuesta['result'] = array(
+                            "ID_Vacante" => $this->ID_Vacante
+                        );
+                        return $respuesta;
+                    }
+                    else{
+                        //Error Interno del Servidor
+                        return respuestas::error_500();
+                    }
+
+                }
+                else
+                {
+                    return $token;
+                }
             }
+           
+        
+        
 
-            $resp =  $this->Query_Modificar_Vacante($conn);
-
-            if($resp)
-            {
-                $respuesta = respuestas::$response;
-                $respuesta['result'] = array(
-                    "ID_Vacante" => $this->ID_Vacante
-                );
-                return $respuesta;
-            }
-            else{
-                return respuestas::error_500();
-            }
-
-        }
-
+        //Query para modificar las vacantes
         private function Query_Modificar_Vacante($conn)
         {
             $query = "UPDATE ".Vacante::$Table. " SET Compania = '".$this->Compania."',ID_Tipo_Vacante = '".$this->ID_Tipo_Vacante."',
@@ -222,8 +270,10 @@ class Vacante implements IEntidad
             ID_Categoria = '".$this->ID_Categoria."',Email = '".$this->Email."',Logo = '".$this->Logo."', URL = '".$this->URL."' 
             WHERE ID_Vacante = $this->ID_Vacante";
             
+            //Metodo de la Clase Conexion. Retorna el numero de filas Afectadas
             $resp = $conn->nonQuery($query);
-    
+            
+            //Si se afectaron filas de la tabla vacantes
             if($resp >= 1)
             {
                 return $resp;
@@ -235,41 +285,59 @@ class Vacante implements IEntidad
             
         }
     
-
+        //METODO HEREDADO DE LA INTERFACE
         public function Eliminar($conn,$json)
         {
             $datos = json_decode($json,true);
+
+            $token = Token::validarToken($conn,$datos);
+           
+           if(is_bool($token))
+           {
+                //Campo Obligatorio para eliminar una vacante
+                if(!isset($datos['ID_Vacante']))
+                {
+                    //Datos enviados incompletos o con formato incorrecto
+                    return respuestas::error_400();
+                }
+                else
+                {
+                    $this->ID_Vacante = $datos['ID_Vacante'];
+                }
+
+                //Query para eliminar una vacante
+                $resp =  $this->Query_Eliminar_Vacante($conn);
+
+                //Si se eliminaron registros
+                if($resp)
+                {
+                    $respuesta = respuestas::$response;
+                    $respuesta['result'] = array(
+                        "ID_Vacante" => $this->ID_Vacante
+                    );
+                    return $respuesta;
+                }
+                else{
+                    //Error Interno del Servidor
+                    return respuestas::error_500();
+                }  
                 
-            if(!isset($datos['ID_Vacante']))
-            {
-                return respuestas::error_400();
-            }
-            else
-            {
-                $this->ID_Vacante = $datos['ID_Vacante'];
-            }
+           }
+           else
+           {
+               return $token;
+           }
+         
+        }  
 
-            $resp =  $this->Query_Eliminar_Vacante($conn);
-
-            if($resp)
-            {
-                $respuesta = respuestas::$response;
-                $respuesta['result'] = array(
-                    "ID_Vacante" => $this->ID_Vacante
-                );
-                return $respuesta;
-            }
-            else{
-                return respuestas::error_500();
-            } 
-
-        }
-
+        //Query para Eliminar Vacante
         private function Query_Eliminar_Vacante($conn)
         {
             $query = "DELETE FROM ".Vacante::$Table. " WHERE ID_Vacante = ".$this->ID_Vacante;
+            //Metodo de la Clase conexion que retorna el numero de filas eliminadas
             $resp  = $conn->nonQuery($query);
-    
+            
+            //Si se eliminaron registros de la BD
             if($resp >= 1)
             {
                 return $resp;
@@ -280,10 +348,6 @@ class Vacante implements IEntidad
             }
         }
 }
-
-//$v1 = new Vacante();
-
-//$v1->Guardar('','');
 
 
 

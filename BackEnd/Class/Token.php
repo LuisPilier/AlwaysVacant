@@ -4,6 +4,31 @@
 class Token
 {
 
+    public static function validarToken($conn,$datos)
+    {
+        //Retornar respuesta si no recibe un token
+        if(!isset($datos['Token']))
+        {   
+        //No Autorizado
+        return respuestas::error_401();
+        }
+
+        else
+        {
+            //Metodo para Verificar 
+            $arrayToken  = self::buscarToken($conn,$datos['Token']);
+            
+            if($arrayToken)
+            {
+                return true;
+            }
+            else{
+                return Respuestas::error_401("El Token que envio es invalido o ha caducado");
+            }
+        }   
+
+    }
+
     public static function insertarToken($conn,$usuarioid)
     {
       $val    = true;

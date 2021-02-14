@@ -47,7 +47,7 @@ class Conexion {
     
     private function datosConexion()
     {    
-        $jsondata = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/AlwaysVacant/Backend/Database/Conexion.Json');
+        $jsondata = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/AlwaysVacant/BackEnd/Database/Conexion.json');
         return json_decode($jsondata, true);
     }
 
