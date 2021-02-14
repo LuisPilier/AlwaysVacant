@@ -142,7 +142,7 @@ class Vacante implements IEntidad
         //METODO HEREDADO DE LA INTERFACE
         public static function ObtenerTodo($conn,$array)
         {
-            $token = Token::validarToken($conn,$datos);
+            $token = Token::validarToken($conn,$array);
            
             if(is_bool($token))
             {
@@ -160,7 +160,7 @@ class Vacante implements IEntidad
         //METODO HEREDADO DE LA INTERFACE
         public static function Obtener($conn,$array)
         {
-            $token = Token::validarToken($conn,$datos);
+            $token = Token::validarToken($conn,$array);
            
             if(is_bool($token))
             {
@@ -171,17 +171,26 @@ class Vacante implements IEntidad
             }
             else
             {
-                return $token
+                return $token;
             }    
         }
 
         //Retorna las Vacantes por Categoria
         public static function Vacantes_Categoria($conn,$array)
         {
-            $id = $array['ID_Categoria'];
-            $query = self::Query_Vacante(). ' WHERE v.ID_Categoria = '.$id;
-            $datos = $conn->Query($query);
-            return $datos;
+            $token = Token::validarToken($conn,$array);
+           
+            if(is_bool($token))
+            {
+                $id = $array['ID_Categoria'];
+                $query = self::Query_Vacante(). ' WHERE v.ID_Categoria = '.$id;
+                $datos = $conn->Query($query);
+                return $datos;
+            }
+            else
+            {
+                return $token;
+            }
         }
 
         
