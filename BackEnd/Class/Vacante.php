@@ -124,6 +124,7 @@ class Vacante implements IEntidad
 
         private function procesarImagen($img)
         {
+            //El Directorio donde se almacenaran las imagenes
             $direccion = "../Images/";
             $partes    = explode(";base64,",$img);
             $extension = explode('/',mime_content_type($img))[1];
@@ -132,7 +133,7 @@ class Vacante implements IEntidad
             $nombre_foto = uniqid() . ".".$extension;
 
             $file = $direccion.''.$nombre_foto;
-    
+            
             file_put_contents($file,$imagen_base64);
     
             return $_SERVER['SERVER_NAME'].'/AlwaysVacant/BackEnd/Images/'.$nombre_foto;
