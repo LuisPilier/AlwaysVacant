@@ -12,15 +12,6 @@ include('../Class/Auth.php');
 
 switch($_SERVER['REQUEST_METHOD'])
 {
-
-
-    case 'GET':
-        // code...
-        $datosArray = respuestas::error_405();
-        echo json_encode($datosArray);
-
-        break;
-    
     case 'POST':
 
         $_auth = new Auth();
@@ -46,6 +37,7 @@ switch($_SERVER['REQUEST_METHOD'])
     //Solicitud no encontrada  
     default:
         $resultado["mensaje"] = "Enviaste una solicitud incorrecta";
+        http_response_code(405);
         echo json_encode($resultado["mensaje"]);
         break;
           
