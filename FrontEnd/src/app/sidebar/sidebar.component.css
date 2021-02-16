@@ -48,7 +48,7 @@
   transform: rotate(180deg);
 }
 #sidebar{
-  position: fixed;
+  position: absolute;
   background: #f57c7c;
   height: 100%;
   width: 270px;
