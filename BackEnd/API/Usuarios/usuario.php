@@ -15,7 +15,6 @@ $_usuario = new Usuario();
 
 
 //Switch(Desicion)
-
 switch($_SERVER['REQUEST_METHOD']){
 
 

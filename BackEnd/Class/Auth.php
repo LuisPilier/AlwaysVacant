@@ -11,13 +11,11 @@ Class Auth{
 
         public function login($conn,$json)
         {
-
             $datos = json_decode($json,true);
             if(!isset($datos['Usuario']) || !isset($datos["Contrasena"])){
                 //error con los campos
                 return respuestas::error_400();
             }else{
-
 
                 //todo esta bien 
                 $usuario  = $datos['Usuario'];
@@ -54,8 +52,6 @@ Class Auth{
             }
         }
 
-
-
           private function obtenerDatosUsuario($conn,$usuario){
             $query = "SELECT ID_Usuario,Nombre,Apellido,Usuario,Contrasena,ID_Rol,Correo FROM Usuario WHERE Usuario = '$usuario'";
             $datos = $conn->Query($query);
@@ -65,8 +61,6 @@ Class Auth{
                 return 0;
             }
         }
-
-
 
 }
 

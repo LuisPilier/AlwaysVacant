@@ -4,6 +4,7 @@
 class Token
 {
 
+    //Este metodo se utiliza al momento de hacer cualquier request a la API
     public static function validarToken($conn,$datos)
     {
         //Retornar respuesta si no recibe un token
@@ -29,6 +30,7 @@ class Token
 
     }
 
+    //Este metodo se utiliza cuando un usuario hace LOGIN 
     public static function insertarToken($conn,$usuarioid)
     {
       $val    = true;
@@ -52,6 +54,7 @@ class Token
 
     }
 
+    //Este metodo busca los token que estan activos
     public static function buscarToken($conn,$token)
     {
         $query = "SELECT ID_Token,ID_Usuario,Estado,Fecha,Token FROM Usuarios_token WHERE Token = '$token'
@@ -69,7 +72,7 @@ class Token
     }
 
 
-    public static function actualizarToken($conn,$tokenid)
+    /*public static function actualizarToken($conn,$tokenid)
     {
         $date = date("Y-m-d H:i");
         $query = "UPDATE usuarios_token SET fecha = '$date' WHERE TokenId = '$tokenid'";
@@ -81,8 +84,9 @@ class Token
         }else{
             return 0;
         }
-    }
+    }*/
 
+    //Este metodo se utiliza para inactivar los Token luego de 24h
     public static function InactivarToken($conn,$fecha)
     {
         $query = "UPDATE usuarios_token SET Estado = 'Inactivo' WHERE Fecha < '$fecha' AND Estado = 'Activo'";
@@ -99,6 +103,7 @@ class Token
 
     }
 
+    //Este metodo se utiliza para eliminar los Token luego de 1 mes
     public static function EliminarToken($conn,$fecha)
     {
 
