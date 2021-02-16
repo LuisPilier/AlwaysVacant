@@ -10,6 +10,7 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { AdminpageComponent } from './components/adminpage/adminpage.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { PagepostjobComponent } from './components/pagepostjob/pagepostjob.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +18,8 @@ import { PagepostjobComponent } from './components/pagepostjob/pagepostjob.compo
     FooterComponent,
     HomepageComponent,
     AdminpageComponent,
-    PagepostjobComponent
+    PagepostjobComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
