@@ -15,10 +15,10 @@
       <div class="navbar-collapse" id="navbarToggler">
           <ul class="navbar-nav ml-auto">
               <li class="nav-item" *ngIf="!isDocumentation()">
-                  <a href="http://pk2-angular.creative-tim.com/documentation/tutorial" class="nav-link" target="_blank"><i class="nc-icon nc-book-bookmark"></i> Login</a>
+                  <a href="http://pk2-angular.creative-tim.com/documentation/tutorial" class="nav-link" target="_blank"><i class="fa fa-sign-in"></i> Login</a>
               </li>
               <li class="nav-item" *ngIf="!isHome()">
-                  <a [routerLink]="['/home']" *ngIf="!isDocumentation()" class="nav-link"><i class="nc-icon nc-layout-11"></i>Register</a>
+                  <a [routerLink]="['/home']" *ngIf="!isDocumentation()" class="nav-link"><i class="fa fa-user-plus"></i>Register</a>
                   <a [routerLink]="['/home']" *ngIf="isDocumentation()" class="nav-link">Register</a>
               </li>
           </ul>
