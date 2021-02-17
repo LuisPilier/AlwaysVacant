@@ -12,6 +12,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { PagepostjobComponent } from './components/pagepostjob/pagepostjob.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { EditjobComponent } from './components/editjob/editjob.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +22,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     HomepageComponent,
     AdminpageComponent,
     PagepostjobComponent,
-    SidebarComponent
+    SidebarComponent,
+    EditjobComponent
   ],
   imports: [
     BrowserModule,
