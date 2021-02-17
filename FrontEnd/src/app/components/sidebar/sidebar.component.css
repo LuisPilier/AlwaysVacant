@@ -49,7 +49,7 @@
 #sidebar{
   position: absolute;
   background: #f57c7c;
-  height: 170%;
+  height: 100%;
   width: 270px;
   overflow: hidden;
   left: -270px;
