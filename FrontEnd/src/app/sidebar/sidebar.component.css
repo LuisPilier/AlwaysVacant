@@ -149,3 +149,7 @@
   font-size: 40px;
   font-weight: 700;
 }
+img {
+  width: 100%;
+  height: auto;
+  }
