@@ -10,7 +10,8 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { AdminpageComponent } from './components/adminpage/adminpage.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { PagepostjobComponent } from './components/pagepostjob/pagepostjob.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +26,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     BrowserModule,
     AppRoutingModule,
     NoopAnimationsModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

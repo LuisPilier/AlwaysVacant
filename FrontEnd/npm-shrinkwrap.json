@@ -1587,11 +1587,48 @@
       }
     },
     "@fortawesome/angular-fontawesome": {
-      "version": "0.8.1",
-      "resolved": "https://registry.npmjs.org/@fortawesome/angular-fontawesome/-/angular-fontawesome-0.8.1.tgz",
-      "integrity": "sha512-dNmtFb/LTYWLNRfkKgCFwxgtQslNZLwUC+u7lkVAcIcjirIG6J9Ff0evl+9zR4DXFAkP0PN4RKe14NVDP3rUWA==",
+      "version": "0.8.2",
+      "resolved": "https://registry.npmjs.org/@fortawesome/angular-fontawesome/-/angular-fontawesome-0.8.2.tgz",
+      "integrity": "sha512-K/AiykA4YbHKE6XKEtZ0ZvVRQocUHyk+79HYWIfhGy3teHpzxsUqB/UjDaxivgBd6dF6ihlzgEbgrDMHlGNwGg==",
       "requires": {
-        "tslib": "^2.0.3"
+        "tslib": "^2.1.0"
+      }
+    },
+    "@fortawesome/fontawesome-common-types": {
+      "version": "0.2.34",
+      "resolved": "https://registry.npmjs.org/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.2.34.tgz",
+      "integrity": "sha512-XcIn3iYbTEzGIxD0/dY5+4f019jIcEIWBiHc3KrmK/ROahwxmZ/s+tdj97p/5K0klz4zZUiMfUlYP0ajhSJjmA=="
+    },
+    "@fortawesome/fontawesome-svg-core": {
+      "version": "1.2.34",
+      "resolved": "https://registry.npmjs.org/@fortawesome/fontawesome-svg-core/-/fontawesome-svg-core-1.2.34.tgz",
+      "integrity": "sha512-0KNN0nc5eIzaJxlv43QcDmTkDY1CqeN6J7OCGSs+fwGPdtv0yOQqRjieopBCmw+yd7uD3N2HeNL3Zm5isDleLg==",
+      "requires": {
+        "@fortawesome/fontawesome-common-types": "^0.2.34"
+      }
+    },
+    "@fortawesome/free-brands-svg-icons": {
+      "version": "5.15.2",
+      "resolved": "https://registry.npmjs.org/@fortawesome/free-brands-svg-icons/-/free-brands-svg-icons-5.15.2.tgz",
+      "integrity": "sha512-YPlVjE1cEO+OJ9I9ay3TQ3I88+XkxMTYwnnddqAboxLhPNGncsHV0DjWOVLCyuAY66yPfyndWwVn4v7vuqsO1g==",
+      "requires": {
+        "@fortawesome/fontawesome-common-types": "^0.2.34"
+      }
+    },
+    "@fortawesome/free-regular-svg-icons": {
+      "version": "5.15.2",
+      "resolved": "https://registry.npmjs.org/@fortawesome/free-regular-svg-icons/-/free-regular-svg-icons-5.15.2.tgz",
+      "integrity": "sha512-Uv5NQCYjyisNVTu/1Xjs+z8vwQjbfT6hiqYvQNfF0n8qdgfWLM581bAfVMQ3BCs1SPy+eEUKNcGkK4n0FihFHg==",
+      "requires": {
+        "@fortawesome/fontawesome-common-types": "^0.2.34"
+      }
+    },
+    "@fortawesome/free-solid-svg-icons": {
+      "version": "5.15.2",
+      "resolved": "https://registry.npmjs.org/@fortawesome/free-solid-svg-icons/-/free-solid-svg-icons-5.15.2.tgz",
+      "integrity": "sha512-ZfCU+QjaFsdNZmOGmfqEWhzI3JOe37x5dF4kz9GeXvKn/sTxhqMtZ7mh3lBf76SvcYY5/GKFuyG7p1r4iWMQqw==",
+      "requires": {
+        "@fortawesome/fontawesome-common-types": "^0.2.34"
       }
     },
     "@istanbuljs/schema": {
@@ -2306,6 +2343,11 @@
       "resolved": "https://registry.npmjs.org/alphanum-sort/-/alphanum-sort-1.0.2.tgz",
       "integrity": "sha1-l6ERlkmyEa0zaR2fn0hqjsn74KM=",
       "dev": true
+    },
+    "angular-font-awesome": {
+      "version": "3.1.2",
+      "resolved": "https://registry.npmjs.org/angular-font-awesome/-/angular-font-awesome-3.1.2.tgz",
+      "integrity": "sha1-k3hzJhLY6MceDXwvqg+t3H+Fjsk="
     },
     "ansi-colors": {
       "version": "4.1.1",
@@ -5778,6 +5820,11 @@
       "resolved": "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.13.2.tgz",
       "integrity": "sha512-6mPTgLxYm3r6Bkkg0vNM0HTjfGrOEtsfbhagQvbxDEsEkpNhw582upBaoRZylzen6krEmxXJgt9Ju6HiI4O7BA==",
       "dev": true
+    },
+    "font-awesome": {
+      "version": "4.7.0",
+      "resolved": "https://registry.npmjs.org/font-awesome/-/font-awesome-4.7.0.tgz",
+      "integrity": "sha1-j6jPBBGhoxr9B7BtKQK7n8gVoTM="
     },
     "for-in": {
       "version": "1.0.2",
