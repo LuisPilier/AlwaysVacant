@@ -1,7 +1,11 @@
 <?php
 
+
 //INCLUYENDO INTERFACE
 include('Includes/IEntidad.php');
+
+
+
 
 //CLASE VACANTE
 class Vacante implements IEntidad
@@ -356,6 +360,11 @@ class Vacante implements IEntidad
             {
                 return 0;
             }
+        }
+
+        public function retornar_numero()
+        {
+            return 5;
         }
 }
 
