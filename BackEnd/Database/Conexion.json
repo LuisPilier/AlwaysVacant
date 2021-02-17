@@ -5,5 +5,15 @@
         "password" : "Masdacx9",
         "database" : "freedbtech_Always_Vacant",
         "port": "3306"
+    },
+
+    "conexion-test":{
+        "server" : "freedb.tech",
+        "user" : "freedbtech_rootJ",
+        "password" : "Masdacx9",
+        "database" : "freedbtech_Always_Vacant",
+        "port": "3306"
     }
+
+    
 }
