@@ -14,6 +14,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EditjobComponent } from './components/editjob/editjob.component';
 import { CreatecategoryComponent } from './components/createcategory/createcategory.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { CreatecategoryComponent } from './components/createcategory/createcateg
     AppRoutingModule,
     NoopAnimationsModule,
     FontAwesomeModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
