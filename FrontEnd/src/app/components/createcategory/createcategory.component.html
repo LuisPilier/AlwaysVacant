@@ -1,3 +1,151 @@
 <app-header></app-header>
 <app-sidebar></app-sidebar>
-<app-footer></app-footer>
+<br><br>
+<div class="container">
+    <h3 style="background-color: #2fa7c5; color: white;" class="card-header text-center font-weight-bold text-uppercase py-4">Create Category</h3>
+    
+    <div class="card-body">
+      <div id="table" class="table-editable">
+       
+        <table class="table table-bordered table-responsive-md table-striped text-center">
+          <thead>
+            <tr>
+              <th class="text-center">Person Name</th>
+              <th class="text-center">Age</th>
+              <th class="text-center">Company Name</th>
+              <th class="text-center">Country</th>
+              <th class="text-center">City</th>
+              <th class="text-center">Accions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="pt-3-half" id="email1" contenteditable="true">Aurelia Vega</td>
+              <td class="pt-3-half" contenteditable="true">30</td>
+              <td class="pt-3-half" contenteditable="true">Deepends</td>
+              <td class="pt-3-half" contenteditable="true">Spain</td>
+              <td class="pt-3-half" contenteditable="true">Madrid</td>
+              
+                
+              
+              <td>
+                <span class="table-remove"><button type="button"
+                    class="btn btn-primary btn-rounded btn-sm my-0 " style="width: 80px;" data-toggle="modal" data-target="#form">Edit</button></span>
+
+                    <span style="margin-left: 14px;" class="table-remove"><button type="button"
+                        class="btn btn-danger btn-rounded btn-sm my-0" style="width: 80px;" data-toggle="modal" data-target="#form1">Remove</button></span>
+              </td>
+            </tr>
+           
+            <tr>
+              <td class="pt-3-half" id="email1" contenteditable="true">Guerra Cortez</td>
+              <td class="pt-3-half" contenteditable="true">45</td>
+              <td class="pt-3-half" contenteditable="true">Insectus</td>
+              <td class="pt-3-half" contenteditable="true">USA</td>
+              <td class="pt-3-half" contenteditable="true">San Francisco</td>
+              
+              <td>
+                <span class="table-remove"><button type="button"
+                    class="btn btn-primary btn-rounded btn-sm my-0" style="width: 80px;" data-toggle="modal" data-target="#form">Edit</button></span>
+                      
+                    <span style="margin-left: 14px;" class="table-remove"><button type="button"
+                        class="btn btn-danger btn-rounded btn-sm my-0" style="width: 80px;" data-toggle="modal" data-target="#form1">Remove</button></span>
+              </td>
+            </tr>
+            
+           
+          </tbody>
+        </table>
+      </div>
+      <button class="btn btn-lg btn-block btn-success">Create</button>
+    </div>
+  
+  </div>
+  
+
+
+  <div class="modal fade" id="form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header border-bottom-0">
+          <h5 class="modal-title" id="exampleModalLabel">Edit Job</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="email1">Person Name</label>
+              <input type="text" class="form-control" id="email1" aria-describedby="emailHelp">
+              <small id="emailHelp" class="form-text text-muted"></small>
+            </div>
+            <div class="form-group">
+              <label for="password1">Age</label>
+              <input type="text" class="form-control" id="password1" >
+            </div>
+            <div class="form-group">
+              <label for="password1">Company Name</label>
+              <input type="password" class="form-control" id="password2">
+            </div>
+            <div class="form-group">
+              <label for="password1">Conuntry</label>
+              <input type="password" class="form-control" id="password2">
+            </div>
+            <div class="form-group">
+              <label for="password1">City</label>
+              <input type="password" class="form-control" id="password2">
+            </div>
+          </div>
+          <div class="modal-footer border-top-0 d-flex justify-content-center">
+            <button type="button" class="btn btn-primary ">Edit</button>
+          </div>
+          <br><br>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="form1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header border-bottom-0">
+          <h5 class="modal-title" id="exampleModalLabel">Delete Job</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="email1">Person Name</label>
+              <input type="text" class="form-control" id="email1" aria-describedby="emailHelp">
+              <small id="emailHelp" class="form-text text-muted"></small>
+            </div>
+            <div class="form-group">
+              <label for="password1">Age</label>
+              <input type="text" class="form-control" id="password1" >
+            </div>
+            <div class="form-group">
+              <label for="password1">Company Name</label>
+              <input type="password" class="form-control" id="password2">
+            </div>
+            <div class="form-group">
+              <label for="password1">Conuntry</label>
+              <input type="password" class="form-control" id="password2">
+            </div>
+            <div class="form-group">
+              <label for="password1">City</label>
+              <input type="password" class="form-control" id="password2">
+            </div>
+          </div>
+          <div class="modal-footer border-top-0 d-flex justify-content-center">
+            <button type="button" class="btn btn-danger ">Edit</button>
+          </div>
+          <br><br>
+        </form>
+      </div>
+    </div>
+  </div>
+
+<app-footer class="fixed-bottom"></app-footer>
