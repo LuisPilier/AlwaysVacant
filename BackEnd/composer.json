@@ -6,8 +6,10 @@
         "guzzlehttp/guzzle": "^7.2"
     },
     "autoload": {
-        "psr-4": {
-            "App\\":"Class"
-        }
+        "classmap": [
+            "Class/",
+            "Class/Includes/",
+            "Class/Includes/Conexion.php"
+        ]
     }
 }

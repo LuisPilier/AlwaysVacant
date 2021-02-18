@@ -1,17 +1,29 @@
 <?php
 
-include($_SERVER['DOCUMENT_ROOT'].'/AlwaysVacant/BackEnd/Class/Vacante.php');
 
 class VacanteTest extends \PHPUnit\Framework\TestCase
 {
+
+    protected function setUp(): void {
+        $_SERVER['DOCUMENT_ROOT'] = "../../";
+        $this->vacante = new Vacante();
+    }
+
+    
     /** @test **/
     public function  test_probar_numero()
     {
-        $vacante = new Vacante();
+        $num  = $this->vacante->retornar_numero();
 
-        $num  = $vacante->retornar_numero();
+        $this->assertEquals(5,$num);
 
-        $this->assertEquals(4,$num);
+       // echo 'Todo bien 2 ';
+    }
+
+
+    public function test_eliminar_vacante()
+    {
+        
     }
 }
 
