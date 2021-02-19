@@ -11,7 +11,8 @@ class VacanteController
     {
         $vacante = new vacante(); 
         $datos = json_decode($json,true);
-        $token = TokenController::validarToken($datos);
+        //$token = TokenController::validarToken($conn,$datos);
+        $token = true;
 
         if(is_bool($token))
            {

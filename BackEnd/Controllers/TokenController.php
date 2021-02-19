@@ -1,5 +1,7 @@
 <?php 
 
+include('Respuestas.php');
+include('../Models/Token.php');
 
 class TokenController
 {

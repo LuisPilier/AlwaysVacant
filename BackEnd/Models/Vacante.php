@@ -23,13 +23,15 @@ class Vacante implements IEntidad
         private $Token;
         private $Email;
         private static $Table = 'Vacante';
+        
 
         //METODOS
 
         //METODO HEREDADO DE LA INTERFACE
         public function Guardar($datos)
         {
-        
+            $conn = new conexion();
+
             $this->Compania        = $datos['Compania'];
             $this->ID_Tipo_Vacante = $datos['ID_Tipo_Vacante'];
             $this->Posicion        = $datos['Posicion'];

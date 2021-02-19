@@ -1,38 +1,21 @@
 <?php 
 
+include('IEntidad.php');
+include('conexion.php');
 
-class Token
+class Token implements IEntidad
 {
-
-    //Este metodo se utiliza al momento de hacer cualquier request a la API
-    public static function validarToken($conn,$datos)
-    {
-        //Retornar respuesta si no recibe un token
-        if(!isset($datos['Token']))
-        {   
-        //No Autorizado
-        return respuestas::error_401();
-        }
-
-        else
-        {
-            //Metodo para Verificar 
-            $arrayToken  = self::buscarToken($conn,$datos['Token']);
-            
-            if($arrayToken)
-            {
-                return true;
-            }
-            else{
-                return Respuestas::error_401("El Token que envio es invalido o ha caducado");
-            }
-        }   
-
-    }
+    private $ID_Usuario;
+    private $token;
+    private $Estado;
+    private $Fecha;
 
     //Este metodo se utiliza cuando un usuario hace LOGIN 
-    public static function insertarToken($conn,$usuarioid)
+    public function guardar($conn,$usuarioid)
     {
+
+      $conn = new conexion();
+
       $val    = true;
       $token  = bin2hex(openssl_random_pseudo_bytes(16,$val));
       $date   = date("Y-m-d");
@@ -54,8 +37,13 @@ class Token
 
     }
 
+    public static function ObtenerTodo($conn, $array)
+    {
+        
+    }
+
     //Este metodo busca los token que estan activos
-    public static function buscarToken($conn,$token)
+    public static function obtener($conn,$token)
     {
         $query = "SELECT ID_Token,ID_Usuario,Estado,Fecha,Token FROM Usuarios_token WHERE Token = '$token'
         and ESTADO = 'Activo'";
@@ -87,7 +75,7 @@ class Token
     }*/
 
     //Este metodo se utiliza para inactivar los Token luego de 24h
-    public static function InactivarToken($conn,$fecha)
+    public function Actualizar($conn,$fecha)
     {
         $query = "UPDATE usuarios_token SET Estado = 'Inactivo' WHERE Fecha < '$fecha' AND Estado = 'Activo'";
         $verificar = $conn->nonQuery($query);
@@ -104,7 +92,7 @@ class Token
     }
 
     //Este metodo se utiliza para eliminar los Token luego de 1 mes
-    public static function EliminarToken($conn,$fecha)
+    public function Eliminar($conn,$fecha)
     {
 
         $query = "DELETE FROM usuarios_token WHERE Fecha < '$fecha' AND Estado = 'Activo'";
