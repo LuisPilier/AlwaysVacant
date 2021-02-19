@@ -5,7 +5,7 @@ import {AdminpageComponent} from 'src/app/components/adminpage/adminpage.compone
 import {PagepostjobComponent} from 'src/app/components/pagepostjob/pagepostjob.component';
 import {EditjobComponent} from 'src/app/components/editjob/editjob.component';
 import {CreatecategoryComponent} from 'src/app/components/createcategory/createcategory.component';
-
+import {NumberofjobComponent} from 'src/app/components/numberofjob/numberofjob.component';
 
 
 
@@ -15,7 +15,8 @@ const routes: Routes = [
 {path: 'adminpage', component: AdminpageComponent},
 {path: 'postajob', component: PagepostjobComponent},
 {path: 'editjob', component: EditjobComponent},
-{path: 'createcategory', component:CreatecategoryComponent}
+{path: 'createcategory', component:CreatecategoryComponent},
+{path: 'numberofjobs', component: NumberofjobComponent}
 ];
 
 @NgModule({

@@ -14,6 +14,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EditjobComponent } from './components/editjob/editjob.component';
 import { CreatecategoryComponent } from './components/createcategory/createcategory.component';
+import { NumberofjobComponent } from './components/numberofjob/numberofjob.component';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { CreatecategoryComponent } from './components/createcategory/createcateg
     PagepostjobComponent,
     SidebarComponent,
     EditjobComponent,
-    CreatecategoryComponent
+    CreatecategoryComponent,
+    NumberofjobComponent,
+    
   ],
   imports: [
     BrowserModule,
