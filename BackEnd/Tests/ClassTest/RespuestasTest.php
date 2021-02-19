@@ -1,6 +1,6 @@
 <?php
 
-
+/*
 
 class ResTest extends \PHPUnit\Framework\TestCase
 {
@@ -9,7 +9,6 @@ class ResTest extends \PHPUnit\Framework\TestCase
     }
 
 
-    /** @test **/
     public function  test_error_405()
     {
 
@@ -27,5 +26,5 @@ class ResTest extends \PHPUnit\Framework\TestCase
     }
 }
 
-
+*/
 ?>

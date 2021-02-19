@@ -1,5 +1,6 @@
 <?php
 
+include($_SERVER['DOCUMENT_ROOT'].'/AlwaysVacant/BackEnd/Class/Vacante.php');
 
 class VacanteTest extends \PHPUnit\Framework\TestCase
 {
@@ -9,21 +10,16 @@ class VacanteTest extends \PHPUnit\Framework\TestCase
         $this->vacante = new Vacante();
     }
 
-    
+
     /** @test **/
     public function  test_probar_numero()
     {
-        $num  = $this->vacante->retornar_numero();
+        $vacante = new Vacante();
+
+        $num  = $vacante->retornar_numero();
+
 
         $this->assertEquals(5,$num);
-
-       // echo 'Todo bien 2 ';
-    }
-
-
-    public function test_eliminar_vacante()
-    {
-        
     }
 }
 
