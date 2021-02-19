@@ -15,6 +15,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EditjobComponent } from './components/editjob/editjob.component';
 import { CreatecategoryComponent } from './components/createcategory/createcategory.component';
 import { NumberofjobComponent } from './components/numberofjob/numberofjob.component';
+import { HomepagejobsComponent } from './components/homepagejobs/homepagejobs.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { NumberofjobComponent } from './components/numberofjob/numberofjob.compo
     EditjobComponent,
     CreatecategoryComponent,
     NumberofjobComponent,
+    HomepagejobsComponent,
     
   ],
   imports: [
