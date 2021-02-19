@@ -6,8 +6,7 @@ import {PagepostjobComponent} from 'src/app/components/pagepostjob/pagepostjob.c
 import {EditjobComponent} from 'src/app/components/editjob/editjob.component';
 import {CreatecategoryComponent} from 'src/app/components/createcategory/createcategory.component';
 import {NumberofjobComponent} from 'src/app/components/numberofjob/numberofjob.component';
-
-
+import {HomepagejobsComponent} from 'src/app/components/homepagejobs/homepagejobs.component'
 
 const routes: Routes = [
 {path: '', component: HomepageComponent},
@@ -16,7 +15,8 @@ const routes: Routes = [
 {path: 'postajob', component: PagepostjobComponent},
 {path: 'editjob', component: EditjobComponent},
 {path: 'createcategory', component:CreatecategoryComponent},
-{path: 'numberofjobs', component: NumberofjobComponent}
+{path: 'numberofjobs', component: NumberofjobComponent},
+{path: 'homepagejobs', component: HomepagejobsComponent}
 ];
 
 @NgModule({
