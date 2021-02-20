@@ -108,8 +108,6 @@ Class Usuario implements IEntidad{
         }
     }
     
-
-
  
     //Funcion privada (query de inserion usario)
     private function Insert_Usuario($conn)
