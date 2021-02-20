@@ -1,0 +1,27 @@
+.my-custom-scrollbar 
+{
+    position: relative;
+    max-height: 400px;
+    overflow: auto;
+}
+
+ .table-wrapper-scroll-y 
+ {
+ display: block;
+ }
+
+ .category-job
+ {
+     font-size: 20px;
+     font-family: monospace;
+     position: relative;
+     top: 20px;
+     background: #fff;
+     display: inline-block;
+     padding: 0 10px;
+ }
+
+ .line {
+    height: 2px;
+    background: #868683;
+}
