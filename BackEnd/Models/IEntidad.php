@@ -5,7 +5,7 @@
 interface IEntidad
 {
     function Guardar($datos);
-    static function ObtenerTodo($datos);
+    static function ObtenerTodo();
     static function Obtener($datos);
     function Actualizar($datos);
     function Eliminar($datos);

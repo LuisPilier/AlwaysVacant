@@ -9,7 +9,6 @@ class TokenController
     //Este metodo se utiliza al momento de hacer cualquier request a la API
     public static function validarToken($datos)
     {
-
         //Retornar respuesta si no recibe un token
         if(!isset($datos['Token']))
         {   
@@ -19,9 +18,8 @@ class TokenController
 
         else
         {
-            $token = new Token();
             //Metodo para Verificar 
-            $arrayToken  = $token->Obtener($datos['Token']);
+            $arrayToken  = Token::Obtener($datos);
             
             if($arrayToken)
             {

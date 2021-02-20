@@ -1,5 +1,8 @@
 <?php 
 
+ini_set('display_errors',1); 
+error_reporting(E_ALL);
+
 class Token implements IEntidad
 {
     private $ID_Usuario;
@@ -44,7 +47,7 @@ class Token implements IEntidad
 
     }
 
-    public static function ObtenerTodo($array)
+    public static function ObtenerTodo()
     {
         echo '';
     }
