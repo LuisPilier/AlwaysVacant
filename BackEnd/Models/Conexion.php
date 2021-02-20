@@ -1,12 +1,7 @@
 <?php
 
-
 ini_set('display_errors',1); 
 error_reporting(E_ALL);
-
-include($_SERVER['DOCUMENT_ROOT'].'/AlwaysVacant/BackEnd/Class/Includes/Respuestas.php');
-
-include($_SERVER['DOCUMENT_ROOT'].'/AlwaysVacant/BackEnd/Class/Token.php');
 
 
 //Clases
@@ -100,8 +95,6 @@ class Conexion {
     }
 
 }
-
-$conn  = new Conexion();
 
 
 ?>
