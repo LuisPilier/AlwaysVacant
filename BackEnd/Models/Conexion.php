@@ -3,7 +3,6 @@
 ini_set('display_errors',1); 
 error_reporting(E_ALL);
 
-
 //Clases
 class Conexion {
      
@@ -14,6 +13,8 @@ class Conexion {
     private $database;
     private $port;
     public  $conexion;
+
+    private static $instance;
     
     //Funciones
     function __construct(){
@@ -38,6 +39,16 @@ class Conexion {
         
     
     }
+
+    public static function getInstance()
+    {
+        if (!self::$instance instanceof self) {
+            self::$instance = new self();
+        }
+
+        return self::$instance;
+    }
+
 
     
     private function datosConexion()
