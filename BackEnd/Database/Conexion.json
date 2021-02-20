@@ -6,7 +6,7 @@
         "database" : "freedbtech_AlwaysVacant",
         "port": "3306"
     },
-
+   
     "conexion-test":{
         "server" : "freedb.tech",
         "user" : "freedbtech_rootJ",
@@ -15,5 +15,4 @@
         "port": "3306"
     }
 
-    
 }
