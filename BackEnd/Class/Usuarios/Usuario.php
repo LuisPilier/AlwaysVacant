@@ -27,100 +27,87 @@ Class Usuario implements IEntidad{
          // Array con datos
         $data = json_decode($json,true);
 
-        //Metodo de la clase token, valida si fue enviado o si es valido
-         $this->token = Token::validarToken($conn,$data);
-
-          //Comprobar si el token existe 
-         if(is_bool($this->token))
-         {
-              //Comprobar si los cambios requeridos fueron enviados
-            if( !isset($data['Nombre']) || !isset($data['Apellido']) || !isset($data['Usuario']) || !isset($data['Contrasena']) || !isset($data['ID_Rol']) || !isset($data['Correo']) ) 
-            {      
-                //Campo requido no enviado     
-                return Respuestas::error_400();
-            }
-            else
-            {
-                    //Campo requido enviados  
-                    $this->Nombre             = $data["Nombre"];
-                    $this->Apellido           = $data["Apellido"];
-                    $this->Usuario            = $data["Usuario"];
-                    $this->Contrasena         = $data["Contrasena"];
-                    $this->ID_Rol             = $data["ID_Rol"];
-                    $this->Correo             = $data["Correo"];
-
-                    
-
-                     //Llamar a la function privada para comprobar si el usuario introducido existe
-                    $comprobaruser = $this->Comprobar_Usuario($conn);
-
-                    //Resultado de llamar la funcion
-                    if($comprobaruser >= 1)
-                    {
-                        //No existe un user con ese nombre
-                            
-                            //Llamar a la function privada para comprobar si el correo introducido existe
-                            $comprobarcorreo = $this->Comprobar_Correo($conn);
-                             
-                             //Resultado de llamar la funcion
-                            if($comprobarcorreo >= 1)
-                            {
-                                  //No existe el correo introducido    
-
-                                  //Llamar a la funcion privada para comprobar si el rol introducido existe
-                                    $comprobarrol = $this-> Comprobar_Rol($conn);
-
-                                    //Resultado de llamar la funcion
-                                    if ($comprobarrol >= 1)
-                                    {
-                                            //Encriptar contrasena
-                                            $this->Contrasena = $this->EncriptarContrasena($this->Contrasena);                      
-                                           
-                                            //Llamar la funcion para insertar el usario
-                                            $resp = $this-> Insert_Usuario($conn);
-
-                                            if($resp)
-                                            {
-                                                //Respuesta de insercion exitosa y ID insertado
-                                                $respuesta['result'] = array(
-                                                    "ID_Usuario" => $resp
-                                                );
-                                                return $respuesta;
-                                            }
-                                            else
-                                            {
-                                                //Error al momento de insertar
-                                                Respuestas::error_500();
-                                            }
-                                    }
-                                    else
-                                    { 
-                                        //Error el rol introducido no existe
-                                        return Respuestas::error_500("El rol introducido no ex valido");
-                                        
-                                    }
-
-                            }
-                            else
-                            {
-                                 //El correo introducido ya esta registrado
-                                return Respuestas::error_500("El correo introducido ya existe");
-                            }
-                    }
-                    else
-                    {
-                        //El usuario introducido ya esta registrado
-                        return  Respuestas::error_500("El Usuario introducido ya existe");
-                    }
-    
-            }
+            //Comprobar si los cambios requeridos fueron enviados
+        if( !isset($data['Nombre']) || !isset($data['Apellido']) || !isset($data['Usuario']) || !isset($data['Contrasena']) || !isset($data['ID_Rol']) || !isset($data['Correo']) ) 
+        {      
+            //Campo requido no enviado     
+            return Respuestas::error_400();
         }
         else
         {
-                //Error en caso de que el token sea invalido o no sea enviado
-                return $this->token;
+            //Campo requido enviados  
+            $this->Nombre      = $data["Nombre"];
+            $this->Apellido    = $data["Apellido"];
+            $this->Usuario     = $data["Usuario"];
+            $this->Contrasena  = $data["Contrasena"];
+            $this->ID_Rol      = $data["ID_Rol"];
+            $this->Correo      = $data["Correo"];        
+
+            //Llamar a la function privada para comprobar si el usuario introducido existe
+            $comprobaruser = $this->Comprobar_Usuario($conn);
+
+            //Resultado de llamar la funcion
+            if($comprobaruser >= 1)
+            {
+                //No existe un user con ese nombre
+                    
+                    //Llamar a la function privada para comprobar si el correo introducido existe
+                    $comprobarcorreo = $this->Comprobar_Correo($conn);
+                        
+                        //Resultado de llamar la funcion
+                    if($comprobarcorreo >= 1)
+                    {
+                            //No existe el correo introducido    
+
+                            //Llamar a la funcion privada para comprobar si el rol introducido existe
+                            $comprobarrol = $this-> Comprobar_Rol($conn);
+
+                            //Resultado de llamar la funcion
+                            if ($comprobarrol >= 1)
+                            {
+                                    //Encriptar contrasena
+                                    $this->Contrasena = $this->EncriptarContrasena($this->Contrasena);                      
+                                    
+                                    //Llamar la funcion para insertar el usario
+                                    $resp = $this-> Insert_Usuario($conn);
+
+                                    if($resp)
+                                    {
+                                        //Respuesta de insercion exitosa y ID insertado
+                                        $respuesta['result'] = array(
+                                            "ID_Usuario" => $resp
+                                        );
+                                        return $respuesta;
+                                    }
+                                    else
+                                    {
+                                        //Error al momento de insertar
+                                        Respuestas::error_500();
+                                    }
+                            }
+                            else
+                            { 
+                                //Error el rol introducido no existe
+                                return Respuestas::error_500("El rol introducido no ex valido");
+                                
+                            }
+
+                    }
+                    else
+                    {
+                            //El correo introducido ya esta registrado
+                        return Respuestas::error_500("El correo introducido ya existe");
+                    }
+            }
+            else
+            {
+                //El usuario introducido ya esta registrado
+                return  Respuestas::error_500("El Usuario introducido ya existe");
+            }
+
         }
     }
+    
 
 
  
