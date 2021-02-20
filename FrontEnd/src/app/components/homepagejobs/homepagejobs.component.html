@@ -4,7 +4,7 @@
   <br>
   <div class="row align-self-center text-center ">
     <div class="col-5 margen">
-      <button type="button" class="btn btn-info mb-3 ml-5 post-job boton">Post a Job <i
+      <button data-toggle="modal" data-target="#formJob"  type="button" class="btn btn-info mb-3 ml-5 post-job boton">Post a Job <i
           class="fa fa-bullhorn fa-lg"></i></button>
     </div>
     <div class="col-5 margen">
@@ -215,6 +215,94 @@
     </div>
   </div>
 </div>
-
+<div class="modal fade" id="formJob" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header border-bottom-0">
+        <h5 class="modal-title" id="exampleModalLabel">POST A JOB
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </h5>
+      </div>
+      <form>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <select class="form-control" id="exampleFormControlSelect1">
+                <option value="" selected disabled>Category</option>
+                <option value="">A</option>
+                <option value="">B</option>
+                <option value="">C</option>
+              </select>
+            </div>
+        
+            <div class="input-group">
+        
+              <span class="input-group-addon" style="font-size: 20px;">Type:</span>
+        
+              <span class="radio">
+                <label>
+                  <input type="radio" class="radiobox" name="style-0a2" style="margin-left: 5px;">
+                  <span style="font-size: 20px;"> Full Time</span>
+                </label>
+        
+                <label>
+                  <input type="radio" class="radiobox" name="style-0a2" style="margin-left: 15px;">
+                  <span style="font-size: 20px; "> Part</span>
+                </label>
+        
+                <label>
+                  <input type="radio" class="radiobox" name="style-0a2" style="margin-left: 15px;">
+                  <span style="font-size: 20px; "> Freelance</span>
+                </label>
+              </span>
+            </div>
+        
+        
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <input type="text" class="form-control" id="inputEmail4" placeholder="Company">
+              </div>
+        
+              <div class="form-group col-md-6">
+                <input type="file" class="custom-file-input" id="customFile">
+                <label class="custom-file-label" for="customFile">Choose Logo</label>
+              </div>
+              <div class="form-group col-md-6">
+                <input type="text" class="form-control" id="inputEmail4" placeholder="URL">
+              </div>
+              <div class="form-group col-md-6">
+                <input type="text" class="form-control" id="inputEmail4" placeholder="Position">
+              </div>
+              <div class="form-group col-md-6">
+                <select id="inputState" class="form-control">
+                  <option selected>Category</option>
+                  <option>...</option>
+                </select>
+              </div>
+        
+              <div class="form-group col-md-6">
+                <select id="inputState" class="form-control">
+                  <option selected>Country</option>
+                  <option>...</option>
+                </select>
+              </div>
+              <div class="form-group w-100">
+                <div class="col-md-12">
+                  <textarea class="form-control" id="message" name="message" placeholder="Descripcion" rows="7"></textarea>
+                </div>
+              </div>
+              <button type="button" style="color: white; " class="btn btn-info  btn-lg btn-block">Send</button>
+            </div>
+          </form>
+          
+        </div>
+        
+        <br><br>
+      </form>
+    </div>
+  </div>
+</div>
 
 <app-footer class="fixed-bottom"></app-footer>
