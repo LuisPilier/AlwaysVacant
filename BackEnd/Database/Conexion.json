@@ -3,7 +3,7 @@
         "server" : "freedb.tech",
         "user" : "freedbtech_rootJ",
         "password" : "Masdacx9",
-        "database" : "freedbtech_Always_Vacant",
+        "database" : "freedbtech_AlwaysVacant",
         "port": "3306"
     },
 
@@ -11,7 +11,7 @@
         "server" : "freedb.tech",
         "user" : "freedbtech_rootJ",
         "password" : "Masdacx9",
-        "database" : "freedbtech_Always_Vacant",
+        "database" : "freedbtech_AlwaysVacant",
         "port": "3306"
     }
 
