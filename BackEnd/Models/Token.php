@@ -1,50 +1,61 @@
 <?php 
 
-include('IEntidad.php');
-include('conexion.php');
-
 class Token implements IEntidad
 {
     private $ID_Usuario;
-    private $token;
+    private $Token;
     private $Estado;
     private $Fecha;
 
+    private static $Table = "Usuarios_token";
+
     //Este metodo se utiliza cuando un usuario hace LOGIN 
-    public function guardar($conn,$usuarioid)
+    public function Guardar($ID_Usuario)
     {
+      $conn = Conexion::getInstance();
 
-      $conn = new conexion();
+      $val              = true;
+      $this->ID_Usuario = $ID_Usuario;
+      $this->Token      = bin2hex(openssl_random_pseudo_bytes(16,$val));
+      $this->Fecha      = date("Y-m-d H:m:s");
+      $this->Estado     = "Activo";
 
-      $val    = true;
-      $token  = bin2hex(openssl_random_pseudo_bytes(16,$val));
-      $date   = date("Y-m-d");
-      $estado = "Activo";
+      $insert_fields = array(
+        'ID_Usuario'    => "'$this->ID_Usuario'",
+        'Token' 	    => "'$this->Token'",
+        'Fecha'         => "'$this->Fecha'",
+        'Estado'        => "'$this->Estado'",
+        );
 
-      $query = "INSERT INTO Usuarios_token(ID_Usuario,Token,Estado,Fecha) VALUES
-      ('$usuarioid','$token','$estado','$date')";
+       // Insert record
+       $insert_sql = 'INSERT INTO ' . Token::$Table
+           . ' ('   . implode(', ', array_keys($insert_fields))   . ')'
+           . ' VALUES ('    . implode(', ', array_values($insert_fields)) . ')';
 
-      $verifica = $conn->nonQuery($query);
+      $verifica = $conn->nonQuery($insert_sql);
 
       if ($verifica) {
         // code...
-        return $token;
+        return $this->Token;
       } else {
         // code...
         return 0;
       }
 
-
     }
 
-    public static function ObtenerTodo($conn, $array)
+    public static function ObtenerTodo($array)
     {
-        
+        echo '';
     }
 
     //Este metodo busca los token que estan activos
-    public static function obtener($conn,$token)
+    public static function Obtener($datos)
     {
+        $conn = Conexion::getInstance();
+
+        $token = $datos['Token'];
+
         $query = "SELECT ID_Token,ID_Usuario,Estado,Fecha,Token FROM Usuarios_token WHERE Token = '$token'
         and ESTADO = 'Activo'";
         $resp = $conn->Query($query);
@@ -75,8 +86,10 @@ class Token implements IEntidad
     }*/
 
     //Este metodo se utiliza para inactivar los Token luego de 24h
-    public function Actualizar($conn,$fecha)
+    public function Actualizar($fecha)
     {
+        $conn = Conexion::getInstance();
+
         $query = "UPDATE usuarios_token SET Estado = 'Inactivo' WHERE Fecha < '$fecha' AND Estado = 'Activo'";
         $verificar = $conn->nonQuery($query);
 
@@ -92,8 +105,9 @@ class Token implements IEntidad
     }
 
     //Este metodo se utiliza para eliminar los Token luego de 1 mes
-    public function Eliminar($conn,$fecha)
+    public function Eliminar($fecha)
     {
+        $conn = Conexion::getInstance();
 
         $query = "DELETE FROM usuarios_token WHERE Fecha < '$fecha' AND Estado = 'Activo'";
         $verificar = $conn->nonQuery($query);

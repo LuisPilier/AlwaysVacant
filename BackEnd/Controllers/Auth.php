@@ -1,7 +1,9 @@
 <?php
 
-include('Includes/IEntidad.php');
-
+//INCLUDES
+include('Respuestas.php');
+include('../Models/Usuario.php');
+include('../Models/Token.php');
 
 Class Auth{
 
@@ -9,25 +11,32 @@ Class Auth{
         private $User;
         private $Contrasena;
 
-        public function login($conn,$json)
+        public static function login($datos)
         {
-            $datos = json_decode($json,true);
             if(!isset($datos['Usuario']) || !isset($datos["Contrasena"])){
                 //error con los campos
                 return respuestas::error_400();
             }else{
 
+                $conn = Conexion::getInstance();
+
+                $_user = new Usuario();
+
                 //todo esta bien 
-                $usuario  = $datos['Usuario'];
-                $password = $datos['Contrasena'];
-                $password = $conn->encriptar($password);
-                $user_info = $this->obtenerDatosUsuario($conn,$usuario);
+                $usuario   = $datos['Usuario'];
+                $password  = $datos['Contrasena'];
+                $password  = $conn->encriptar($password);
+                $user_info = $_user->obtenerDatosUsuario($usuario);
                 
                 if($user_info){
+
                     //verificar si la contraseña es igual
                         if($password == $user_info[0]['Contrasena']){
+
+                            //Instancia de Token
+                            $token = new Token();
                             
-                            $verifica = Token::insertarToken($conn,$user_info[0]['ID_Usuario']);
+                            $verifica = $token->Guardar($user_info[0]['ID_Usuario']);
 
                             if ($verifica) {
                               // code...
@@ -52,15 +61,7 @@ Class Auth{
             }
         }
 
-          private function obtenerDatosUsuario($conn,$usuario){
-            $query = "SELECT ID_Usuario,Nombre,Apellido,Usuario,Contrasena,ID_Rol,Correo FROM Usuario WHERE Usuario = '$usuario'";
-            $datos = $conn->Query($query);
-            if($datos){
-                return $datos;
-            }else{
-                return 0;
-            }
-        }
+         
 
 }
 

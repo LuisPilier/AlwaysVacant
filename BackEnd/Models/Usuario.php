@@ -2,7 +2,9 @@
 
 
 //Includes
-include('../../Class/Includes/IEntidad.php');
+include('IEntidad.php');
+
+include('Conexion.php');
 
 //Clase Usuario que implementa la interface
 Class Usuario implements IEntidad{
@@ -22,7 +24,7 @@ Class Usuario implements IEntidad{
     //Metodos
 
     //Funcion implementada de la Interface        
-    public function Guardar($conn,$json)
+    public function Guardar($json)
     { 
          // Array con datos
         $data = json_decode($json,true);
@@ -123,6 +125,8 @@ Class Usuario implements IEntidad{
     }
 
 
+
+
  
     //Funcion privada (query de inserion usario)
     private function Insert_Usuario($conn)
@@ -151,7 +155,7 @@ Class Usuario implements IEntidad{
     
 
     //Funcion Implementada de la Interface (Obtener todos los usarios)
-    public static function ObtenerTodo($conn,$json)
+    public static function ObtenerTodo($json)
     {
          //Validar token
          $token = Token::validarToken($conn,$json);
@@ -173,7 +177,7 @@ Class Usuario implements IEntidad{
     }
 
     //Funcion Implementada de la Interface (Obtener un usuario especificado por el ID_Usuario)
-    public static function Obtener($conn,$json)
+    public static function Obtener($json)
     {
           //Validar token
           $token = Token::validarToken($conn,$json);
@@ -198,6 +202,20 @@ Class Usuario implements IEntidad{
           } 
     }
 
+    //METODO UTILIZADO PARA LA AUTENTIFICACION
+    public function obtenerDatosUsuario($usuario){
+        
+        $conn = Conexion::getInstance();
+
+        $query = "SELECT ID_Usuario,Nombre,Apellido,Usuario,Contrasena,ID_Rol,Correo FROM Usuario WHERE Usuario = '$usuario'";
+        $datos = $conn->Query($query);
+        if($datos){
+            return $datos;
+        }else{
+            return 0;
+        }
+    }
+
     //Funcion privada (Query general para el select de Usuario)
     private static function Select_Usuario()
     {
@@ -211,14 +229,14 @@ Class Usuario implements IEntidad{
 
 
     //Funcion actualizar 
-    public function Actualizar($conn,$json)
+    public function Actualizar($json)
     {
       //inhabilitada POR AHORA
 
     }
 
    //Funcion Implementada de la Interface (Eliminar una Usuario)
-    public function Eliminar($conn,$json)
+    public function Eliminar($json)
     {
         // Array con datos
         $data = json_decode($json,true);
