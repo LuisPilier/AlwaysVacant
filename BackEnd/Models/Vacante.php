@@ -69,8 +69,6 @@ class Vacante implements IEntidad
                 
                //Metodo de la Clase Conexion. Retornar el ID insertado    
                $resp = $conn->nonQueryId($insert_sql);
-
-               echo $conn->conexion->error;
        
                if($resp)
                {
