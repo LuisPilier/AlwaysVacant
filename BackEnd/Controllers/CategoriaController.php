@@ -140,7 +140,7 @@ class CategoriaController
         if(is_bool($token))
         {
             //Comprobar campos requeridos
-            if( !isset($data['ID_Categoria']))
+            if( !isset($datos['ID_Categoria']))
             {      
                     //Campo requido no enviado     
                     return Respuestas::error_400();
