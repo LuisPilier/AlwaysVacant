@@ -9,12 +9,12 @@ import{Observable} from 'rxjs';
 })
 export class ApisService {
 
-url:string = "/AlwaysVacant/BackEnd/API/Usuarios/";
+url:string = "https://en-linea.app/AlwaysVacant/BackEnd/API/";
 
   constructor(private http:HttpClient) { }
 
   loginByUser(form:LoginI):Observable<ResponseI>{
-   let direccion = this.url + "auth";
+   let direccion = this.url + "auth.php";
     return this.http.post<ResponseI>(direccion,form);
   }
 }

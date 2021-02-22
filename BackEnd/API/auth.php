@@ -6,6 +6,10 @@ header("Content-Type: application/json");
 
 //Header de Acces Control
 header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Credentials: true");
+header("Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIOS");
+header('Access-Control-Max-Age: 1000');
+header('Access-Control-Allow-Headers: Origin, Content-type, X-Auth-Token, Authorization');
 
 //Include
 include('../Class/Auth.php');
