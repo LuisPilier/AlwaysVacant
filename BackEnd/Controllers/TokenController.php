@@ -1,7 +1,8 @@
 <?php 
 
 include('Respuestas.php');
-include('../Models/Token.php');
+include($_SERVER['DOCUMENT_ROOT'].'/AlwaysVacant/BackEnd/Models/Token.php');
+
 
 class TokenController
 {

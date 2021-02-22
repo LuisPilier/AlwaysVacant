@@ -1,34 +1,45 @@
 <?php
 
+
+ini_set('display_errors',1); 
+error_reporting(E_ALL);
+
 //Header
 header("Content-Type: application/json");
 
 //Include
-include('../../Class/Usuarios/Usuario.php');
-
-//Instancia
-$_usuario = new Usuario();
-
+include($_SERVER['DOCUMENT_ROOT'].'/AlwaysVacant/BackEnd/Controllers/UsuarioController.php');
 
 //Switch(Desicion)
 switch($_SERVER['REQUEST_METHOD']){
 
-
     case 'GET':
 
         //Recibiendo los datos del JSON
-        $array = json_decode(file_get_contents("php://input"),true);
+        $datos = json_decode(file_get_contents("php://input"),true);
 
          //Si recibimos el ID del usuario
-        if(isset($array['ID_Usuario']))
+        if(isset($datos['ID_Usuario']))
         {
              //Retorna el usuario especificada por el ID
-          $listaUsuario = $_usuario->Obtener($conn,$array);
+             $listaUsuario = UsuarioController::Obtener($datos);
         }
         else
         {
             //Retorna todas los usuarios que se encuentren registrados
-            $listaUsuario = $_usuario->ObtenerTodo($conn,$array);
+            $listaUsuario = UsuarioController::ObtenerTodo($datos);
+        }
+
+        //Si Hay errores al retornar las vacantes
+        if (isset($listaUsuario["result"]["error_id"])) 
+        {
+            // code...
+            $responseCode = $listaUsuario["result"]["error_id"];
+            http_response_code($responseCode);
+        }
+        else
+        {
+          http_response_code(200);
         }
         
         //Mostrar el contenido
@@ -39,10 +50,10 @@ switch($_SERVER['REQUEST_METHOD']){
     case 'POST':
 
         //Recibiendo los datos del JSON
-        $postBody = file_get_contents("php://input");
+        $postBody = json_decode(file_get_contents("php://input"),true);
                    
          //Llamando al metodo guardar que se encuentra en la clase Usuario   
-        $datosArray = $_usuario->Guardar($conn,$postBody);
+        $datosArray = UsuarioController::Guardar($postBody);
 
         // Si existe algun error al guardar el usurio
         if (isset($datosArray["result"]["error_id"])) {
@@ -57,21 +68,17 @@ switch($_SERVER['REQUEST_METHOD']){
         //Mostrar el contenido
         echo json_encode($datosArray);
 
-
-
-
         break;
     
  
          
     case 'DELETE':
 
-        
         //Recibiendo los datos del JSON 
-        $postBody = file_get_contents("php://input");
+        $postBody = json_decode(file_get_contents("php://input"),true);
                     
          //Llamando al metodo eliminar que se encuentra en la clase Usuario 
-        $datosArray = $_usuario->Eliminar($conn,$postBody);
+        $datosArray = UsuarioController::Eliminar($postBody);
 
          // Si existe algun error al eliminar la categoria
         if (isset($datosArray["result"]["error_id"])) {
@@ -89,6 +96,7 @@ switch($_SERVER['REQUEST_METHOD']){
     
     //Solicitud no encontrada  
     default:
+        http_response_code(405);
         $resultado["mensaje"] = "Enviaste una solicitud incorrecta";
         echo json_encode($resultado["mensaje"]);
         break;

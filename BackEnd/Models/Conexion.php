@@ -68,7 +68,9 @@ class Conexion {
 
     //SELECT
     public function Query($sqlstr){
+        
         $results = $this->conexion->query($sqlstr);
+        
         $resultArray = array();
         foreach ($results as $key) {
             $resultArray[] = $key;
