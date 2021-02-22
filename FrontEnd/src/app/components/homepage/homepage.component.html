@@ -38,32 +38,20 @@
         </h5>
 
       </div>
-      <form>
+      <form [formGroup]="loginForm" (ngSubmit)="onlogin(loginForm.value)">
         <div class="modal-body">
           <div class="form-group">
-            <label for="email1">Person Name</label>
-            <input type="text" class="form-control" id="email1" aria-describedby="emailHelp">
+            <label for="email1"> Name</label>
+            <input type="text" class="form-control" formControlName="Usuario"  aria-describedby="emailHelp">
             <small id="emailHelp" class="form-text text-muted"></small>
           </div>
           <div class="form-group">
-            <label for="password1">Age</label>
-            <input type="text" class="form-control" id="password1">
-          </div>
-          <div class="form-group">
-            <label for="password1">Company Name</label>
-            <input type="password" class="form-control" id="password2">
-          </div>
-          <div class="form-group">
-            <label for="password1">Conuntry</label>
-            <input type="password" class="form-control" id="password2">
-          </div>
-          <div class="form-group">
-            <label for="password1">City</label>
-            <input type="password" class="form-control" id="password2">
+            <label for="password1">Password</label>
+            <input type="password" class="form-control" formControlName="Pass"  >
           </div>
         </div>
         <div class="d-grid gap-2 col-10 mx-auto">
-          <button class="btn btn-primary btn-block" type="button">Register</button>
+          <input type="submit" class="btn btn-primary btn-block" value="LOGIN" >
         </div>
         <br><br>
       </form>
@@ -74,33 +62,41 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header border-bottom-0">
-        <h5 class="modal-title" id="exampleModalLabel">Edit Job</h5>
+        <h5 class="modal-title" id="exampleModalLabel">SIGN IN
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
+      </h5>
       </div>
       <form>
         <div class="modal-body">
           <div class="form-group">
-            <label for="email1">Person Name</label>
+            <label for="email1"> Name</label>
             <input type="text" class="form-control" id="email1" aria-describedby="emailHelp">
             <small id="emailHelp" class="form-text text-muted"></small>
           </div>
           <div class="form-group">
-            <label for="password1">Age</label>
-            <input type="text" class="form-control" id="password1">
+            <label for="password1">last Name</label>
+            <input type="text" class="form-control">
           </div>
           <div class="form-group">
-            <label for="password1">Company Name</label>
-            <input type="password" class="form-control" id="password2">
+            <label for="password1">User</label>
+            <input type="password" class="form-control" >
           </div>
           <div class="form-group">
-            <label for="password1">Conuntry</label>
-            <input type="password" class="form-control" id="password2">
+            <label for="password1">Pass</label>
+            <input type="password" class="form-control" >
           </div>
           <div class="form-group">
-            <label for="password1">City</label>
-            <input type="password" class="form-control" id="password2">
+            <select class="form-control" id="exampleFormControlSelect1">
+              <option value="" selected disabled>Rol</option>
+              <option value="">1</option>
+              <option value="">2</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="password1">Correo</label>
+            <input type="password" class="form-control" >
           </div>
         </div>
         <div class="d-grid gap-2 col-10 mx-auto">

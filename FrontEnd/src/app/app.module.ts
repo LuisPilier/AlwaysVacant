@@ -16,8 +16,11 @@ import { EditjobComponent } from './components/editjob/editjob.component';
 import { CreatecategoryComponent } from './components/createcategory/createcategory.component';
 import { NumberofjobComponent } from './components/numberofjob/numberofjob.component';
 import { HomepagejobsComponent } from './components/homepagejobs/homepagejobs.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
+
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +41,9 @@ import { HomepagejobsComponent } from './components/homepagejobs/homepagejobs.co
     AppRoutingModule,
     NoopAnimationsModule,
     FontAwesomeModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
