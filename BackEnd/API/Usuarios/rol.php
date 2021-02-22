@@ -1,7 +1,5 @@
 <?php
 
-
-
 //Header
 header("Content-Type: application/json");
 
