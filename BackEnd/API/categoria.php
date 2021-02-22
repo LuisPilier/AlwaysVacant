@@ -1,8 +1,12 @@
 <?php
 
 
-//Header
+//Header que retorna el JSON
 header("Content-Type: application/json");
+
+//Header de Acces Control
+header("Access-Control-Allow-Origin: *");
+
 
 //Include de la clase Categoria para utilizar los metodos
 include('../Class/Categoria.php');

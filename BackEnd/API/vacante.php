@@ -1,8 +1,12 @@
 <?php
 
 
-//Header
+//Header que retorna el JSON
 header("Content-Type: application/json");
+
+//Header de Acces Control
+header("Access-Control-Allow-Origin: *");
+
 
 ini_set('display_errors',1); 
 error_reporting(E_ALL);
@@ -82,7 +86,7 @@ switch($_SERVER['REQUEST_METHOD']){
       $postBody = file_get_contents("php://input");
 
       $datosArray = $_vacante->Actualizar($conn,$postBody);
-
+ 
       //Si hay errores al actualizar el registro especificado
       if (isset($datosArray["result"]["error_id"])) {
           // code...

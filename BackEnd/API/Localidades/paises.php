@@ -5,8 +5,11 @@ ini_set('display_errors',1);
 error_reporting(E_ALL);
 
 
-//Header
+//Header que retorna el JSON
 header("Content-Type: application/json");
+
+//Header de Acces Control
+header("Access-Control-Allow-Origin: *");
 
 //Include
 include('../../Class/Localidades/Paises.php');

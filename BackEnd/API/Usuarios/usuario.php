@@ -1,7 +1,11 @@
 <?php
 
-//Header
+
+//Header que retorna el JSON
 header("Content-Type: application/json");
+
+//Header de Acces Control
+header("Access-Control-Allow-Origin: *");
 
 //Include
 include('../../Class/Usuarios/Usuario.php');
