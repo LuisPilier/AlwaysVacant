@@ -16,7 +16,11 @@ import { EditjobComponent } from './components/editjob/editjob.component';
 import { CreatecategoryComponent } from './components/createcategory/createcategory.component';
 import { NumberofjobComponent } from './components/numberofjob/numberofjob.component';
 import { HomepagejobsComponent } from './components/homepagejobs/homepagejobs.component';
+<<<<<<< Updated upstream
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+=======
+import { JobsdetailsComponent } from './components/jobsdetails/jobsdetails.component';
+>>>>>>> Stashed changes
 
 
 
@@ -34,7 +38,8 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
     CreatecategoryComponent,
     NumberofjobComponent,
     HomepagejobsComponent,
-    
+    JobsdetailsComponent,
+
   ],
   imports: [
     BrowserModule,
