@@ -30,11 +30,15 @@ Class Auth{
                             $verifica = Token::insertarToken($conn,$user_info[0]['ID_Usuario']);
 
                             if ($verifica) {
+
+                                $BuscarUser = Token::buscarToken($conn,$verifica);
                               // code...
                               $result = Respuestas::$response;
               
                               $result['result'] = array(
-                                  "Token" => $verifica
+                                  "Token" => $verifica,
+                                   "Tipo Usuario" => $BuscarUser[0]['Nombre'],
+                                  "ID Rol" => $BuscarUser[0]['ID_Rol']
                               );
               
                               return $result;

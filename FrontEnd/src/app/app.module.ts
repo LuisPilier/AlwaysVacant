@@ -17,6 +17,7 @@ import { CreatecategoryComponent } from './components/createcategory/createcateg
 import { NumberofjobComponent } from './components/numberofjob/numberofjob.component';
 import { HomepagejobsComponent } from './components/homepagejobs/homepagejobs.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { JobsdetailsComponent } from './components/jobsdetails/jobsdetails.component';
 
 
 
@@ -34,7 +35,8 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
     CreatecategoryComponent,
     NumberofjobComponent,
     HomepagejobsComponent,
-    
+    JobsdetailsComponent,
+
   ],
   imports: [
     BrowserModule,

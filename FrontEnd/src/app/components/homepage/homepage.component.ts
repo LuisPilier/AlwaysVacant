@@ -16,7 +16,7 @@ loginForm = new FormGroup({
 Usuario : new FormControl('',Validators.required),
 Contrasena : new FormControl('',Validators.required),
 });
-  
+
 
   constructor(private api: ApisService, private router:Router) { }
 
@@ -47,6 +47,6 @@ Contrasena : new FormControl('',Validators.required),
       }
     })
   }
- 
+
 
 }
