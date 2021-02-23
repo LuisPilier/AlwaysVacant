@@ -3,6 +3,7 @@ import{LoginI} from 'src/app/models/login.interface';
 import{ResponseI} from 'src/app/models/response.interface';
 import {HttpClient, HttpHeaders} from '@angular/common/http'
 import{Observable} from 'rxjs';
+import {DataVacantesI} from 'src/app/models/datavacantes.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -17,4 +18,11 @@ url:string = "https://en-linea.app/AlwaysVacant/BackEnd/API/";
    let direccion = this.url + "auth.php";
     return this.http.post<ResponseI>(direccion,form);
   }
+  
+  getAllData():Observable<DataVacantesI[]>{
+    let direccion = this.url + "vacante.php" + "Token";
+    return this.http.get<DataVacantesI[]>(direccion);
+  }
+
+
 }

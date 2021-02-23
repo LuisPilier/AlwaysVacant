@@ -41,19 +41,23 @@
       <form [formGroup]="loginForm" (ngSubmit)="onlogin(loginForm.value)">
         <div class="modal-body">
           <div class="form-group">
-            <label for="email1"> Name</label>
+            <label > Name</label>
             <input type="text" class="form-control" formControlName="Usuario"  aria-describedby="emailHelp">
             <small id="emailHelp" class="form-text text-muted"></small>
           </div>
           <div class="form-group">
-            <label for="password1">Password</label>
-            <input type="password" class="form-control" formControlName="Pass"  >
+            <label >Password</label>
+            <input type="password" class="form-control" formControlName="Contrasena"  >
           </div>
         </div>
         <div class="d-grid gap-2 col-10 mx-auto">
           <input type="submit" class="btn btn-primary btn-block" value="LOGIN" >
         </div>
+        
         <br><br>
+        <div class="alert alert-danger" *ngIf="errorStatus">
+          <p style="text-align: center;">{{ errorMessage }}</p>
+         </div>
       </form>
     </div>
   </div>
@@ -102,7 +106,9 @@
         <div class="d-grid gap-2 col-10 mx-auto">
           <button class="btn btn-primary btn-block" type="button">Register</button>
         </div>
+        
         <br><br>
+        
       </form>
     </div>
   </div>
