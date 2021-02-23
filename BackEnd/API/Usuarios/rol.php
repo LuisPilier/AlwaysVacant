@@ -4,34 +4,25 @@
 header("Content-Type: application/json");
 
 //Include
-include('../../Class/Usuarios/Rol.php');
+include($_SERVER['DOCUMENT_ROOT'].'/AlwaysVacant/BackEnd/Controllers/RolController.php');
 
-//Instancia
-$_rol = new Rol();
 
-//Switch(Desicion)
-
-switch($_SERVER['REQUEST_METHOD']){
-
+switch($_SERVER['REQUEST_METHOD'])
+{
 
     case 'GET':
       
-        $lista_rol = $_rol->ObtenerRoles($conn);
+        $lista_rol = RolController::ObtenerRoles();
         echo json_encode($lista_rol);
         break;
-
 
     //Solicitud no encontrada  
     default:
         $resultado["mensaje"] = "Enviaste una solicitud incorrecta";
+        http_response_code(405);
         echo json_encode($resultado["mensaje"]);
         break;
-          
-
-
 }
-
-
 
 
 ?>
