@@ -28,19 +28,13 @@ Class Auth{
                         if($password == $user_info[0]['Contrasena']){
                             
                             $verifica = Token::insertarToken($conn,$user_info[0]['ID_Usuario']);
-                          
 
                             if ($verifica) {
-
-                              $BuscarUser = Token::buscarToken($conn,$verifica);
                               // code...
                               $result = Respuestas::$response;
-                           
+              
                               $result['result'] = array(
-                                  "Token" => $verifica,
-                                  "Tipo Usuario" => $BuscarUser[0]['Nombre'],
-                                  "ID Rol" => $BuscarUser[0]['ID_Rol']
-
+                                  "Token" => $verifica
                               );
               
                               return $result;

@@ -57,14 +57,8 @@ class Token
     //Este metodo busca los token que estan activos
     public static function buscarToken($conn,$token)
     {
-        $query = "
-        
-        SELECT ut.ID_Token,ut.ID_Usuario,ut.Estado,ut.Fecha,ut.Token, usuarios.ID_Rol, r.Nombre
-        FROM Usuarios_token ut
-        join Usuario usuarios on (ut.ID_Usuario = usuarios.ID_Usuario)
-        join Rol r on (r.ID_Rol = usuarios.ID_Rol)
-        WHERE ut.Token = '$token' and ut.ESTADO = 'Activo' "
-        ;
+        $query = "SELECT ID_Token,ID_Usuario,Estado,Fecha,Token FROM Usuarios_token WHERE Token = '$token'
+        and ESTADO = 'Activo'";
         $resp = $conn->Query($query);
 
         if($resp)
