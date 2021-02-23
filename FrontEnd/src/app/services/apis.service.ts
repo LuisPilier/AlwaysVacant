@@ -19,10 +19,7 @@ url:string = "https://en-linea.app/AlwaysVacant/BackEnd/API/";
     return this.http.post<ResponseI>(direccion,form);
   }
   
-  getAllData():Observable<DataVacantesI[]>{
-    let direccion = this.url + "vacante.php" + "Token";
-    return this.http.get<DataVacantesI[]>(direccion);
-  }
+  
 
 
 }

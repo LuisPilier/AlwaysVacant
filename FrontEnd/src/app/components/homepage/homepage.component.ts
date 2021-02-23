@@ -32,10 +32,12 @@ Contrasena : new FormControl('',Validators.required),
     document.location.href = (`http://localhost:4200/adminpage`);
     }
   }
+  
 
   onlogin(form:LoginI){
     this.api.loginByUser(form).subscribe(data =>{
       let dataResponse:ResponseI = data;
+      console.log(data);
       if(dataResponse.status == "ok"){
         localStorage.setItem("Token", dataResponse.result.Token);
         document.location.href = (`http://localhost:4200/adminpage`);
