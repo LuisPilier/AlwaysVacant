@@ -15,7 +15,8 @@ $_usuario = new Usuario();
 
 
 //Switch(Desicion)
-switch($_SERVER['REQUEST_METHOD']){
+switch($_SERVER['REQUEST_METHOD'])
+{
 
 
     case 'GET':
