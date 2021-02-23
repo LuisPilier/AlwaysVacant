@@ -18,7 +18,7 @@ Contrasena : new FormControl('',Validators.required),
 });
 
 
-  constructor(private api: ApisService, private router:Router) { }
+  constructor(private api: ApisService) { }
 
 
   errorMessage:any = "";

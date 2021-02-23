@@ -10,24 +10,16 @@
         <table class="table table-bordered table-responsive-md table-striped text-center">
           <thead>
             <tr>
-              <th class="text-center">Person Name</th>
-              <th class="text-center">Age</th>
-              <th class="text-center">Company Name</th>
-              <th class="text-center">Country</th>
-              <th class="text-center">City</th>
+              <th class="text-center">ID</th>
+              <th class="text-center">Name</th>
               <th class="text-center">Accions</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td class="pt-3-half" id="email1" contenteditable="true">Aurelia Vega</td>
-              <td class="pt-3-half" contenteditable="true">30</td>
-              <td class="pt-3-half" contenteditable="true">Deepends</td>
-              <td class="pt-3-half" contenteditable="true">Spain</td>
-              <td class="pt-3-half" contenteditable="true">Madrid</td>
-              
-                
-              
+            <tr *ngFor="let array of conversion">
+              <td class="pt-3-half">{{array.ID_Categoria}}</td>
+              <td class="pt-3-half">{{array.Nombre}}</td>
+          
               <td>
                 <span class="table-remove"><button type="button"
                     class="btn btn-primary btn-rounded btn-sm my-0 " style="width: 80px;" data-toggle="modal" data-target="#form">Edit</button></span>
@@ -37,23 +29,7 @@
               </td>
             </tr>
            
-            <tr>
-              <td class="pt-3-half" id="email1" contenteditable="true">Guerra Cortez</td>
-              <td class="pt-3-half" contenteditable="true">45</td>
-              <td class="pt-3-half" contenteditable="true">Insectus</td>
-              <td class="pt-3-half" contenteditable="true">USA</td>
-              <td class="pt-3-half" contenteditable="true">San Francisco</td>
-              
-              <td>
-                <span class="table-remove"><button type="button"
-                    class="btn btn-primary btn-rounded btn-sm my-0" style="width: 80px;" data-toggle="modal" data-target="#form">Edit</button></span>
-                      
-                    <span style="margin-left: 14px;" class="table-remove"><button type="button"
-                        class="btn btn-danger btn-rounded btn-sm my-0" style="width: 80px;" data-toggle="modal" data-target="#form1">Remove</button></span>
-              </td>
-            </tr>
-            
-           
+          
           </tbody>
         </table>
       </div>
@@ -194,5 +170,5 @@
       </div>
     </div>
   </div>
-
+<br><br><br><br><br><br>
 <app-footer class="fixed-bottom"></app-footer>
