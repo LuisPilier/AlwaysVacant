@@ -15,13 +15,15 @@ export class CreatecategoryComponent implements OnInit {
     Nombre : new FormControl('',Validators.required),
     Token : new FormControl('', Validators.required)
     });
-    
 
+    
+    public valueSelected: any
+    public valueSelectedid: any
 
   constructor(private http: HttpClient, private api: ApisService) { }
   conversion: [] = [];
   
-  
+
 
   ngOnInit(): void {
     let Token = localStorage.getItem('Token');
@@ -29,6 +31,8 @@ export class CreatecategoryComponent implements OnInit {
      'Token' : Token
     });
     this.getData();
+  
+    
   }
 
 
@@ -46,6 +50,14 @@ export class CreatecategoryComponent implements OnInit {
       console.log(data);
     })
 }
+
+seleccionarCategoria(categoria: HTMLInputElement,id: HTMLInputElement  ){
+  
+
+this.valueSelected = categoria.value
+this.valueSelectedid = id.value
+}
+
 
  
 
