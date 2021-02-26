@@ -14,6 +14,7 @@ export class ApisService {
 
 url:string = "https://en-linea.app/AlwaysVacant/BackEnd/API/";
 
+
   constructor(private http:HttpClient) { }
 
   loginByUser(form:LoginI):Observable<ResponseI>{
@@ -27,6 +28,7 @@ url:string = "https://en-linea.app/AlwaysVacant/BackEnd/API/";
     return this.http.post<ResponseI>(direccion,form);
 
   }
+  
   postCategory(form:CategoryI):Observable<ResponseI>{
 
     let direccion = this.url + "categoria.php" ;
