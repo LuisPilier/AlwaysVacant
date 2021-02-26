@@ -7,7 +7,7 @@
     <div class="card-body">
       <div id="table" class="table-editable">
        
-        <table class="table table-bordered table-responsive-md table-striped text-center">
+        <table class="table table-bordered table-responsive-ml table-striped text-center">
           <thead>
             <tr>
               <th class="text-center">ID</th>
@@ -54,12 +54,12 @@
           <div class="modal-body">
             <div class="form-group">
               <label for="email1">ID</label>
-              <input type="text" class="form-control" formControlName="ID_Categoria"  aria-describedby="emailHelp">
+              <input type="text" class="form-control"   aria-describedby="emailHelp">
               <small id="emailHelp" class="form-text text-muted"></small>
             </div>
             <div class="form-group">
               <label for="password1">Name</label>
-              <input type="text" class="form-control" formControlName="Nombre"  >
+              <input type="text" class="form-control"   >
             </div>
             
           </div>
@@ -126,33 +126,17 @@
           </button>
         </h5>
         </div>
-        <form>
+        <form [formGroup]="nuevoForm" (ngSubmit)="postForm(nuevoForm.value)">
           <div class="modal-body">
             <div class="form-group">
-              <label for="email1">Person Name</label>
-              <input type="text" class="form-control" id="email1" aria-describedby="emailHelp">
+              <label for="email1">Name Category</label>
+              <input type="text" formControlName="Nombre" class="form-control" aria-describedby="emailHelp">
               <small id="emailHelp" class="form-text text-muted"></small>
-            </div>
-            <div class="form-group">
-              <label for="password1">Age</label>
-              <input type="text" class="form-control" id="password1" >
-            </div>
-            <div class="form-group">
-              <label for="password1">Company Name</label>
-              <input type="password" class="form-control" id="password2">
-            </div>
-            <div class="form-group">
-              <label for="password1">Country</label>
-              <input type="password" class="form-control" id="password2">
-            </div>
-            <div class="form-group">
-              <label for="password1">City</label>
-              <input type="password" class="form-control" id="password2">
             </div>
           </div>
           
           <div class="modal-footer border-top-0 d-flex justify-content-center">
-            <button type="button" class="btn btn-success ">Create</button>
+            <input type="submit" class="btn btn-success" value="Create" >
           </div>
           <br><br>
         </form>

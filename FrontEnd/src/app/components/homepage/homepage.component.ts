@@ -25,7 +25,7 @@ nuevoForm = new FormGroup({
   Contrasena: new FormControl(''),
   ID_Rol: new FormControl(''),
   Correo: new FormControl('')
-})
+});
 
 
   constructor(private api: ApisService) { }
