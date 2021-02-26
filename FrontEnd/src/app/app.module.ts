@@ -22,6 +22,7 @@ import { JobsdetailsComponent } from './components/jobsdetails/jobsdetails.compo
 
 
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,6 +47,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule
+  
   ],
   providers: [],
   bootstrap: [AppComponent]

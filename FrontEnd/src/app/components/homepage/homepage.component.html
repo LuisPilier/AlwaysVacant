@@ -72,39 +72,39 @@
         </button>
       </h5>
       </div>
-      <form>
+      <form [formGroup]="nuevoForm" (ngSubmit)="postForm(nuevoForm.value)">
         <div class="modal-body">
           <div class="form-group">
             <label for="email1"> Name</label>
-            <input type="text" class="form-control" id="email1" aria-describedby="emailHelp">
+            <input type="text" class="form-control" formControlName="Nombre"  aria-describedby="emailHelp">
             <small id="emailHelp" class="form-text text-muted"></small>
           </div>
           <div class="form-group">
             <label for="password1">last Name</label>
-            <input type="text" class="form-control">
+            <input type="text" formControlName="Apellido" class="form-control">
           </div>
           <div class="form-group">
             <label for="password1">User</label>
-            <input type="password" class="form-control" >
+            <input type="text" formControlName="Usuario" class="form-control" >
           </div>
           <div class="form-group">
             <label for="password1">Pass</label>
-            <input type="password" class="form-control" >
+            <input type="password" formControlName="Contrasena" class="form-control" >
           </div>
           <div class="form-group">
-            <select class="form-control" id="exampleFormControlSelect1">
-              <option value="" selected disabled>Rol</option>
-              <option value="">1</option>
-              <option value="">2</option>
+            <select class="form-control" formControlName="ID_Rol"  >
+              <option   selected disabled>Rol</option>
+              <option  value="1">1</option>
+              <option  value="2">2</option>
             </select>
           </div>
           <div class="form-group">
             <label for="password1">Correo</label>
-            <input type="password" class="form-control" >
+            <input type="email" formControlName="Correo" class="form-control" >
           </div>
         </div>
         <div class="d-grid gap-2 col-10 mx-auto">
-          <button class="btn btn-primary btn-block" type="button">Register</button>
+          <input type="submit" class="btn btn-primary btn-block" value="Register" >
         </div>
         
         <br><br>

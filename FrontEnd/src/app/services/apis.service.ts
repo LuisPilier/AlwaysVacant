@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import{LoginI} from 'src/app/models/login.interface';
+import {RegisterI} from 'src/app/models/register.interface';
 import{ResponseI} from 'src/app/models/response.interface';
 import {HttpClient, HttpHeaders} from '@angular/common/http'
 import{Observable} from 'rxjs';
@@ -17,6 +18,13 @@ url:string = "https://en-linea.app/AlwaysVacant/BackEnd/API/";
   loginByUser(form:LoginI):Observable<ResponseI>{
    let direccion = this.url + "auth.php";
     return this.http.post<ResponseI>(direccion,form);
+  }
+
+  postUser(form:RegisterI):Observable<ResponseI>{
+
+    let direccion = this.url + "Usuarios/" + "usuario.php";
+    return this.http.post<ResponseI>(direccion,form);
+
   }
   
   
