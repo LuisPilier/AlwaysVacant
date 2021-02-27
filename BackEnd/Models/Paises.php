@@ -1,41 +1,29 @@
 <?php
 
-
-//INCLUYENDO INTERFACE
-include($_SERVER['DOCUMENT_ROOT'].'/AlwaysVacant/BackEnd/Class/Includes/IEntidad.php');
+include('Conexion.php');
 
 
-class Paises{
-
+class Paises
+{
     //Atributos
     private $ID_Pais;
     private $Codigo;
     private $Nombre;
     private static $Table = 'Paises';
 
-    public function ObtenerPaises($conn,$datos)
+    public function ObtenerPaises()
     {
-        $token = Token::validarToken($conn,$datos);
-           
-            if(is_bool($token))
-            {
-                $query = self::Query_Paises();
-                $datos = $conn->Query($query);
-                return $datos;
-            }
-            else
-            {
-                return $token;
-            }
+        $conn = Conexion::getInstance();
+        $query = self::Query_Paises();
+        $datos = $conn->Query($query);
+        return $datos;
     }
 
     private static function Query_Paises()
-        {
+    {
             $query = "SELECT ID_Pais, Codigo, Nombre FROM ".Paises::$Table;
-
              return $query;
-        }
-
+    }
 
 }
 

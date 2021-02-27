@@ -1,12 +1,6 @@
 <?php
 
-
-//Incluyendo la interface
-include('IEntidad.php');
-
 include('Conexion.php');
-
-
 
 class Ciudades{
 
