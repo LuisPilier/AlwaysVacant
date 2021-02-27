@@ -2,148 +2,148 @@
 <app-sidebar></app-sidebar>
 <br><br>
 <div class="container">
-    <h3 style="background-color: #2fa7c5; color: white;" class="card-header text-center font-weight-bold text-uppercase py-4">Create Category</h3>
-    
-    <div class="card-body">
-      <div id="table" class="table-editable">
-       
-        <table class="table table-bordered table-responsive-ml table-striped text-center">
-          <thead>
-            <tr>
-              <th class="text-center">ID</th>
-              <th class="text-center">Name</th>
-              <th class="text-center">Accions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let array of conversion">
-              <td class="pt-3-half">{{array.ID_Categoria}}</td>
-              <td class="pt-3-half">{{array.Nombre}}</td>
-          
-              <td>
-                <input type="text" #id value={{array.ID_Categoria}}
-                [style.display]="'none'">
-                  
-               <input type="text" #categoria value={{array.Nombre}}
-                 [style.display]="'none'">
-                 
-                <span class="table-remove"><button type="button"
-                    class="btn btn-primary btn-rounded btn-sm my-0 " (click)="seleccionarCategoria(categoria,id)"  style="width: 80px;" data-toggle="modal" data-target="#form">Edit</button></span>
+  <h3 style="background-color: #2fa7c5; color: white;"
+    class="card-header text-center font-weight-bold text-uppercase py-4">Create Category</h3>
 
-                    <span style="margin-left: 14px;" class="table-remove"><button type="button"
-                        class="btn btn-danger btn-rounded btn-sm my-0" (click)="seleccionarCategoria(categoria,id)" style="width: 80px;" data-toggle="modal" data-target="#form1">Remove</button></span>
-              </td>
-            </tr>
-           
-          
-          </tbody>
-        </table>
-      </div>
-      <button data-toggle="modal" data-target="#form2"  class="btn btn-lg btn-block btn-success">Create</button>
+  <div class="card-body">
+    <div id="table" class="table-editable">
+
+      <table class="table table-bordered table-responsive-ml table-striped text-center">
+        <thead>
+          <tr>
+            <th class="text-center">ID</th>
+            <th class="text-center">Name</th>
+            <th class="text-center">Accions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let array of conversion">
+            <td class="pt-3-half">{{array.ID_Categoria}}</td>
+            <td class="pt-3-half">{{array.Nombre}}</td>
+
+            <td>
+              <input type="text" #id value={{array.ID_Categoria}} [style.display]="'none'">
+
+              <input type="text" #categoria value={{array.Nombre}} [style.display]="'none'">
+
+              <span class="table-remove"><button type="button" class="btn btn-primary btn-rounded btn-sm my-0 "
+                  (click)="seleccionarCategoria(categoria,id)" style="width: 80px;" data-toggle="modal"
+                  data-target="#form">Edit</button></span>
+
+              <span style="margin-left: 14px;" class="table-remove"><button type="button"
+                  class="btn btn-danger btn-rounded btn-sm my-0" (click)="seleccionarCategoria(categoria,id)"
+                  style="width: 80px;" data-toggle="modal" data-target="#form1">Remove</button></span>
+            </td>
+          </tr>
+
+
+        </tbody>
+      </table>
     </div>
-  
+    <button data-toggle="modal" data-target="#form2" class="btn btn-lg btn-block btn-success">Create</button>
   </div>
 
+</div>
 
-  <div class="modal fade" id="form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header border-bottom-0">
-          <h5 class="modal-title" id="exampleModalLabel">Edit Job
+
+<div class="modal fade" id="form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header border-bottom-0">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Job
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </h5>
-        </div>
-        <form [formGroup]="editarForm" (ngSubmit)="putForm(editarForm.value)" >
-          <div class="modal-body">
-            <div class="form-group">
-              <label >ID</label>
-              <input  disabled value={{valueSelectedid}}  type="text" class="form-control" >
-            </div>
-            <div class="form-group">
-              <label >Name</label>
-              <input value={{valueSelected}} formControlName="Nombre" type="text" class="form-control"   >
-            </div>
-            <div class="form-group">
-              <label >Confirm the id to update</label>
-              <input  formControlName="ID_Categoria" type="text" class="form-control"   >
-            </div>
-            
-            
-          </div>
-          <div class="modal-footer border-top-0 d-flex justify-content-center">
-            <input type="submit" class="btn btn-primary " value="Edit">
-          </div>
-          <br><br>
-        </form>
       </div>
+      <form [formGroup]="editarForm" (ngSubmit)="putForm(editarForm.value)">
+        <div class="modal-body">
+          <div class="form-group">
+            <label>ID</label>
+            <input disabled value={{valueSelectedid}} type="text" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Name</label>
+            <input value={{valueSelected}} formControlName="Nombre" type="text" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Confirm the id to update</label>
+            <input formControlName="ID_Categoria" type="text" class="form-control">
+          </div>
+
+
+        </div>
+        <div class="modal-footer border-top-0 d-flex justify-content-center">
+          <input type="submit" class="btn btn-primary " value="Edit">
+        </div>
+        <br><br>
+      </form>
     </div>
   </div>
+</div>
 
-  <div class="modal fade" id="form1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header border-bottom-0">
-          <h5 class="modal-title" id="exampleModalLabel">Delete Job
+<div class="modal fade" id="form1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header border-bottom-0">
+        <h5 class="modal-title" id="exampleModalLabel">Delete Job
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </h5>
-        </div>
-        <form [formGroup]="editarForm">
-          <div class="modal-body">
-            <div class="form-group">
-              <label >ID</label>
-              <input disabled value={{valueSelectedid}}  type="text" class="form-control" aria-describedby="emailHelp">
-              <small id="emailHelp" class="form-text text-muted"></small>
-            </div>
-            <div class="form-group">
-              <label>Name</label>
-              <input disabled value={{valueSelected}} type="text" class="form-control"  >
-            </div>
-            <div class="form-group">
-              <label> enter the id to confirm the delete</label>
-              <input formControlName="ID_Categoria"  type="text" class="form-control"  >
-            </div>
-            
-          </div>
-          
-          <div class="modal-footer border-top-0 d-flex justify-content-center">
-            <button type="button" (click)="deleteForm()" class="btn btn-danger ">Delete</button>
-          </div>
-          <br><br>
-        </form>
       </div>
+      <form [formGroup]="editarForm" (ngSubmit)="putForm(editarForm.value)">
+        <div class="modal-body">
+          <div class="form-group">
+            <label>ID</label>
+            <input disabled value={{valueSelectedid}} type="text" class="form-control" aria-describedby="emailHelp">
+            <small id="emailHelp" class="form-text text-muted"></small>
+          </div>
+          <div class="form-group">
+            <label>Name</label>
+            <input disabled value={{valueSelected}} type="text" class="form-control">
+          </div>
+          <div class="form-group">
+            <label> enter the id to confirm the delete</label>
+            <input formControlName="ID_Categoria" type="text" class="form-control">
+          </div>
+
+        </div>
+
+        <div class="modal-footer border-top-0 d-flex justify-content-center">
+          <button type="button" (click)="deleteForm()" class="btn btn-danger ">Delete</button>
+        </div>
+        <br><br>
+      </form>
     </div>
   </div>
+</div>
 
-  <div class="modal fade" id="form2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header border-bottom-0">
-          <h5 class="modal-title" id="exampleModalLabel">Create Category
+<div class="modal fade" id="form2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header border-bottom-0">
+        <h5 class="modal-title" id="exampleModalLabel">Create Category
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </h5>
-        </div>
-        <form [formGroup]="nuevoForm" (ngSubmit)="postForm(nuevoForm.value)">
-          <div class="modal-body">
-            <div class="form-group">
-              <label for="email1">Name Category</label>
-              <input type="text" formControlName="Nombre" class="form-control" aria-describedby="emailHelp">
-              <small id="emailHelp" class="form-text text-muted"></small>
-            </div>
-          </div>
-          
-          <div class="modal-footer border-top-0 d-flex justify-content-center">
-            <input type="submit" class="btn btn-success" value="Create" >
-          </div>
-          <br><br>
-        </form>
       </div>
+      <form [formGroup]="nuevoForm" (ngSubmit)="postForm(nuevoForm.value)">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="Nombre">Name Category</label>
+            <input type="text" formControlName="Nombre" class="form-control" aria-describedby="emailHelp">
+            <small id="emailHelp" class="form-text text-muted"></small>
+          </div>
+        </div>
+        <div class="modal-footer border-top-0 d-flex justify-content-center">
+          <input type="submit" class="btn btn-success" value="Create">
+        </div>
+        <br><br>
+      </form>
     </div>
   </div>
+</div>
 <br><br><br><br><br><br>
 <app-footer class="fixed-bottom"></app-footer>
