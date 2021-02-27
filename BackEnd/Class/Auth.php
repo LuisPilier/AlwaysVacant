@@ -37,8 +37,8 @@ Class Auth{
               
                               $result['result'] = array(
                                   "Token" => $verifica,
-                                   "Tipo Usuario" => $BuscarUser[0]['Nombre'],
-                                  "ID Rol" => $BuscarUser[0]['ID_Rol']
+                                   "Tipo_Usuario" => $BuscarUser[0]['Nombre'],
+                                   "ID_Rol" => $BuscarUser[0]['ID_Rol']
                               );
               
                               return $result;
