@@ -4,9 +4,6 @@ import { ApisService } from 'src/app/services/apis.service';
 import {Router} from '@angular/router'
 
 
-
-
-
 @Component({
   selector: 'app-editjob',
   templateUrl: './editjob.component.html',

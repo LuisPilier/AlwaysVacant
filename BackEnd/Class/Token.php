@@ -60,7 +60,7 @@ class Token
         $query = "
         
          
-        SELECT ut.ID_Token,ut.ID_Usuario,ut.Estado,ut.Fecha,ut.Token, usuarios.ID_Rol, r.Nombre
+        SELECT ut.ID_Token,ut.ID_Usuario,ut.Estado,ut.Fecha,ut.Token, usuarios.ID_Rol,usuarios.Usuario, r.Nombre
         FROM Usuarios_token ut
         join Usuario usuarios on (ut.ID_Usuario = usuarios.ID_Usuario)
         join Rol r on (r.ID_Rol = usuarios.ID_Rol)

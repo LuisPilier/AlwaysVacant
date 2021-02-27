@@ -18,6 +18,11 @@ export class HeaderadminComponent implements OnInit {
     const navbar: HTMLElement = this.element.nativeElement;
     this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
   }
+  
+  logout(){
+      localStorage.clear();
+      document.location.href = (`http://localhost:4200/homepage`)
+  }
 
   sidebarOpen() {
     const toggleButton = this.toggleButton;
