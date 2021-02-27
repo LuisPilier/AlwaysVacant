@@ -46,10 +46,7 @@ export class CreatecategoryComponent implements OnInit {
     this.editarForm.patchValue({
      'Token' : Token
     });
-
-   
-    
-  }
+}
 
 
 
@@ -70,8 +67,11 @@ export class CreatecategoryComponent implements OnInit {
 
 putForm(form:CategoryI){
 
-console.log(form)
- }
+  this.api.putCategory(form).subscribe(data =>{
+    console.log(data);
+    document.location.href = (`http://localhost:4200/createcategory`);
+  })
+}
 
  deleteForm(){
    let datos:CategoryI = this.editarForm.value;
