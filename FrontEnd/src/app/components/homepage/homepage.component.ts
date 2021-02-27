@@ -43,10 +43,6 @@ export class HomepageComponent implements OnInit {
       document.location.href = (`http://localhost:4200/adminpage`);
     }
   }
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 
 
   onlogin(form: LoginI) {
