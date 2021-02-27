@@ -2,7 +2,7 @@
 
 
 //INCLUYENDO INTERFACE
-include($_SERVER['DOCUMENT_ROOT'].'/AlwaysVacant/BackEnd/Class/Ciudades.php');
+include($_SERVER['DOCUMENT_ROOT'].'/AlwaysVacant/BackEnd/Models/Ciudades.php');
 
 
 class CiudadesController
