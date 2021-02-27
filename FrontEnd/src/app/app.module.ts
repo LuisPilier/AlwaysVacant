@@ -24,6 +24,9 @@ import { JobsdetailsComponent } from './components/jobsdetails/jobsdetails.compo
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { HeaderadminComponent } from './components/headeradmin/headeradmin.component';
 
+//External
+import { NgxPaginationModule } from 'ngx-pagination';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +51,8 @@ import { HeaderadminComponent } from './components/headeradmin/headeradmin.compo
     FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule,
   
   ],
   providers: [],

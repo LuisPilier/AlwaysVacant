@@ -16,27 +16,14 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let array of conversion">
-              <td class="pt-3-half">{{array.ID_Categoria}}</td>
-              <td class="pt-3-half">{{array.Nombre}}</td>
-          
-              <td>
-                <input type="text" #id value={{array.ID_Categoria}}
-                [style.display]="'none'">
-                  
-               <input type="text" #categoria value={{array.Nombre}}
-                 [style.display]="'none'">
-                 
-                <span class="table-remove"><button type="button"
-                    class="btn btn-primary btn-rounded btn-sm my-0 " (click)="seleccionarCategoria(categoria,id)"  style="width: 80px;" data-toggle="modal" data-target="#form">Edit</button></span>
-
-                    <span style="margin-left: 14px;" class="table-remove"><button type="button"
-                        class="btn btn-danger btn-rounded btn-sm my-0" (click)="seleccionarCategoria(categoria,id)" style="width: 80px;" data-toggle="modal" data-target="#form1">Remove</button></span>
-              </td>
-            </tr>
-           
-          
-          </tbody>
+              <tr *ngFor="let array of conversion | paginate: { itemsPerPage: 8, currentPage: paginactual }">
+                <td class="pt-3-half">{{array.ID_Categoria}}</td>
+                <td class="pt-3-half">{{array.Nombre}}</td>
+                      <span style="margin-left: 14px;" class="table-remove"><button type="button"
+                          class="btn btn-danger btn-rounded btn-sm my-0" (click)="seleccionarCategoria(categoria,id)" style="width: 80px;" data-toggle="modal" data-target="#form1">Remove</button></span>
+              </tr>     
+            </tbody>
+            <pagination-controls (pageChange)="paginactual = $event"></pagination-controls>
         </table>
       </div>
       <button data-toggle="modal" data-target="#form2"  class="btn btn-lg btn-block btn-success">Create</button>
