@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import{ ApisService } from 'src/app/services/apis.service';
-import {LoginI} from 'src/app/models/login.interface';
-import {RegisterI} from 'src/app/models/register.interface';
-import {ResponseI} from 'src/app/models/response.interface';
-import{Router} from '@angular/router';
+import { ApisService } from 'src/app/services/apis.service';
+import { LoginI } from 'src/app/models/login.interface';
+import { RegisterI } from 'src/app/models/register.interface';
+import { ResponseI } from 'src/app/models/response.interface';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
@@ -13,56 +13,70 @@ import{Router} from '@angular/router';
 })
 export class HomepageComponent implements OnInit {
 
-loginForm = new FormGroup({
-Usuario : new FormControl('',Validators.required),
-Contrasena : new FormControl('',Validators.required),
-});
+  loginForm = new FormGroup({
+    Usuario: new FormControl('', Validators.required),
+    Contrasena: new FormControl('', Validators.required),
+  });
 
-nuevoForm = new FormGroup({
-  Nombre: new FormControl(''),
-  Apellido: new FormControl(''),
-  Usuario: new FormControl(''),
-  Contrasena: new FormControl(''),
-  ID_Rol: new FormControl(''),
-  Correo: new FormControl('')
-});
+  nuevoForm = new FormGroup({
+    Nombre: new FormControl(''),
+    Apellido: new FormControl(''),
+    Usuario: new FormControl(''),
+    Contrasena: new FormControl(''),
+    ID_Rol: new FormControl(''),
+    Correo: new FormControl('')
+  });
 
 
   constructor(private api: ApisService) { }
 
 
-  errorMessage:any = "";
-  errorStatus:boolean = false;
+  errorMessage: any = "";
+  errorStatus: boolean = false;
 
   ngOnInit(): void {
     this.ValidarLocalStorage();
   }
 
-  ValidarLocalStorage(){
-    if(localStorage.getItem('Token')){
-    document.location.href = (`http://localhost:4200/adminpage`);
+  ValidarLocalStorage() {
+    if (localStorage.getItem('Token')) {
+      document.location.href = (`http://localhost:4200/adminpage`);
     }
   }
+<<<<<<< Updated upstream
+
+=======
+>>>>>>> Stashed changes
 
 
-  onlogin(form:LoginI){
-    this.api.loginByUser(form).subscribe(data =>{
-      let dataResponse:ResponseI = data;
+  onlogin(form: LoginI) {
+    this.api.loginByUser(form).subscribe(data => {
+      let dataResponse: ResponseI = data;
       console.log(data);
-      if(dataResponse.status == "ok"){
+      if (dataResponse.status == "ok") {
         localStorage.setItem("Token", dataResponse.result.Token);
-        document.location.href = (`http://localhost:4200/adminpage`);
-      }else{
+        switch (dataResponse.result.ID_Rol) {
+          case 1:
+            document.location.href=('http://localhost:4200/homepagejobs');
+            break;
+          case 2:
+            document.location.href=('http://localhost:4200/homepagejobs');
+            break;
+          case 3:
+            document.location.href=('http://localhost:4200/adminpage')
+            break;
+        }
+      } else {
         this.errorStatus = true;
         this.errorMessage = dataResponse.result.error_msg;
       }
     })
   }
 
-  postForm(form:RegisterI){
-      this.api.postUser(form).subscribe(data =>{
-        console.log(data);
-      })
+  postForm(form: RegisterI) {
+    this.api.postUser(form).subscribe(data => {
+      console.log(data);
+    })
   }
 
 }
