@@ -31,7 +31,6 @@ export class CreatecategoryComponent implements OnInit {
 
   constructor(private http: HttpClient, private api: ApisService) { }
   conversion: [] = [];
-  paginactual: number = 1;
   
     
 
