@@ -22,7 +22,7 @@ import { JobsdetailsComponent } from './components/jobsdetails/jobsdetails.compo
 
 
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { HeaderadminComponent } from './headeradmin/headeradmin.component';
+import { HeaderadminComponent } from './components/headeradmin/headeradmin.component';
 
 @NgModule({
   declarations: [
