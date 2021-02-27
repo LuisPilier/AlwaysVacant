@@ -9,9 +9,7 @@ error_reporting(E_ALL);
 header("Content-Type: application/json");
 
 //Include
-include('../../Class/Localidades/Ciudades.php');
-
-$ciudad = new Ciudades();
+include('../../Controllers/CiudadesController.php');
 
 //Switch(Desicion)
 switch($_SERVER['REQUEST_METHOD'])
@@ -19,7 +17,7 @@ switch($_SERVER['REQUEST_METHOD'])
     case 'GET':
 
         $datos = json_decode(file_get_contents("php://input"),true);
-        $listaCiudades = $ciudad->ObtenerCiudades($conn,$datos);
+        $listaCiudades = CiudadesController::ObtenerCiudades($datos);
 
         if (isset($listaCiudades["result"]["error_id"])) 
         {
