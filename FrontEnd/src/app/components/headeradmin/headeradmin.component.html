@@ -17,9 +17,8 @@
                 <li class="nav-item">
                     <a href="" class="nav-link" target="_blank"> username</a>
                 </li>
-                <li class="nav-item" *ngIf="!isHome()">
-                    <a [routerLink]="['/home']" *ngIf="!isDocumentation()" class="nav-link"><i class="fa fa-sign-in"></i>Logout</a>
-                    <a [routerLink]="['/home']" *ngIf="isDocumentation()" class="nav-link">Logout</a>
+                <li class="nav-item">
+                    <a style="cursor: pointer;" (click)="logout()" class="nav-link"><i class="fa fa-sign-in"></i>Logout</a>
                 </li>
             </ul>
         </div>
