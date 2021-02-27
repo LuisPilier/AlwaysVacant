@@ -1,4 +1,5 @@
 export interface CategoryI{
     Nombre:string;
-    token:string;
+    Token:string;
+    ID_Categoria:string;
 }

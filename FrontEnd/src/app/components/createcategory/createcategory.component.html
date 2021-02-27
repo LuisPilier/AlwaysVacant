@@ -16,7 +16,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let array of conversion; index as i">
+            <tr *ngFor="let array of conversion">
               <td class="pt-3-half">{{array.ID_Categoria}}</td>
               <td class="pt-3-half">{{array.Nombre}}</td>
           
@@ -24,8 +24,9 @@
                 <input type="text" #id value={{array.ID_Categoria}}
                 [style.display]="'none'">
                   
-  <input type="text" #categoria value={{array.Nombre}}
-  [style.display]="'none'">
+               <input type="text" #categoria value={{array.Nombre}}
+                 [style.display]="'none'">
+                 
                 <span class="table-remove"><button type="button"
                     class="btn btn-primary btn-rounded btn-sm my-0 " (click)="seleccionarCategoria(categoria,id)"  style="width: 80px;" data-toggle="modal" data-target="#form">Edit</button></span>
 
@@ -54,21 +55,23 @@
           </button>
         </h5>
         </div>
-        <form  >
+        <form [formGroup]="editarForm" (ngSubmit)="putForm(editarForm.value)" >
           <div class="modal-body">
             <div class="form-group">
               <label >ID</label>
-              <input value={{valueSelectedid}} disabled  type="text" class="form-control"   aria-describedby="emailHelp">
-              <small id="emailHelp" class="form-text text-muted"></small>
+              <input formControlName="ID_Categoria" disabled value={{valueSelectedid}}  type="text" class="form-control" >
             </div>
             <div class="form-group">
               <label >Name</label>
-              <input value={{valueSelected}}  type="text" class="form-control"   >
+              <input value={{valueSelected}} formControlName="Nombre" type="text" class="form-control"   >
+           
             </div>
+
+            
             
           </div>
           <div class="modal-footer border-top-0 d-flex justify-content-center">
-            <button type="button" class="btn btn-primary ">Edit</button>
+            <input type="submit" class="btn btn-primary " value="Edit">
           </div>
           <br><br>
         </form>
@@ -86,22 +89,26 @@
           </button>
         </h5>
         </div>
-        <form>
+        <form [formGroup]="editarForm">
           <div class="modal-body">
             <div class="form-group">
-              <label for="email1">ID</label>
-              <input disabled value={{valueSelectedid}} type="text" class="form-control" aria-describedby="emailHelp">
+              <label >ID</label>
+              <input disabled value={{valueSelectedid}}  type="text" class="form-control" aria-describedby="emailHelp">
               <small id="emailHelp" class="form-text text-muted"></small>
             </div>
             <div class="form-group">
-              <label for="password1">Name</label>
+              <label>Name</label>
               <input disabled value={{valueSelected}} type="text" class="form-control"  >
+            </div>
+            <div class="form-group">
+              <label> enter the id to confirm the delete</label>
+              <input formControlName="ID_Categoria"  type="text" class="form-control"  >
             </div>
             
           </div>
           
           <div class="modal-footer border-top-0 d-flex justify-content-center">
-            <button type="button" class="btn btn-danger ">Delete</button>
+            <button type="button" (click)="deleteForm()" class="btn btn-danger ">Delete</button>
           </div>
           <br><br>
         </form>

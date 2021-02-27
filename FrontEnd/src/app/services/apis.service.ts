@@ -36,6 +36,23 @@ url:string = "https://en-linea.app/AlwaysVacant/BackEnd/API/";
 
   }
   
+  putCategory(form:CategoryI):Observable<ResponseI>{
+    let direccion = this.url + "categoria.php";
+    return this.http.put<ResponseI>(direccion, form);
+  }
+  
+  deleteCategory(form:CategoryI):Observable<ResponseI>{
+    let direccion = this.url + "categoria.php";
+    
+    let Opciones = {
+      headers: new HttpHeaders({
+        'conten-type': 'application/json'
+      }),
+      body: form
+    }
+
+    return this.http.delete<ResponseI>(direccion, Opciones);
+  }
 
 
 }
