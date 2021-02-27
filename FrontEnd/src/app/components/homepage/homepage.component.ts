@@ -43,7 +43,7 @@ nuevoForm = new FormGroup({
     document.location.href = (`http://localhost:4200/adminpage`);
     }
   }
-  
+
 
   onlogin(form:LoginI){
     this.api.loginByUser(form).subscribe(data =>{
