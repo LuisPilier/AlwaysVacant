@@ -14,8 +14,8 @@ import {FormGroup, FormControl, Validators} from '@angular/forms';
 export class EditvacantComponent implements OnInit {
 
   constructor(private activerouter: ActivatedRoute, private router: Router, private api: ApisService) { }
-
- datosVacante!: VacanteI;
+//@ts-ignore
+ datosVacante: VacanteI;
  editarForm = new FormGroup({
   Token: new FormControl(''),
   Compania: new FormControl(''),
@@ -33,6 +33,7 @@ export class EditvacantComponent implements OnInit {
     let vacanteid = this.activerouter.snapshot.paramMap.get('ID_Vacante');
     let Token = this.getToken();
     this.api.getUnicaVacante(vacanteid).subscribe(data =>{
+      //@ts-ignore
       this.datosVacante = data[0];
       console.log(this.datosVacante);
     })
