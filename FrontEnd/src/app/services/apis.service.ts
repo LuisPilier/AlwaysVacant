@@ -65,4 +65,16 @@ url:string = "https://en-linea.app/AlwaysVacant/BackEnd/API/";
     return this.http.put<ResponseI>(direccion, form);
   }
 
+  deleteVacant(form:VacantesI):Observable<ResponseI>{
+    let direccion = this.url + "vacante.php";
+    
+    let Opciones = {
+      headers: new HttpHeaders({
+        'conten-type': 'application/json'
+      }),
+      body: form
+    }
+    return this.http.delete<ResponseI>(direccion, Opciones);
+  }
+
 }

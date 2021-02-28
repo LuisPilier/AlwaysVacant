@@ -67,6 +67,14 @@ export class EditvacantComponent implements OnInit {
   getToken(){
     return localStorage.getItem('Token')
   }
+
+  eliminar(){
+    let datos: VacantesI = this.editarForm.value;
+  this.api.deleteVacant(datos).subscribe(data =>{
+  console.log(data);
+  document.location.href = (`http://localhost:4200/editjob`);
+  })
+  }
  
 
 }
