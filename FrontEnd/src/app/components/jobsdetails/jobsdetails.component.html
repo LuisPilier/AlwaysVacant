@@ -1,24 +1,44 @@
 <app-headeradmin></app-headeradmin>
 <br><br>
-<div class="container-fluid mt-5 content">
-  <div class="row align-self-center text-center ">
-    <div class="col-5 margen">
-      <button data-toggle="modal" data-target="#formJob" type="button"
-        class="btn btn-info mb-3 ml-5 post-job boton">Post a Job <i class="fa fa-bullhorn fa-lg"></i></button>
-    </div>
-    <div class="col-5 margen">
-      <div class="input-group">
-        <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
-        <div class="input-group-append">
-          <button class="btn btn-info" type="button "><i class="fa fa-search fa-lg"></i></button>
-        </div>
+
+<div class="container-fluid mt-5">
+  <div class="container">
+    <div class="row align-self-center text-center">
+      <div class="col-md-9 col-sm-5">
+          <button type="button" class="btn btn-info mb-3 ml-5 post-job boton">Volver atras <i
+              class="fa fa-bullhorn fa-lg"></i></button>
+      </div>
+      <div class="col-md-3 col-sm-5">
+        <button type="button" class="btn btn-info mb-3 ml-5 post-job boton">Post a Job <i
+            class="fa fa-bullhorn fa-lg"></i></button>
       </div>
     </div>
   </div>
-  <div class="card container">
+  <div class="card container contenido">
     <div class="card-body">
-      This is some text within a card body.
+      <div class="row">
+        <div class="col-10">
+          <h3 class="card-title">Nombre del trabajo</h3>
+          <h5 class="card-title text-muted"> Ciudad, Pais</h5>
+          <hr>
+          <p class="card-text">Puesto - tiempo de trabajo</p>
+          <hr>
+        </div>
+        <div class="col-2">
+          <img src="../../../assets/img/daniel-olahh.jpg" alt="">
+        </div>
+      </div>
+      <p class="card-text">Descripcion Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+        Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
+        type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+        into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release
+        of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
+        Aldus PageMaker including versions of Lorem Ipsum.</p>
+      <p>How to apply?</p>
+      <p>Send your resume to variabledecorreoaqui@hellocorreo</p>
     </div>
   </div>
 </div>
+<div class="contenido"></div>
+
 <app-footer class="fixed-bottom"></app-footer>

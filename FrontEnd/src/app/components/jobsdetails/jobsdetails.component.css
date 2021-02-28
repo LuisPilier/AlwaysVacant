@@ -1,3 +1,6 @@
-.content{
+.contenido{
+  position: relative;
+  overflow: auto;
+  max-height: 69vh;
   margin-bottom: 100px;
 }
