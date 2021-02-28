@@ -1,8 +1,7 @@
 <?php 
 
-ini_set('display_errors',1); 
-error_reporting(E_ALL);
-
+ 
+/**/
 class Token implements IEntidad
 {
     private $ID_Usuario;
@@ -11,6 +10,31 @@ class Token implements IEntidad
     private $Fecha;
 
     private static $Table = "Usuarios_token";
+
+    public static function buscarToken($token)
+    {
+        $conn = Conexion::getInstance();
+
+        $query = "
+        
+         
+        SELECT ut.ID_Token,ut.ID_Usuario,ut.Estado,ut.Fecha,ut.Token, usuarios.ID_Rol,usuarios.Usuario, r.Nombre
+        FROM Usuarios_token ut
+        join Usuario usuarios on (ut.ID_Usuario = usuarios.ID_Usuario)
+        join Rol r on (r.ID_Rol = usuarios.ID_Rol)
+        WHERE ut.Token = '$token' and ut.ESTADO = 'Activo' ";
+        $resp = $conn->Query($query);
+
+        if($resp)
+        {
+            return $resp;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
 
     //Este metodo se utiliza cuando un usuario hace LOGIN 
     public function Guardar($ID_Usuario)

@@ -18,14 +18,12 @@ Class Auth{
                 return respuestas::error_400();
             }else{
 
-                $conn = Conexion::getInstance();
-
                 $_user = new Usuario();
 
                 //todo esta bien 
                 $usuario   = $datos['Usuario'];
                 $password  = $datos['Contrasena'];
-                $password  = $conn->encriptar($password);
+                $password  = $_user->EncriptarContrasena($password);
                 $user_info = $_user->obtenerDatosUsuario($usuario);
                 
                 if($user_info){
@@ -41,10 +39,16 @@ Class Auth{
                             if ($verifica) {
                               // code...
                               $result = Respuestas::$response;
+
+                              $BuscarUser = Token::buscarToken($verifica);
               
                               $result['result'] = array(
-                                  "Token" => $verifica
-                              );
+                                "Token" => $verifica,
+                                "Usuario" => $BuscarUser[0]["Usuario"],
+                                 "Tipo_Usuario" => $BuscarUser[0]['Nombre'],
+                                 "ID_Rol" => $BuscarUser[0]['ID_Rol']
+                                 
+                            );
               
                               return $result;
 
