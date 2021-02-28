@@ -26,6 +26,7 @@ import { HeaderadminComponent } from './components/headeradmin/headeradmin.compo
 
 //External
 import { NgxPaginationModule } from 'ngx-pagination';
+import { FilterPipe } from './pipes/filter.pipe';
 import { EditvacantComponent } from './components/editvacant/editvacant.component';
 
 @NgModule({
@@ -43,6 +44,7 @@ import { EditvacantComponent } from './components/editvacant/editvacant.componen
     HomepagejobsComponent,
     JobsdetailsComponent,
     HeaderadminComponent,
+    FilterPipe,
     EditvacantComponent,
 
   ],
