@@ -16,6 +16,7 @@ export class HomepagejobsComponent implements OnInit {
     Token: new FormControl('', Validators.required)
   });
   constructor(private http: HttpClient, private api: ApisService) { }
+  filterPost = '';
   conversion: [] = [];
 
   ngOnInit(): void {
