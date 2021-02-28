@@ -1,6 +1,7 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Location} from '@angular/common';
 
+
 @Component({
   selector: 'app-headeradmin',
   templateUrl: './headeradmin.component.html',
@@ -9,12 +10,22 @@ import { Location} from '@angular/common';
 export class HeaderadminComponent implements OnInit {
   private toggleButton: any;
   private sidebarVisible: boolean;
+
+  model: any;
   constructor(public location: Location, private element : ElementRef) 
   {
     this.sidebarVisible = false;
   }
 
+
+  getsession(){
+    this.model  = JSON.stringify (localStorage.getItem('Usuario'));
+  }
+
+  
+
   ngOnInit() {
+    this.getsession();
     const navbar: HTMLElement = this.element.nativeElement;
     this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
   }
@@ -23,6 +34,8 @@ export class HeaderadminComponent implements OnInit {
       localStorage.clear();
       document.location.href = (`http://localhost:4200/homepage`)
   }
+
+  
 
   sidebarOpen() {
     const toggleButton = this.toggleButton;

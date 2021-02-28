@@ -13,6 +13,9 @@ import{Router} from '@angular/router';
 })
 export class HomepageComponent implements OnInit {
 
+  
+
+
 loginForm = new FormGroup({
 Usuario : new FormControl('',Validators.required),
 Contrasena : new FormControl('',Validators.required),
@@ -44,17 +47,17 @@ nuevoForm = new FormGroup({
     }
   }
 
-  guardarLocalStorage(result: any){
-    sessionStorage.setItem('Usuario',JSON.stringify(result));
-  }
+ 
 
   onlogin(form:LoginI){
     this.api.loginByUser(form).subscribe(data =>{
       let dataResponse:ResponseI = data;
       console.log(data);
+      
       if(dataResponse.status == "ok"){
         localStorage.setItem("Token", dataResponse.result.Token);
-       
+        localStorage.setItem("Usuario", dataResponse.result.Usuario);
+        document.location.href = (`http://localhost:4200/adminpage`)
       }else{
         this.errorStatus = true;
         this.errorMessage = dataResponse.result.error_msg;
