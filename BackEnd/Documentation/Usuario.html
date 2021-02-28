@@ -40,7 +40,11 @@
         <div class="container-fluid">
            <div class="row">
               <div class="col-lg-3 logo_section">
-          
+           <!--     <div class="full">
+                    <div class="center-desk">
+                       <div class="logo"> <a href="../index.html"> Always Vacant <img src="../Assets/images/logo-pequeno.png" alt="Logo Always Vacant"></a> </div>
+                    </div>
+                 </div>--> 
                  <div class="full">
                     <div class="center-desk">
                  <a  href="../index.html" class="navbar-brand">Always Vacant</a>
@@ -56,10 +60,10 @@
                              <li >
                                 <a href="../index.html">Home</a>
                              </li>
-                             <li >
+                             <li class="active">
                                 <a href="../Documentation/Usuario.html">API Usuario</a>
                              </li>
-                             <li class="active">
+                             <li>
                                 <a href="../Documentation/Vacante.html">API Vacante</a>
                              </li>
                              <li>
@@ -96,17 +100,19 @@
             
             <div class="row">
                <div class="col-md-6">
-                  <img src="../Assets/images/undraw_fill_forms_yltj.png" alt="Imagen vacante" />
+                  <img src="../Assets/images/marketing_img.png" alt="#" />
                </div>
                <div class="col-md-6">
                   <div class="full blog_cont">
-                     <h4 class="white_font">   ¿Qué es la API <span style="color: #ff0000"> Vacante   </span>   ?   </h4>
+                     <h4 class="white_font">   ¿Qué es la API <span style="color: #ff0000"> Usuario   </span>   ?   </h4>
                      <h5 class="grey_font">Always Vacant</h5>
-                     <p class="white_font">  API Vacante es como su nombre lo indica una API la cual fue creada con el propósito de manejar las peticiones relacionadas con 
-                       las vacantes que el usuario poster está solicitando. </p>
+                     <p class="white_font">  API Usuario es como su nombre lo indica una API la cual fue desarrollada con el proposito de manejar las peticiones relacionadas con los usuarios del
+                        sistema, estás peticiones son realizadas por parte del cliente y la API se encarga de brindar respuesta a la solicitud.</p>
 
                         <br > <br>
-                          
+                     
+ 
+                      
                         <a  href="https://documenter.getpostman.com/view/14346380/TWDUqy77#67e58459-0691-4b73-9145-0d0d88f06632" target="_blank">  
                            <button  id="new-board-btn" style="width: 100%; height:60px ;  font-size: 18px; " class="btn btn-light" >     
                               Documentación en Postman y ejemplos de uso
@@ -115,6 +121,7 @@
 
                           
                            </a> 
+
                   </div>
                </div>
             </div>
@@ -131,7 +138,7 @@
             <div class="row">
              <div class="col-md-12" style="text-align: center;">
                   <div class="full blog_cont">
-                     <h3> <strong> </strong> Peticiones de la API <span style="color: #ff0000;">Vacante</span>  </h3>
+                     <h3> <strong> </strong> Peticiones de la API <span style="color: #ff0000;">Usuario</span>  </h3>
                     
                     
                   </div>
@@ -183,10 +190,10 @@
 
                        
                        <h3  style="font-size: 30px;color: rgb(255, 255, 255); background: rgb(41, 41, 41); text-align: center;width: 100%;">GET</h3>
-                         <div style=" background: rgb(41, 41, 41); width: 100%;height:620px">
+                         <div style=" background: rgb(41, 41, 41); width: 100%;height:410px">
                             
                             <code style="font-size: 25px;">
-                                <h4 style="font-size: 20px;color: #fff; background: rgb(41, 41, 41); width: 100%;">- Obtener todas las vacantes </h4>
+                                <h4 style="font-size: 20px;color: #fff; background: rgb(41, 41, 41); width: 100%;">- Obtener todos los Usuarios</h4>
                                 
                                 {
                                  
@@ -196,24 +203,15 @@
                           </code>
                           <br>
                           <code style="font-size: 25px;">
-                              <h4 style="font-size: 20px;color: #fff; background: rgb(41, 41, 41); width: 100%;">- Obtener una vacante en específico</h4>
+                              <h4 style="font-size: 20px;color: #fff; background: rgb(41, 41, 41); width: 100%;">- Obtener un usuario en específico</h4>
                               
                               {
                                
                                    <p style="margin-left:20px;color: #ffffff; font-size: 25px;  width: 100%; height: 30px;" >  <span style="background-color: #ff0000;">"Token"</span> : "",</p> 
-                                   <p style="margin-left:20px;color: #ffffff; font-size: 25px;  width: 100%; height: 30px;" >  <span style="background-color: #ff0000;">"ID_Vacante"</span> : "" </p>  
+                                   <p style="margin-left:20px;color: #ffffff; font-size: 25px;  width: 100%; height: 30px;" >  <span  style="background-color: #ff0000;">"ID_Usuario"</span> : "" </p>  
                               }
                          </code>
-                            <br>
-                            <code style="font-size: 25px;">
-                                <h4 style="font-size: 20px;color: #fff; background: rgb(41, 41, 41); width: 100%;">- Obtener Vacante por una categoria especificada</h4>
-                                
-                                {
-                                 
-                                     <p style="margin-left:20px;color: #ffffff; font-size: 25px;  width: 100%; height: 30px;" >  <span style="background-color: #ff0000;">"Token"</span> : "",</p> 
-                                     <p style="margin-left:20px;color: #ffffff; font-size: 25px;  width: 100%; height: 30px;" >  <span style="background-color: #ff0000;">"ID_Categoria"</span> : "" </p>  
-                                }
-                           </code>
+                            
                          </div>
                         
                     </div>
@@ -236,23 +234,20 @@
 
                     
                         <h3  style="font-size: 30px;color: rgb(255, 255, 255); background: rgb(41, 41, 41); text-align: center;width: 100%;">POST</h3>
-                            <div style=" background: rgb(41, 41, 41); width: 100%;height:520px">
+                            <div style=" background: rgb(41, 41, 41); width: 100%;height:400px">
                                  <br>
                                 <code style="font-size: 25px; ">
                                   
                                     
                                     {
                                     
-                                        <p style="margin-left:35px;color: #ffffff; font-size: 25px;  width: 100%; height: 30px; margin-bottom: 8px;" >  <span style="background-color: #ff0000;">"Token"</span> : "" ,</p> 
-                                        <p style="margin-left:35px;color: #ffffff; font-size: 25px;  width: 100%; height: 30px;  margin-bottom: 8px;" >  <span style="background-color: #ff0000;">"Compania"</span> : "" , </p>  
-                                        <p style="margin-left:35px;color: #ffffff; font-size: 21px;  width: 100%; height: 30px;  margin-bottom: 8px;" >  <span style="background-color: #ff0000;">"ID_Tipo_Vacante"</span> : "" , </p>      
-                                        <p style="margin-left:35px;color: #ffffff; font-size: 25px;  width: 100%; height: 30px;  margin-bottom: 8px;" >  <span style="background-color: #ff0000;">"Posicion"</span> : "" ,</p> 
-                                        <p style="margin-left:35px;color: #ffffff; font-size: 25px;  width: 100%; height: 30px;  margin-bottom: 8px;" >  <span style="background-color: #ff0000;">"ID_Ciudad"</span> : "" , </p> 
-                                        <p style="margin-left:35px;color: #ffffff; font-size: 25px;  width: 100%; height: 30px;  margin-bottom: 8px;" >  <span style="background-color: #ff0000;">"Ubicacion"</span> : "" , </p> 
-                                        <p style="margin-left:35px;color: #ffffff; font-size: 25px;  width: 100%; height: 30px;  margin-bottom: 8px;" >  <span style="background-color: #ff0000;">"ID_Categoria"</span> : "", </p> 
-                                        <p style="margin-left:35px;color: #ffffff; font-size: 25px;  width: 100%; height: 30px;  margin-bottom: 8px;" >  <span style="">"URL"</span> : "",</p> 
-                                        <p style="margin-left:35px;color: #ffffff; font-size: 25px;  width: 100%; height: 30px;  margin-bottom: 8px;" >  <span style="">"Descripcion"</span> : "", </p> 
-                                        <p style="margin-left:35px;color: #ffffff; font-size: 25px;  width: 100%; height: 30px;  margin-bottom: 8px;" >  <span style="">"Logo"</span> : "" </p> 
+                                       
+                                        <p style="margin-left:35px;color: #ffffff; font-size: 25px;  width: 100%; height: 30px;  margin-bottom: 8px;" >  <span style="background-color: #ff0000;">"Nombre"</span> : "" , </p>  
+                                        <p style="margin-left:35px;color: #ffffff; font-size: 25px;  width: 100%; height: 30px;  margin-bottom: 8px;" >  <span style="background-color: #ff0000;">"Apellido"</span> : "" , </p>      
+                                        <p style="margin-left:35px;color: #ffffff; font-size: 25px;  width: 100%; height: 30px;  margin-bottom: 8px;" >  <span style="background-color: #ff0000;">"Usuario"</span> : "" ,</p> 
+                                        <p style="margin-left:35px;color: #ffffff; font-size: 25px;  width: 100%; height: 30px;  margin-bottom: 8px;" >  <span style="background-color: #ff0000;">"Contrasena"</span> : "" , </p> 
+                                        <p style="margin-left:35px;color: #ffffff; font-size: 25px;  width: 100%; height: 30px;  margin-bottom: 8px;" >  <span style="background-color: #ff0000;">"ID_Rol"</span> : "" , </p> 
+                                        <p style="margin-left:35px;color: #ffffff; font-size: 25px;  width: 100%; height: 30px;  margin-bottom: 8px;" >  <span style="background-color: #ff0000;">"Correo"</span> : "" </p> 
                                     }
                             </code>
                             <br>
@@ -272,55 +267,6 @@
             </div>
            
             <br>
-
-    <!-- PUT-->
-    <div class="row">
-        <div class="col-md-12">
-            <div class="full blog_cont">
-
-            
-                <h3  style="font-size: 30px;color: rgb(255, 255, 255); background: rgb(41, 41, 41); text-align: center;width: 100%;">PUT</h3>
-                    <div style=" background: rgb(41, 41, 41); width: 100%;height:520px">
-                        <br>
-                        <code style="font-size: 25px;">
-                        
-                            
-                            {
-                            
-                                <p style="margin-left:35px;color: #ffffff; font-size: 25px;  width: 100%; height: 30px; margin-bottom: 8px;" >  <span style="background-color: #ff0000;">"Token"</span> : "" ,</p> 
-                                <p style="margin-left:35px;color: #ffffff; font-size: 25px;  width: 100%; height: 30px;  margin-bottom: 8px;" >  <span style="background-color: #ff0000;">"Compania"</span> : "" , </p>  
-                                <p style="margin-left:35px;color: #ffffff; font-size: 21px;  width: 100%; height: 30px;  margin-bottom: 8px;" >  <span style="background-color: #ff0000;">"ID_Tipo_Vacante"</span> : "" , </p>      
-                                <p style="margin-left:35px;color: #ffffff; font-size: 25px;  width: 100%; height: 30px;  margin-bottom: 8px;" >  <span style="background-color: #ff0000;">"Posicion"</span> : "" ,</p> 
-                                <p style="margin-left:35px;color: #ffffff; font-size: 25px;  width: 100%; height: 30px;  margin-bottom: 8px;" >  <span style="background-color: #ff0000;">"ID_Ciudad"</span> : "" , </p> 
-                                <p style="margin-left:35px;color: #ffffff; font-size: 25px;  width: 100%; height: 30px;  margin-bottom: 8px;" >  <span style="background-color: #ff0000;">"Ubicacion"</span> : "" , </p> 
-                                <p style="margin-left:35px;color: #ffffff; font-size: 25px;  width: 100%; height: 30px;  margin-bottom: 8px;" >  <span style="background-color: #ff0000;">"ID_Categoria"</span> : "", </p> 
-                                <p style="margin-left:35px;color: #ffffff; font-size: 25px;  width: 100%; height: 30px;  margin-bottom: 8px;" >  <span style="">"URL"</span> : "",</p> 
-                                <p style="margin-left:35px;color: #ffffff; font-size: 25px;  width: 100%; height: 30px;  margin-bottom: 8px;" >  <span style="">"Descripcion"</span> : "", </p> 
-                                <p style="margin-left:35px;color: #ffffff; font-size: 25px;  width: 100%; height: 30px;  margin-bottom: 8px;" >  <span style="">"Logo"</span> : "" </p> 
-                              
-                            }
-                    </code>
-                    <br>
-                
-                        
-                    </div>
-                
-            </div>
-        </div>
-
-
-  
-              
-    
-    
-
-    </div>
-
-
-
-
-
-
               <!-- DELETE-->
               <div class="row">
                 <div class="col-md-12">
@@ -336,7 +282,7 @@
                                     {
                                     
                                         <p style="margin-left:35px;color: #ffffff; font-size: 25px;  width: 100%; height: 30px; margin-bottom: 8px;" >  <span style="background-color: #ff0000;">"Token"</span> : "" ,</p> 
-                                        <p style="margin-left:35px;color: #ffffff; font-size: 25px;  width: 100%; height: 30px;  margin-bottom: 8px;" >  <span style="background-color: #ff0000;">"ID_Vacante"</span> : ""  </p>  
+                                        <p style="margin-left:35px;color: #ffffff; font-size: 25px;  width: 100%; height: 30px;  margin-bottom: 8px;" >  <span style="background-color: #ff0000;">"ID_Usuario"</span> : ""  </p>  
                                       
                                     }
                             </code>
@@ -363,7 +309,135 @@
       </div>
       <!-- end section -->
       
+        <!-- User admin -->
+      <div class="section layout_padding">
+        <div class="container">
+           
+           <div class="row">
+            <div class="col-md-12" style="text-align: center;">
+                 <div class="full blog_cont">
+                    <h3> <strong> </strong> Peticiones de la API <span style="color: #ff0000;">Usuario Admin</span>  </h3>
+                   
+                   
+                 </div>
+              </div>
+           
+              
+           </div>
+      
+
+                    <!-- Leyenda-->
+                    <div class="row">
+                       <div class="col-md-12">
+                           <div class="full blog_cont">
+       
+                           
+                               <h3  style="font-size: 30px;color: rgb(255, 255, 255); background: rgb(41, 41, 41); text-align: center;width: 100%;">Leyenda</h3>
+                                   <div style=" background: rgb(41, 41, 41); width: 100%;height:100px;">
+                                            
+                                             <code style="display: flex;">
+                                             <div style="margin-left: 15%;width: 15%;height: 25px; background: #ff0000; margin-top: 35px;"> </div> 
+                                              <p style="margin-left:15px;color: #ffffff; font-size: 20px;  width: 100%; height: 30px;  margin-top: 30px;" >  Campos Obligatorios</p>  
+ 
+                                              <div style="margin-left: 10%;width: 15%;height: 25px; background: #2c2a2a; border: 2px solid #ffffff;margin-top: 35px;"> </div> 
+                                              <p style="margin-left:15px;color: #ffffff; font-size: 20px;  width: 100%; height: 30px;  margin-top: 30px;" >  Campos Opcionales</p>  
+ 
+                                           
+                                           </code>
+                                     
+                                          
+                                       
+                                   </div>
+                               
+                           </div>
+                       </div>
+           
+               
+                 
+                             
+                   
+                   
+       
+                   </div>
+
+                   <br>
+           <!-- GET-->
+           <div class="row">
+               <div class="col-md-12">
+                   <div class="full blog_cont">
+
+                      
+                      <h3  style="font-size: 30px;color: rgb(255, 255, 255); background: rgb(41, 41, 41); text-align: center;width: 100%;">GET</h3>
+                        <div style=" background: rgb(41, 41, 41); width: 100%;height:160px">
+                           
+                           <code style="font-size: 25px;">
+                              
+                               
+                               {
+                                
+                                    <p style="margin-left:35px;color: #ffffff; font-size: 25px;  width: 100%; height: 30px;" >  <span style="background-color: #ff0000;">"Token"</span> : "" </p>  
+                               
+                               }
+                         </code>
+                         <br>
+                       
+                           
+                        </div>
+                       
+                   </div>
+                </div>
+              
+                  
+                     
+                                 
+                       
+                       
+          
+           </div>
+           
+           <br>
+           <!-- PUT-->
+          
+           <div class="row">
+               <div class="col-md-12">
+                   <div class="full blog_cont">
+
+                   
+                       <h3  style="font-size: 30px;color: rgb(255, 255, 255); background: rgb(41, 41, 41); text-align: center;width: 100%;">PUT</h3>
+                           <div style=" background: rgb(41, 41, 41); width: 100%;height:220px">
+                                <br>
+                               <code style="font-size: 25px; ">
+                                 
+                                   
+                                   {
+                                   
+                                       <p style="margin-left:35px;color: #ffffff; font-size: 25px;  width: 100%; height: 30px; margin-bottom: 8px;" >  <span style="background-color: #ff0000;">"Token"</span> : "" ,</p> 
+                                       <p style="margin-left:35px;color: #ffffff; font-size: 25px;  width: 100%; height: 30px;  margin-bottom: 8px;" >  <span style="background-color: #ff0000;">"CantidadVacante"</span> : ""  </p>  
      
+                                   }
+                           </code>
+                           <br>
+                       
+                               
+                           </div>
+                       
+                   </div>
+               </div>
+   
+       
+         
+                     
+           
+           
+
+           </div>
+          
+           <br>
+       
+
+        </div>
+     </div>
+
 
       <!-- footer -->
       <footer>
