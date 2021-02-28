@@ -1,6 +1,6 @@
-export interface DataVacantesI{
+export interface VacanteI{
     Compania: string;
-    URL:      string;
+    URL: string;
     Posicion: string;
     Descripcion: string;
     ID_Categoria: string;
@@ -8,5 +8,6 @@ export interface DataVacantesI{
     ID_Ciudad: string;
     Ubicacion: string;
     Email: string;
+    Token: string;
     Logo: string;
 }
