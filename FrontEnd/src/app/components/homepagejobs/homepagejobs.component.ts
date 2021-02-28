@@ -27,7 +27,7 @@ export class HomepagejobsComponent implements OnInit {
 
   }
   getData() {
-    this.http.get('https://en-linea.app/AlwaysVacant/BackEnd/API/categoria.php')
+    this.http.get('https://en-linea.app/AlwaysVacant/BackEnd/API/vacante.php')
       .subscribe((data: any) => {
         this.conversion = data;
         console.log(this.conversion);
