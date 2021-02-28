@@ -17,7 +17,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let array of conversion">
+          <tr *ngFor="let array of conversion | paginate: { itemsPerPage: 8, currentPage: paginactual }">
             <td class="pt-3-half">{{array.ID_Categoria}}</td>
             <td class="pt-3-half">{{array.Nombre}}</td>
 
@@ -35,7 +35,7 @@
                   style="width: 80px;" data-toggle="modal" data-target="#form1">Remove</button></span>
             </td>
           </tr>
-
+          <pagination-controls (pageChange)="paginactual = $event"></pagination-controls>
 
         </tbody>
       </table>

@@ -15,7 +15,7 @@ export class EditjobComponent implements OnInit {
 
   constructor(private http: HttpClient) { }
   conversion: [] = [];
- 
+  paginactual: number = 1;
  
 
   ngOnInit(): void {

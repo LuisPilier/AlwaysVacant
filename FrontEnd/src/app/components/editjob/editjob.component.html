@@ -19,7 +19,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let array of conversion">
+            <tr *ngFor="let array of conversion | paginate: { itemsPerPage: 8, currentPage: paginactual }">
               <td>{{array.ID_Vacante}}</td>
               <td>{{array.Compania}}</td>
               <td>{{array.Categoria}}</td>
@@ -33,6 +33,7 @@
                         class="btn btn-danger btn-rounded btn-sm my-0" data-toggle="modal" data-target="#form1">Remove</button></span>
               </td>
             </tr>
+            <pagination-controls (pageChange)="paginactual = $event"></pagination-controls>
           </tbody>
         </table>
       </div>
