@@ -3,9 +3,8 @@
 //Header
 header("Content-Type: application/json");
 
-ini_set('display_errors',1); 
-error_reporting(E_ALL);
-
+ 
+/**/
 //Incluyendo la Clase Vacantes para utilizar sus metodos
 include('../Controllers/VacanteController.php');
 
