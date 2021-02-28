@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ApisService } from 'src/app/services/apis.service';
 import {Router} from '@angular/router'
-
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-editjob',
@@ -11,9 +11,16 @@ import {Router} from '@angular/router'
 })
 export class EditjobComponent implements OnInit {
   
+  editarForm = new FormGroup({
+    Nombre: new FormControl(''),
+    ID_Vacante: new FormControl(''),
+    Token: new FormControl('')
+  });
 
 
-  constructor(private http: HttpClient) { }
+ 
+
+  constructor(private http: HttpClient, private router: Router) { }
   conversion: [] = [];
   paginactual: number = 1;
  
@@ -29,7 +36,10 @@ export class EditjobComponent implements OnInit {
     });
   }
   
-  
+  editarvacante(ID_Vacante: any){
+    this.router.navigate(['editvacant',ID_Vacante]);
+  }
+
   
 
 }

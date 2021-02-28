@@ -5,7 +5,7 @@ import{ResponseI} from 'src/app/models/response.interface';
 import {CategoryI} from 'src/app/models/category.interface';
 import {HttpClient, HttpHeaders} from '@angular/common/http'
 import{Observable} from 'rxjs';
-import {DataVacantesI} from 'src/app/models/datavacantes.interface';
+import {VacanteI} from 'src/app/models/Vacante.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -52,6 +52,11 @@ url:string = "https://en-linea.app/AlwaysVacant/BackEnd/API/";
     }
 
     return this.http.delete<ResponseI>(direccion, Opciones);
+  }
+
+  getUnicaVacante(ID_Vacante: string | null):Observable<VacanteI>{
+    let direccion = this.url + "vacante.php?ID_Vacante=" + ID_Vacante;
+    return this.http.get<VacanteI>(direccion);
   }
 
 

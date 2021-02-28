@@ -7,6 +7,9 @@ import {CreatecategoryComponent} from 'src/app/components/createcategory/createc
 import {NumberofjobComponent} from 'src/app/components/numberofjob/numberofjob.component';
 import {HomepagejobsComponent} from 'src/app/components/homepagejobs/homepagejobs.component';
 import {JobsdetailsComponent} from 'src/app/components/jobsdetails/jobsdetails.component';
+import {EditvacantComponent} from 'src/app/components/editvacant/editvacant.component';
+
+
 
 const routes: Routes = [
 {path: '', component: HomepageComponent},
@@ -16,7 +19,8 @@ const routes: Routes = [
 {path: 'createcategory', component:CreatecategoryComponent},
 {path: 'numberofjobs', component: NumberofjobComponent},
 {path: 'homepagejobs', component: HomepagejobsComponent},
-{path: 'jobsdetails', component: JobsdetailsComponent}
+{path: 'jobsdetails', component: JobsdetailsComponent},
+{path: 'editvacant/:ID_Vacante', component: EditvacantComponent}
 ];
 
 @NgModule({
