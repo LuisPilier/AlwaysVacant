@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
-import {VacanteI} from 'src/app/models/Vacante.interface';
+import {VacantesI} from 'src/app/models/vacantes.interface';
 import {ApisService} from 'src/app/services/apis.service';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 
@@ -15,7 +15,7 @@ export class EditvacantComponent implements OnInit {
 
   constructor(private activerouter: ActivatedRoute, private router: Router, private api: ApisService) { }
 //@ts-ignore
- datosVacante: VacanteI;
+ datosVacante!: VacantesI;
  editarForm = new FormGroup({
   Token: new FormControl(''),
   Compania: new FormControl(''),
@@ -26,21 +26,47 @@ export class EditvacantComponent implements OnInit {
   ID_Categoria: new FormControl(''),
   URL: new  FormControl(''),
   Descripcion: new FormControl(''),
-  Logo: new FormControl('')
+  Logo: new FormControl(''),
+  ID_Vacante: new FormControl('')
  })
 
   ngOnInit(): void {
-    let vacanteid = this.activerouter.snapshot.paramMap.get('ID_Vacante');
+    
+    let ID_Vacante = this.activerouter.snapshot.paramMap.get('ID_Vacante');
     let Token = this.getToken();
-    this.api.getUnicaVacante(vacanteid).subscribe(data =>{
-      //@ts-ignore
+    this.api.getUnicaVacante(ID_Vacante).subscribe(data =>{
+      
+    //@ts-ignore
       this.datosVacante = data[0];
-      console.log(this.datosVacante);
+      this.editarForm.setValue({
+        'Token': Token,
+        'Compania':this.datosVacante.Compania,
+        'ID_Tipo_Vacante':this.datosVacante.ID_Tipo_Vacante,
+        'Posicion':this.datosVacante.Posicion,
+        'ID_Ciudad':this.datosVacante.ID_Ciudad,
+        'Ubicacion':this.datosVacante.Ubicacion,
+        'ID_Categoria':this.datosVacante.ID_Categoria,
+        'URL':this.datosVacante.URL,
+        'ID_Vacante': ID_Vacante,
+        'Descripcion':this.datosVacante.Descripcion,
+        'Logo':this.datosVacante.Logo
+      });
+      console.log(this.editarForm.value)
+    })
+    
+  
+  }
+
+  putForm(form: VacantesI){
+    this.api.putVacant(form).subscribe(data => {
+      console.log(data);
+      document.location.href = (`http://localhost:4200/editjob`);
     })
   }
 
   getToken(){
-    return localStorage.getItem('Token');
+    return localStorage.getItem('Token')
   }
+ 
 
 }

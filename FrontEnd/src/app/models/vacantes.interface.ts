@@ -1,4 +1,4 @@
-export interface VacanteI{
+export interface VacantesI{
     Compania: string;
     URL: string;
     Posicion: string;
@@ -10,4 +10,5 @@ export interface VacanteI{
     Email: string;
     Token: string;
     Logo: string;
+    ID_Vacante: number;
 }
