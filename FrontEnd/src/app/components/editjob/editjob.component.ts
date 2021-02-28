@@ -10,7 +10,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./editjob.component.css']
 })
 export class EditjobComponent implements OnInit {
-  
+
   editarForm = new FormGroup({
     Nombre: new FormControl(''),
     ID_Vacante: new FormControl(''),
@@ -18,28 +18,28 @@ export class EditjobComponent implements OnInit {
   });
 
 
- 
+
 
   constructor(private http: HttpClient, private router: Router) { }
   conversion: [] = [];
   paginactual: number = 1;
- 
+
 
   ngOnInit(): void {
    this.getData();
   }
   getData(){
     this.http.get('https://en-linea.app/AlwaysVacant/BackEnd/API/vacante.php')
-    .subscribe((data:any) => { 
+    .subscribe((data:any) => {
      this.conversion=data;
      console.log( this.conversion );
     });
   }
-  
+
   editarvacante(ID_Vacante: any){
     this.router.navigate(['editvacant',ID_Vacante]);
   }
 
-  
+
 
 }
