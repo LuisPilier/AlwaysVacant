@@ -117,6 +117,7 @@ switch($_SERVER['REQUEST_METHOD'])
     //Solicitud no encontrada  
     default:
         $resultado["mensaje"] = "Enviaste una solicitud incorrecta";
+        http_response_code(405);
         echo json_encode($resultado["mensaje"]);
         break;
 
