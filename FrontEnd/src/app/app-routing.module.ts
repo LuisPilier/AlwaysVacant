@@ -9,6 +9,7 @@ import {HomepagejobsComponent} from 'src/app/components/homepagejobs/homepagejob
 import {JobsdetailsComponent} from 'src/app/components/jobsdetails/jobsdetails.component';
 import {EditvacantComponent} from 'src/app/components/editvacant/editvacant.component';
 import { EditcategoryComponent } from './components/editcategory/editcategory.component';
+import { AllvacantsComponent} from './components/allvacants/allvacants.component';
 
 
 const routes: Routes = [
@@ -21,7 +22,8 @@ const routes: Routes = [
 {path: 'homepagejobs', component: HomepagejobsComponent},
 {path: 'jobsdetails', component: JobsdetailsComponent},
 {path: 'editvacant/:ID_Vacante', component: EditvacantComponent},
-{path: 'editcategory/:ID_Categoria', component:EditcategoryComponent}
+{path: 'editcategory/:ID_Categoria', component:EditcategoryComponent},
+{path: 'allvacants', component: AllvacantsComponent}
 ];
 
 @NgModule({
