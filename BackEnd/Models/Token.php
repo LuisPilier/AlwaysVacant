@@ -136,7 +136,7 @@ class Token implements IEntidad
     {
         $conn = Conexion::getInstance();
 
-        $query = "DELETE FROM usuarios_token WHERE Fecha < '$fecha' AND Estado = 'Activo'";
+        $query = "DELETE FROM usuarios_token WHERE Fecha < '$fecha' AND Estado = 'Inactivo'";
         $verificar = $conn->nonQuery($query);
 
         if($verificar > 0)
