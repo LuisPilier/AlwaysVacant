@@ -152,6 +152,7 @@ class Vacante implements IEntidad
             if(is_bool($token))
             {
                 $query = self::Query_Vacante();
+                $query .= ' order by v.ID_Vacante desc';
                 $datos = $conn->Query($query);
                 return $datos;
             }
