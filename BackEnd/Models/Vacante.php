@@ -83,7 +83,7 @@ class Vacante implements IEntidad
                     
         }      
 
-        private function procesarImagen($img)
+        public function procesarImagen($img)
         {
             //El Directorio donde se almacenaran las imagenes
             $direccion = "../Images/";
