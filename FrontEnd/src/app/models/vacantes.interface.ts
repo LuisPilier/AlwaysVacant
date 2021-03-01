@@ -11,4 +11,6 @@ export interface VacantesI{
     Token: string;
     Logo: string;
     ID_Vacante: number;
+    Ciudad: string;
+    Nombre: string;
 }

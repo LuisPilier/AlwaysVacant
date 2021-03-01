@@ -27,6 +27,8 @@ export class EditvacantComponent implements OnInit {
   URL: new  FormControl(''),
   Descripcion: new FormControl(''),
   Logo: new FormControl(''),
+  Email: new FormControl(''),
+  Nombre: new FormControl(''),
   ID_Vacante: new FormControl('')
  })
 
@@ -49,6 +51,8 @@ export class EditvacantComponent implements OnInit {
         'URL':this.datosVacante.URL,
         'ID_Vacante': ID_Vacante,
         'Descripcion':this.datosVacante.Descripcion,
+        'Email':this.datosVacante.Email,
+        'Nombre':this.datosVacante.Nombre,
         'Logo':this.datosVacante.Logo
       });
       console.log(this.editarForm.value)
