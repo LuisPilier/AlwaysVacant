@@ -107,6 +107,7 @@ class Vacante implements IEntidad
                 $conn = Conexion::getInstance();
 
                 $query = self::Query_Vacante();
+                $query .= ' order by v.ID_Vacante desc';
                 $datos = $conn->Query($query);
                 return $datos;
         }    
