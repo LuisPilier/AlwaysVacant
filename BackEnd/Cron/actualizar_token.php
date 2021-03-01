@@ -10,6 +10,4 @@ $_token->Actualizar($fecha);
 
 $_token->Eliminar($fecha);
 
-
-
 ?>
