@@ -147,6 +147,7 @@ class Vacante implements IEntidad
             INNER JOIN Categoria c on c.ID_Categoria = v.ID_Categoria
             INNER JOIN Ciudades ci on ci.ID_Ciudad = v.ID_Ciudad
             INNER JOIN Paises p on ci.Codigo_pais = p.Codigo 
+            order by v.ID_Vacante desc
              ";
 
              return $query;
