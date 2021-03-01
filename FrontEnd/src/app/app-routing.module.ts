@@ -8,7 +8,7 @@ import {NumberofjobComponent} from 'src/app/components/numberofjob/numberofjob.c
 import {HomepagejobsComponent} from 'src/app/components/homepagejobs/homepagejobs.component';
 import {JobsdetailsComponent} from 'src/app/components/jobsdetails/jobsdetails.component';
 import {EditvacantComponent} from 'src/app/components/editvacant/editvacant.component';
-
+import { EditcategoryComponent } from './components/editcategory/editcategory.component';
 
 
 const routes: Routes = [
@@ -20,7 +20,8 @@ const routes: Routes = [
 {path: 'numberofjobs', component: NumberofjobComponent},
 {path: 'homepagejobs', component: HomepagejobsComponent},
 {path: 'jobsdetails', component: JobsdetailsComponent},
-{path: 'editvacant/:ID_Vacante', component: EditvacantComponent}
+{path: 'editvacant/:ID_Vacante', component: EditvacantComponent},
+{path: 'editcategory/:ID_Categoria', component:EditcategoryComponent}
 ];
 
 @NgModule({

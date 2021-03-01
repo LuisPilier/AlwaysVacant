@@ -56,6 +56,11 @@ url:string = "https://en-linea.app/AlwaysVacant/BackEnd/API/";
     return this.http.delete<ResponseI>(direccion, Opciones);
   }
 
+  getUnicaCategoria(ID_Categoria: string | null):Observable<CategoryI>{
+    let direccion = this.url + "categoria.php?ID_Categoria=" + ID_Categoria;
+    return this.http.get<CategoryI>(direccion);
+  }
+
   getUnicaVacante(ID_Vacante: string | null):Observable<VacantesI>{
     let direccion = this.url + "vacante.php?ID_Vacante=" + ID_Vacante;
     return this.http.get<VacantesI>(direccion);

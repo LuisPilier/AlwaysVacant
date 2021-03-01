@@ -24,10 +24,11 @@ import { JobsdetailsComponent } from './components/jobsdetails/jobsdetails.compo
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { HeaderadminComponent } from './components/headeradmin/headeradmin.component';
 
-//External
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FilterPipe } from './pipes/filter.pipe';
 import { EditvacantComponent } from './components/editvacant/editvacant.component';
+import { EditcategoryComponent } from './components/editcategory/editcategory.component';
+
 
 @NgModule({
   declarations: [
@@ -46,6 +47,8 @@ import { EditvacantComponent } from './components/editvacant/editvacant.componen
     HeaderadminComponent,
     FilterPipe,
     EditvacantComponent,
+    EditcategoryComponent,
+    
 
   ],
   imports: [

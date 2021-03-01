@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApisService } from 'src/app/services/apis.service';
 import { ResponseI } from 'src/app/models/response.interface';
+import {Router} from '@angular/router'
 import { CategoryI } from 'src/app/models/category.interface';
 @Component({
   selector: 'app-createcategory',
@@ -16,32 +17,25 @@ export class CreatecategoryComponent implements OnInit {
     Token: new FormControl('', Validators.required)
   });
 
-  editarForm = new FormGroup({
-    Nombre: new FormControl(''),
-    ID_Categoria: new FormControl(''),
-    Token: new FormControl('')
-  });
+  
 
-  public valueSelected: any
-  public valueSelectedid: any
+  
 
-  constructor(private http: HttpClient, private api: ApisService) { }
+  constructor(private http: HttpClient, private api: ApisService, private router: Router) { }
   conversion: [] = [];
   paginactual: number = 1;
 
 
 
   ngOnInit(): void {
+
     this.getData();
     let Token = localStorage.getItem('Token');
     this.nuevoForm.patchValue({
       'Token': Token
     });
 
-    let Tokenn = localStorage.getItem('Token');
-    this.editarForm.patchValue({
-      'Token': Token
-    });
+    
   }
 
   getData() {
@@ -59,24 +53,13 @@ export class CreatecategoryComponent implements OnInit {
     })
   }
 
-  putForm(form: CategoryI) {
-
-    this.api.putCategory(form).subscribe(data => {
-      console.log(data);
-      document.location.href = (`http://localhost:4200/createcategory`);
-    })
+  editarcategoria(ID_Categoria: any){
+    this.router.navigate(['editcategory',ID_Categoria]);
   }
 
-  deleteForm() {
-    let datos: CategoryI = this.editarForm.value;
-    this.api.deleteCategory(datos).subscribe(data => {
-      document.location.href = (`http://localhost:4200/createcategory`);
-      console.log(data);
-    })
-  }
+  
 
-  seleccionarCategoria(categoria: HTMLInputElement, id: HTMLInputElement) {
-    this.valueSelected = categoria.value
-    this.valueSelectedid = id.value
-  }
+  
+
+  
 }
