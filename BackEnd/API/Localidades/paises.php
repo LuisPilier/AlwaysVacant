@@ -1,9 +1,8 @@
 <?php
 
 
-ini_set('display_errors',1); 
-error_reporting(E_ALL);
-
+ 
+/**/
 
 //Header que retorna el JSON
 header("Content-Type: application/json");
@@ -12,17 +11,14 @@ header("Content-Type: application/json");
 header("Access-Control-Allow-Origin: *");
 
 //Include
-include('../../Class/Localidades/Paises.php');
-
-$pais = new Paises();
+include('../../Controllers/PaisesController.php');
 
 //Switch(Desicion)
 switch($_SERVER['REQUEST_METHOD'])
 {
     case 'GET':
 
-        $datos = json_decode(file_get_contents("php://input"),true);
-        $listaPaises = $pais->ObtenerPaises($conn,$datos);
+        $listaPaises = PaisesController::ObtenerPaises();
 
         if (isset($listaPaises["result"]["error_id"])) 
         {

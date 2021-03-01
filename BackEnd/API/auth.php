@@ -12,7 +12,7 @@ header('Access-Control-Max-Age: 1000');
 header('Access-Control-Allow-Headers: Origin, Content-type, X-Auth-Token, Authorization');
 
 //Include
-include('../Class/Auth.php');
+include('../Controllers/Auth.php');
 
 
 //Switch(Desicion)
@@ -21,10 +21,9 @@ switch($_SERVER['REQUEST_METHOD'])
 {
     case 'POST':
 
-        $_auth = new Auth();
+        $postBody   = json_decode(file_get_contents("php://input"),true);
 
-        $postBody   = file_get_contents("php://input");
-        $datosArray = $_auth->login($conn,$postBody);
+        $datosArray = Auth::login($postBody);
       
         if (isset($datosArray["result"]["error_id"])) {
           // code...

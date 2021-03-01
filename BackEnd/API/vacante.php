@@ -8,39 +8,35 @@ header("Content-Type: application/json");
 header("Access-Control-Allow-Origin: *");
 
 
-ini_set('display_errors',1); 
-error_reporting(E_ALL);
-
 //Incluyendo la Clase Vacantes para utilizar sus metodos
-include('../Class/Vacante.php');
-
- $_vacante = new Vacante();
+include('../Controllers/VacanteController.php');
 
 //Switch(Desicion)
 switch($_SERVER['REQUEST_METHOD']){
 
     case 'GET':
         //Recibiendo los Datos del JSON
-        $array = json_decode(file_get_contents("php://input"),true);
+        $datos = json_decode(file_get_contents("php://input"),true);
 
         //Si se recibe el ID de la vacante
-        if(isset($array['ID_Vacante']))
+        if(isset($datos['ID_Vacante']))
         {
           //Retornar la Vacante especificada por el ID
-          $listaVacantes = $_vacante->Obtener($conn,$array);
+          $listaVacantes = VacanteController::Obtener($datos);
         }
 
       //Si se recibe el ID de la Categoria
-        else if (isset($array['ID_Categoria']))
+        else if (isset($datos['ID_Categoria']))
         {
             //Retornar las Vacantes por la Categoria especificada
-          $listaVacantes = $_vacante->Vacantes_Categoria($conn,$array);
+          $listaVacantes = VacanteController::Vacantes_Categoria($datos);
         }
         //Si no se especifican parametros
         else
         {
+
           //Retornar Todas las Categorias
-          $listaVacantes = $_vacante->ObtenerTodo($conn,$array);
+          $listaVacantes = VacanteController::ObtenerTodo($datos);
         }
 
         //Si Hay errores al retornar las vacantes
@@ -62,8 +58,8 @@ switch($_SERVER['REQUEST_METHOD']){
     case 'POST':
 
         //Recibiendo los Datos del JSON
-        $postBody = file_get_contents("php://input");
-        $datosArray = $_vacante->Guardar($conn,$postBody);
+        $postBody = json_decode(file_get_contents("php://input"),true);
+        $datosArray = VacanteController::Guardar($postBody);
 
         //Si Hay errores al Guardar, retornar el error
         if (isset($datosArray["result"]["error_id"])) {
@@ -83,10 +79,10 @@ switch($_SERVER['REQUEST_METHOD']){
     case 'PUT':
 
       //Recibiendo los Datos del JSON
-      $postBody = file_get_contents("php://input");
+      $postBody = json_decode(file_get_contents("php://input"),true);
 
-      $datosArray = $_vacante->Actualizar($conn,$postBody);
- 
+      $datosArray = VacanteController::Actualizar($postBody);
+
       //Si hay errores al actualizar el registro especificado
       if (isset($datosArray["result"]["error_id"])) {
           // code...
@@ -106,9 +102,9 @@ switch($_SERVER['REQUEST_METHOD']){
     case 'DELETE':
 
       //Recibiendo los Datos del JSON
-      $postBody = file_get_contents("php://input");
+      $postBody = json_decode(file_get_contents("php://input"),true);
       
-      $datosArray = $_vacante->Eliminar($conn,$postBody);
+      $datosArray = VacanteController::Eliminar($postBody);
 
       //Si hay errores al eliminar registros
       if (isset($datosArray["result"]["error_id"])) {
@@ -123,7 +119,6 @@ switch($_SERVER['REQUEST_METHOD']){
        echo json_encode($datosArray);
 
        break;
-
 
     //Solicitud no encontrada  
     default:

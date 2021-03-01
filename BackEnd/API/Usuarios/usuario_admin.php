@@ -1,5 +1,6 @@
 <?php
 
+ini_set('display_errors', 1);
 
 //Header que retorna el JSON
 header("Content-Type: application/json");
@@ -7,11 +8,9 @@ header("Content-Type: application/json");
 //Header de Acces Control
 header("Access-Control-Allow-Origin: *");
 
-//Include
-include('../../Class/Usuarios/Usuario_admin.php');
 
-//Instancia
-$_usarioadmin = new Usuario_admin();
+//Include
+include('../../Controllers/Usuario_AdminController.php');
 
 //Switch(Desicion)
 switch($_SERVER['REQUEST_METHOD']){
@@ -22,15 +21,16 @@ switch($_SERVER['REQUEST_METHOD']){
          $datos = json_decode(file_get_contents("php://input"),true);
        
          //Si recibimos el ID del usuario
-        if(isset($array['Cod_conf']))
+        if(isset($datos['Cod_conf']))
         {
              //Retorna la configuracion especificada por el ID
-          $configuracion = $_usarioadmin->ObtenerConfigadmin($conn,$array);
+          $configuracion = Usuario_adminController::ObtenerConfigadmin($datos);
         }
         else
         {
+
             //Retorna todas los configuraciones que se encuentren registrados
-            $configuracion= $_usarioadmin-> ObtenerTodasConf($conn,$datos);
+            $configuracion= Usuario_adminController::ObtenerTodasConf($datos);
         }
         
         //Mostrar el contenido
@@ -42,9 +42,9 @@ switch($_SERVER['REQUEST_METHOD']){
        
     case 'PUT':
             //Recibiendo los Datos del JSON
-            $postBody = file_get_contents("php://input");
-
-            $datosArray = $_usarioadmin->ActualizarConfigVacantes($conn,$postBody);
+            $datos = json_decode(file_get_contents("php://input"),true);
+            
+            $datosArray = Usuario_adminController::ActualizarConfigVacantes($datos);
       
             //Si hay errores al actualizar el registro especificado
             if (isset($datosArray["result"]["error_id"])) {
@@ -67,10 +67,10 @@ switch($_SERVER['REQUEST_METHOD']){
 
     //Solicitud no encontrada  
     default:
-        $resultado["mensaje"] = "Enviaste una solicitud incorrecta";
-        echo json_encode($resultado["mensaje"]);
-        break;
-          
+         $resultado["mensaje"] = "Enviaste una solicitud incorrecta";
+         http_response_code(405);
+         echo json_encode($resultado["mensaje"]);
+         break;
 
 
 }

@@ -1,14 +1,7 @@
 <?php
 
-
-ini_set('display_errors',1); 
-error_reporting(E_ALL);
-
-include($_SERVER['DOCUMENT_ROOT'].'/AlwaysVacant/BackEnd/Class/Includes/Respuestas.php');
-
-include($_SERVER['DOCUMENT_ROOT'].'/AlwaysVacant/BackEnd/Class/Token.php');
-
-
+ 
+/**/
 //Clases
 class Conexion {
      
@@ -19,6 +12,8 @@ class Conexion {
     private $database;
     private $port;
     public  $conexion;
+
+    private static $instance;
     
     //Funciones
     function __construct(){
@@ -44,6 +39,16 @@ class Conexion {
     
     }
 
+    public static function getInstance()
+    {
+        if (!self::$instance instanceof self) {
+            self::$instance = new self();
+        }
+
+        return self::$instance;
+    }
+
+
     
     private function datosConexion()
     {    
@@ -62,7 +67,9 @@ class Conexion {
 
     //SELECT
     public function Query($sqlstr){
+        
         $results = $this->conexion->query($sqlstr);
+        
         $resultArray = array();
         foreach ($results as $key) {
             $resultArray[] = $key;
@@ -100,8 +107,6 @@ class Conexion {
     }
 
 }
-
-$conn  = new Conexion();
 
 
 ?>

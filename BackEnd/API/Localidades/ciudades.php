@@ -1,9 +1,8 @@
 <?php
 
 
-ini_set('display_errors',1); 
-error_reporting(E_ALL);
-
+ 
+/**/
 
 //Header que retorna el JSON
 header("Content-Type: application/json");
@@ -13,9 +12,7 @@ header("Access-Control-Allow-Origin: *");
 
 
 //Include
-include('../../Class/Localidades/Ciudades.php');
-
-$ciudad = new Ciudades();
+include('../../Controllers/CiudadesController.php');
 
 //Switch(Desicion)
 switch($_SERVER['REQUEST_METHOD'])
@@ -23,7 +20,7 @@ switch($_SERVER['REQUEST_METHOD'])
     case 'GET':
 
         $datos = json_decode(file_get_contents("php://input"),true);
-        $listaCiudades = $ciudad->ObtenerCiudades($conn,$datos);
+        $listaCiudades = CiudadesController::ObtenerCiudades($datos);
 
         if (isset($listaCiudades["result"]["error_id"])) 
         {

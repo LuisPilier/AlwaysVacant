@@ -511,6 +511,7 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
      */
     protected function setUp(): void
     {
+        $_SERVER['DOCUMENT_ROOT'] = '/Applications/MAMP/htdocs/AlwaysVacant/BackEnd/';
     }
 
     /**
@@ -518,6 +519,7 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
      */
     protected function tearDown(): void
     {
+        unset($_SERVER['DOCUMENT_ROOT']);
     }
 
     /**
