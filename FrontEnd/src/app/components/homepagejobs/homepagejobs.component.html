@@ -43,13 +43,14 @@
                 </thead>
 
                 <tbody>
-                  <tr *ngFor="let array of conversion | filter:filterPost">
+                  <tr *ngFor="let array of conversion | filter:filterPost | paginate: { itemsPerPage: numpag, currentPage: paginactual } ">
                     <td>{{array.Ciudad}}</td>
-                    <td>{{array.Categoria}}</td>
+                    <td>{{array.Posicion}}</td>
                     <td>{{array.Compania}}</td>
                   </tr>
                 </tbody>
               </table>
+              <pagination-controls (pageChange)="paginactual = $event"></pagination-controls>
             </div>
 
               <!--<p class="category-job"><i class="fa fa-code fa-lg"></i> Programming</p>

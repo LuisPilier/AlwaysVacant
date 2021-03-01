@@ -18,6 +18,8 @@ export class HomepagejobsComponent implements OnInit {
   constructor(private http: HttpClient, private api: ApisService) { }
   filterPost = '';
   conversion: [] = [];
+  paginactual: number = 1;
+  numpag: number = 10; 
 
   ngOnInit(): void {
     this.getData();
