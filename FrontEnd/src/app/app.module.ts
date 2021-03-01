@@ -18,6 +18,7 @@ import { NumberofjobComponent } from './components/numberofjob/numberofjob.compo
 import { HomepagejobsComponent } from './components/homepagejobs/homepagejobs.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JobsdetailsComponent } from './components/jobsdetails/jobsdetails.component';
+import { AllvacantsComponent } from './components/allvacants/allvacants.component';
 
 
 
@@ -28,6 +29,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { FilterPipe } from './pipes/filter.pipe';
 import { EditvacantComponent } from './components/editvacant/editvacant.component';
 import { EditcategoryComponent } from './components/editcategory/editcategory.component';
+
 
 
 @NgModule({
@@ -48,6 +50,7 @@ import { EditcategoryComponent } from './components/editcategory/editcategory.co
     FilterPipe,
     EditvacantComponent,
     EditcategoryComponent,
+    AllvacantsComponent,
     
 
   ],

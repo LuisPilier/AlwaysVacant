@@ -1,0 +1,40 @@
+.my-custom-scrollbar
+{
+    position: relative;
+    overflow: auto;
+    max-height: 59vh;
+    margin-bottom: 100px;
+}
+
+.table-wrapper-scroll-y
+ {
+ display: block;
+}
+
+.category-job
+{
+     font-size: 20px;
+     font-family: monospace;
+     position: relative;
+     top: 20px;
+     background: #fff;
+     display: inline-block;
+     padding: 0 10px;
+}
+
+.line {
+    height: 2px;
+    background: #868683;
+}
+@media only screen and (min-width: 1024px) and (min-height:1366px){
+  .my-custom-scrollbar{
+    min-height: 300px;
+    max-height: 1140px;
+  }
+}
+@media only screen and (min-width: 1870px) and (min-height:898px){
+  .my-custom-scrollbar{
+    min-height: 300px;
+    max-height: 740px;
+  }
+}
