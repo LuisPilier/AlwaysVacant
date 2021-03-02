@@ -71,9 +71,18 @@
       <form>
         <div class="modal-body">
           <form>
-
+            <div class="form-group">
+              <input type="text" class="form-control" id="Compania" placeholder="Company">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" id="Ubicacion" placeholder="Ubication">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" id="Email" placeholder="Email">
+            </div>
             <div class="form-group">
               <select class="form-control">
+                <option value="" id="CategorySelector" disabled>--Selecciona la categoría--</option>
                 <option *ngFor="let array of categoria" id="CategorySelector" value={{array.ID_Categoria}}>
                   {{array.Nombre}}</option>
               </select>
@@ -100,11 +109,14 @@
                 </label>
               </span>
             </div>
+            <div class="form-group">
+              <input type="text" class="form-control" id="inputEmail4" placeholder="Position">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" id="inputEmail4" placeholder="URL">
+            </div>
             <div class="row">
               <div class="col-md-6">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="inputEmail4" placeholder="URL">
-                </div>
                 <div class="form-group">
                   <select class="form-control" (change)="onChange($event.target.value)">
                     <option value="" id="CountrySelector" disabled>--Selecciona el país--</option>
@@ -114,12 +126,10 @@
                 </div>
               </div>
               <div class="col-md-6">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="inputEmail4" placeholder="Position">
-                </div>
+
                 <div class="form-group">
                   <select class="form-control">
-                    <option value="" id="CountrySelector" disabled>--Selecciona el país--</option>
+                    <option value="" id="CountrySelector" disabled>--Selecciona el ciudad--</option>
                     <option *ngFor="let array of ciudad" id="CitiesSelector" value={{array.ID_Ciudad}}>
                       {{array.Nombre}}</option>
                   </select>
