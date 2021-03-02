@@ -3,8 +3,9 @@
   <br><br>
   <div class="row align-self-center text-center ">
     <div class="col-5 margen">
-      <button data-toggle="modal" data-target="#formJob" type="button"
-        class="btn btn-info mb-3 ml-5 post-job boton">Post a Job <i class="fa fa-bullhorn fa-lg"></i></button>
+      <button data-toggle="modal" [attr.data-target]="'#' + modal" type="button"
+        class="btn btn-info mb-3 ml-5 post-job boton" (click)="validateModal()">Post a Job <i
+          class="fa fa-bullhorn fa-lg"></i></button>
     </div>
     <div class="col-5 margen">
       <div class="input-group">
@@ -14,7 +15,7 @@
             <option *ngFor="let array of categoria" id="CategorySelector">
               {{array.Nombre}}</option>
           </select>
-      </div>
+        </div>
         <input type="text" class="form-control" name="filterPost" placeholder="Search..." [(ngModel)]="filterPost"
           aria-label="" aria-describedby="basic-addon1">
         <div class="input-group-append">
@@ -198,6 +199,25 @@
 
       <br><br>
 
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="alert" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header border-bottom-0">
+        <h3 class="modal-title">Lack of permits.
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </h3>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-danger" role="alert">
+
+          You must have Postman permissions to access this option!!
+        </div>
+      </div>
     </div>
   </div>
 </div>
