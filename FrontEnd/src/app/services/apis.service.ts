@@ -9,12 +9,11 @@ import {VacantesI} from 'src/app/models/vacantes.interface';
 import{VacantadminI} from 'src/app/models/vacanteadmin.interface';
 import { CitiesI } from '../models/cities.interface';
 
-
 @Injectable({
   providedIn: 'root'
 })
-export class ApisService {
 
+export class ApisService {
 url:string = "https://en-linea.app/AlwaysVacant/BackEnd/API/";
 
 
@@ -49,8 +48,6 @@ url:string = "https://en-linea.app/AlwaysVacant/BackEnd/API/";
     let direccion = this.url + "categoria.php";
     return this.http.put<ResponseI>(direccion, form);
   }
-
-
 
   deleteCategory(form:CategoryI):Observable<ResponseI>{
     let direccion = this.url + "categoria.php";

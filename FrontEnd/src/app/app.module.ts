@@ -29,6 +29,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { FilterPipe } from './pipes/filter.pipe';
 import { EditvacantComponent } from './components/editvacant/editvacant.component';
 import { EditcategoryComponent } from './components/editcategory/editcategory.component';
+import { SortingPipe } from './pipes/sorting.pipe';
 
 
 
@@ -51,6 +52,7 @@ import { EditcategoryComponent } from './components/editcategory/editcategory.co
     EditvacantComponent,
     EditcategoryComponent,
     AllvacantsComponent,
+    SortingPipe,
     
 
   ],

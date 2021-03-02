@@ -16,7 +16,6 @@
       </div>
     </div>
     <div class="form-group">
-      <label>Category</label>
       <select class="form-control" name="filterpost" [(ngModel)]="filterPost">
         <option label="Elija su categoria"> </option>
         <option *ngFor="let array of categoria" id="CategorySelector">
@@ -56,6 +55,8 @@
                   </tr>
                 </tbody>
               </table>
+              <button type="button" (click)="moreJobs()" class="btn btn-info justify-content-center">More
+                Jobs...</button>
             </div>
             <br>
           </tbody>
@@ -134,23 +135,23 @@
               <label>URL:</label>
               <input formControlName="URL" type="text" class="form-control" placeholder="URL">
             </div>
-                <div class="form-group col-md-6">
-                  <label>Country:</label>
-                  <select formControlName="Codigo_pais" class="form-control" (change)="onChange($event.target.value)">
-                    <option value="" id="CountrySelector" disabled>--Selecciona el país--</option>
-                    <option *ngFor="let array of paises" id="CountrySelector" value={{array.Codigo}}>
-                      {{array.Nombre}}</option>
-                  </select>
-                </div>
+            <div class="form-group col-md-6">
+              <label>Country:</label>
+              <select formControlName="Codigo_pais" class="form-control" (change)="onChange($event.target.value)">
+                <option value="" id="CountrySelector" disabled>--Selecciona el país--</option>
+                <option *ngFor="let array of paises" id="CountrySelector" value={{array.Codigo}}>
+                  {{array.Nombre}}</option>
+              </select>
+            </div>
 
-                <div class="form-group col-md-6">
-                  <label>City:</label>
-                  <select formControlName="ID_Ciudad" class="form-control">
-                    <option value="" id="CountrySelector" disabled>--Selecciona el ciudad--</option>
-                    <option *ngFor="let array of ciudad" id="CitiesSelector" value={{array.ID_Ciudad}}>
-                      {{array.Nombre}}</option>
-                  </select>
-                </div>
+            <div class="form-group col-md-6">
+              <label>City:</label>
+              <select formControlName="ID_Ciudad" class="form-control">
+                <option value="" id="CountrySelector" disabled>--Selecciona el ciudad--</option>
+                <option *ngFor="let array of ciudad" id="CitiesSelector" value={{array.ID_Ciudad}}>
+                  {{array.Nombre}}</option>
+              </select>
+            </div>
 
 
 
