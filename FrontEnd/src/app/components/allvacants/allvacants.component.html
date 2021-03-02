@@ -8,6 +8,13 @@
     </div>
     <div class="col-5 margen">
       <div class="input-group">
+        <div class="form-group pr-md-2 ">
+          <select class="form-control" name="filterpost" [(ngModel)]="filterPost">
+            <option label="Elija su categoria"> </option>
+            <option *ngFor="let array of categoria" id="CategorySelector">
+              {{array.Nombre}}</option>
+          </select>
+      </div>
         <input type="text" class="form-control" name="filterPost" placeholder="Search..." [(ngModel)]="filterPost"
           aria-label="" aria-describedby="basic-addon1">
         <div class="input-group-append">
@@ -15,13 +22,6 @@
         </div>
       </div>
     </div>
-    <div class="form-group">
-              <select class="form-control" name="filterpost" [(ngModel)]="filterPost">
-                <option label="Elija su categoria"> </option>
-                <option *ngFor="let array of categoria" id="CategorySelector">
-                  {{array.Nombre}}</option>
-              </select>
-   </div>
   </div>
   <div class="row justify-content-center">
     <div class="col-sm-8 align-self-center text-center">
