@@ -7,7 +7,7 @@
       <form [formGroup]="editarForm">
         <div class="form-row form-group">
 
-        
+
           <div class="form-group col-md-6">
             <label >Company</label>
             <input formControlName="Compania"  type="text" class="form-control" >
@@ -17,7 +17,7 @@
             <label >Descripcion</label>
             <input formControlName="Descripcion" type="text" class="form-control"  >
           </div>
-         
+
           <div class="form-group col-md-6">
             <label >ID City</label>
             <input formControlName="ID_Ciudad"  type="text" class="form-control"  >
@@ -36,7 +36,7 @@
             <label >Pais</label>
             <input formControlName="Nombre" type="text" class="form-control"  >
           </div>
- 
+
           <div class="form-group col-md-6">
             <label >Email</label>
             <input formControlName="Email" type="text" class="form-control"  >
@@ -46,14 +46,14 @@
             <label >URL</label>
             <input formControlName="URL" type="text" class="form-control"  >
           </div>
-          
+
           <div class="form-group col-md-6">
             <label >Logo</label>
             <input formControlName="Logo" class="form-control"  >
           </div>
-          
-          <input type="button" data-toggle="modal" data-target="#form2"  style="color: white; " value="Edit Vacant" class="btn btn-info   btn-lg btn-block">
-          <button type="button" data-toggle="modal" data-target="#form1"  class="btn btn-danger   btn-lg btn-block" >Delete Vacant</button>
+
+          <input type="submit" style="color: white; " value="Edit Vacant" class="btn btn-info   btn-lg btn-block">
+          <button type="button" (click)="eliminar()" class="btn btn-danger   btn-lg btn-block" >Delete Vacant</button>
         </div>
       </form>
 
@@ -73,7 +73,7 @@
               <input style="margin-right: 12px;" (click)="eliminar()" type="submit" class="btn btn-primary col-md-5 " value="Confirm" >
               <input type="submit" class="btn btn-danger col-md-5 " data-dismiss="modal" value="Cancel" >
             </div>
-    
+
           </form>
         </div>
       </div>
@@ -93,13 +93,13 @@
               <input style="margin-right: 12px;"  type="submit" class="btn btn-primary col-md-5 " value="Confirm" >
               <input type="submit" class="btn btn-danger col-md-5 " data-dismiss="modal" value="Cancel" >
             </div>
-    
+
           </form>
         </div>
       </div>
     </div>
     <br><br>
-  
+
 <br><br><br>
 
 

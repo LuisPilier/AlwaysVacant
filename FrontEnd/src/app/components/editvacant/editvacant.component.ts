@@ -34,11 +34,11 @@ export class EditvacantComponent implements OnInit {
  })
 
   ngOnInit(): void {
-    
+
     let ID_Vacante = this.activerouter.snapshot.paramMap.get('ID_Vacante');
     let Token = this.getToken();
     this.api.getUnicaVacante(ID_Vacante).subscribe(data =>{
-      
+
     //@ts-ignore
       this.datosVacante = data[0];
       this.editarForm.setValue({
@@ -58,8 +58,8 @@ export class EditvacantComponent implements OnInit {
       });
       console.log(this.editarForm.value)
     })
-    
-  
+
+
   }
 
   putForm(form: VacantesI){
@@ -81,7 +81,7 @@ export class EditvacantComponent implements OnInit {
   })
   }
 
- 
- 
+
+
 
 }
