@@ -28,7 +28,7 @@ export class HomepageComponent implements OnInit {
   });
 
 
-  constructor(private api: ApisService) { }
+  constructor(private api: ApisService, private router: Router) { }
 
 
   errorMessage: any = "";
@@ -52,13 +52,13 @@ export class HomepageComponent implements OnInit {
     console.log(id_rol)
     switch (id_rol) {
       case "1":
-        document.location.href = (`https://alwaysvacant.netlify.app/homepagejobs`);
+        this.router.navigate(['/homepagejobs'])
         break;
       case "2":
-        document.location.href = (`https://alwaysvacant.netlify.app/homepagejobs`);
+        this.router.navigate(['/homepagejobs'])
         break;
       case "3":
-        document.location.href = (`https://alwaysvacant.netlify.app/adminpage`);
+        this.router.navigate(['/adminpage'])
         break;
     }
   }
@@ -82,7 +82,7 @@ export class HomepageComponent implements OnInit {
   postForm(form: RegisterI) {
     this.api.postUser(form).subscribe(data => {
       console.log(data);
-      document.location.href = (`https://alwaysvacant.netlify.app/homepage`);
+      this.router.navigate(['/homepage'])
     })
   }
 

@@ -32,7 +32,7 @@ export class HeaderadminComponent implements OnInit {
 
   logout(){
       localStorage.clear();
-      document.location.href = (`https://alwaysvacant.netlify.app/homepage`)
+      document.location.href = (`https://alwaysvacants.000webhostapp.com/homepage`)
   }
 
 

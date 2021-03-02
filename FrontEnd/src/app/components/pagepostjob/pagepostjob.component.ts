@@ -18,16 +18,16 @@ export class PagepostjobComponent implements OnInit {
     console.log(id_rol)
     switch (id_rol) {
       case "1":
-        document.location.href = (`https://alwaysvacant.netlify.app/homepagejobs`);
+        document.location.href = (`https://alwaysvacants.000webhostapp.com/homepagejobs`);
         break;
       case "2":
-        document.location.href = (`https://alwaysvacant.netlify.app/homepagejobs`);
+        document.location.href = (`https://alwaysvacants.000webhostapp.com/homepagejobs`);
         break;
       case "3":
-        document.location.href = (`https://alwaysvacant.netlify.app/adminpage`);
+        document.location.href = (`https://alwaysvacants.000webhostapp.com/adminpage`);
         break;
       default:
-        document.location.href = (`https://alwaysvacant.netlify.app/homepage`);
+        document.location.href = (`https://alwaysvacants.000webhostapp.com/homepage`);
     }
   }
 
