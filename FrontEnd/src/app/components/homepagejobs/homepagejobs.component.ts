@@ -84,6 +84,7 @@ export class HomepagejobsComponent implements OnInit {
       console.log(form);
       this.api.postJob(form).subscribe(data => {
         console.log(data);
+        document.location.href = (`http://localhost:4200/homepagejobs`);
       })
     }
   }
