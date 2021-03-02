@@ -20,9 +20,15 @@ $client = new Client(['base_uri' => $server['conexion']['url']]);
 
 
 //Request + api deseada
-$response = $client->request('GET','AlwaysVacant/BackEnd/API/Localidades/paises.php'
-
-
+$response = $client->request('DELETE','AlwaysVacant/BackEnd/API/Usuarios/usuario.php',
+[
+    'json' =>[
+              #TOKEN
+              "Token"=>"0e4d6ae1aa4fdc2fbfad146d2375c76d",
+               #Usuario en especifico
+               "ID_Usuario" => 1019
+           ]
+]
 );
 
 #echo

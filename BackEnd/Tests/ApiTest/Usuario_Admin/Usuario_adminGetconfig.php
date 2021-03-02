@@ -20,8 +20,13 @@ $client = new Client(['base_uri' => $server['conexion']['url']]);
 
 
 //Request + api deseada
-$response = $client->request('GET','AlwaysVacant/BackEnd/API/Localidades/paises.php'
+$response = $client->request('GET','AlwaysVacant/BackEnd/API/Usuarios/usuario_admin.php',
+[
+     'json'  => [
+                   "Cod_conf"=> 1
+             ]
 
+]
 
 );
 

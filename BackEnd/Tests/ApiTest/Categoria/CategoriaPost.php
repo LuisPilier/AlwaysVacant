@@ -20,7 +20,18 @@ $client = new Client(['base_uri' => $server['conexion']['url']]);
 
 
 //Request + api deseada
-$response = $client->request('GET','AlwaysVacant/BackEnd/API/Localidades/paises.php'
+$response = $client->request('POST','AlwaysVacant/BackEnd/API/categoria.php',
+[
+
+     "json" => 
+     [
+        "Token" => "e34748f5f7cb104a37704a535397a95a",
+        "Nombre" =>"QA"
+     ]
+
+]
+
+
 
 
 );

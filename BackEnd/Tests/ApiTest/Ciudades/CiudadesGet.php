@@ -20,15 +20,7 @@ $client = new Client(['base_uri' => $server['conexion']['url']]);
 
 
 //Request + api deseada
-$response = $client->request('GET','AlwaysVacant/BackEnd/API/Localidades/ciudades.php',
-[
-    'json' =>[   
-               #TOKEN  
-               'Token' => 'db76d0f9f7dd2aca292ede964445ccfd',
-               #Codigo del pais solicitado
-               'Codigo_pais' => 'RD'
-           ]
-]
+$response = $client->request('GET','AlwaysVacant/BackEnd/API/Localidades/ciudades.php?Codigo_pais=RD'
 );
 
 #echo

@@ -23,10 +23,9 @@ $client = new Client(['base_uri' => $server['conexion']['url']]);
 $response = $client->request('GET','AlwaysVacant/BackEnd/API/Usuarios/usuario.php',
 [
     'json' =>[
-              #token
-               'Token' => '090d29d178301d4dc604950e76cbb094',
+           
                #Usuario en especifico
-               "ID_Usuario" => 1
+               "ID_Usuario" => 1019
            ]
 ]
 );

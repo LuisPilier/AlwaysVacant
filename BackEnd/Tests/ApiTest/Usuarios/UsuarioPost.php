@@ -6,6 +6,7 @@ include('../ApiTest.php');
 #Require de la del composer 
 require "../../../vendor/autoload.php";
 
+//Use de libreria 
 use GuzzleHttp\Client;
 
 #instancia
@@ -20,8 +21,22 @@ $client = new Client(['base_uri' => $server['conexion']['url']]);
 
 
 //Request + api deseada
-$response = $client->request('GET','AlwaysVacant/BackEnd/API/Localidades/paises.php'
+$response = $client->request('POST','AlwaysVacant/BackEnd/API/Usuarios/usuario.php',
+[
+    #Parametros
+    
+    'json' =>[
+           
+        "Token"=>"e4af7a1c83c4a6788476cced2b8a61fe",
+        "Nombre" => "Rafael",
+        "Apellido"=> "Polanco",
+        "Usuario"=> "Rafael2002",
+        "Contrasena"=> "Rpolacano1989",
+        "ID_Rol"=> "1",
+        "Correo"=> "polanco@gmail.com"
+    ]
 
+]
 
 );
 

@@ -21,11 +21,7 @@ $client = new Client(['base_uri' => $server['conexion']['url']]);
 
 //Request + api deseada
 $response = $client->request('GET','AlwaysVacant/BackEnd/API/Usuarios/rol.php',
-[
-    'json' =>[
-               
-           ]
-]
+
 );
 
 #echo

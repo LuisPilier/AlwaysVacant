@@ -22,11 +22,8 @@ $client = new Client(['base_uri' => $server['conexion']['url']]);
 
 //Request + api deseada
 $response = $client->request('GET','AlwaysVacant/BackEnd/API/Usuarios/usuario.php',
-[
-    'json' =>[
-               'Token' => '090d29d178301d4dc604950e76cbb094'
-           ]
-]
+
+
 );
 
 #echo
