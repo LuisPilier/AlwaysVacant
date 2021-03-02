@@ -88,6 +88,10 @@ export class HomepagejobsComponent implements OnInit {
     }
   }
 
+  moreJobs(){
+    document.location.href = (`http://localhost:4200/allvacants`);
+  }
+
   verdetails(ID_Vacante: any){
    this.router.navigate(['jobsdetails', ID_Vacante]);
 
