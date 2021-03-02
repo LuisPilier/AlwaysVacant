@@ -10,6 +10,7 @@ export interface VacantesI{
     Email: string;
     Token: string;
     Logo: string;
+    TipoVacante: string;
     ID_Vacante: number;
     Ciudad: string;
     Nombre: string;

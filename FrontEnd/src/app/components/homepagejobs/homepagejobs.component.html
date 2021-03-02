@@ -15,6 +15,13 @@
         </div>
       </div>
     </div>
+    <div class="form-group">
+              <select class="form-control" name="filterpost" [(ngModel)]="filterPost">
+                <option label="Elija su categoria"> </option>
+                <option *ngFor="let array of categoria" id="CategorySelector">
+                  {{array.Nombre}}</option>
+              </select>
+   </div>
   </div>
   <div class="row justify-content-center">
     <div class="col-sm-8 align-self-center text-center">
@@ -28,7 +35,7 @@
             <div id="First-Table">
               <br>
 
-              <table class="table table-striped table-hover">
+              <table style="cursor: pointer;" class="table table-striped table-hover">
 
                 <thead>
                   <tr>
@@ -40,7 +47,8 @@
 
                 <tbody>
                   <tr
-                    *ngFor="let array of conversion | filter:filterPost | paginate: { itemsPerPage: numpag, currentPage: paginactual } ">
+                    *ngFor="let array of conversion | filter:filterPost | paginate: { itemsPerPage: numpag, currentPage: paginactual }"
+                    (click)="verdetails(array.ID_Vacante)">
                     <td>{{array.Ciudad}}</td>
                     <td>{{array.Posicion}}</td>
                     <td>{{array.Compania}}</td>
@@ -67,99 +75,113 @@
           </button>
         </h5>
       </div>
-      <form>
+     
         <div class="modal-body">
-          <form>
-
+          <form [formGroup]="jobForm" (ngSubmit)="postForm(jobForm.value)">
             <div class="form-group">
-              <select class="form-control">
+              <input type="text" formControlName="Compania" class="form-control" id="Compania" placeholder="Company">
+            </div>
+            <div class="form-group">
+              <input type="text" formControlName="Ubicacion" class="form-control" id="Ubicacion" placeholder="Ubication">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" formControlName="Email" id="Email" placeholder="Email">
+            </div>
+            <div class="form-group">
+              <select formControlName="ID_Categoria" class="form-control">
+                <option value="" id="CategorySelector" disabled>--Selecciona la categoría--</option>
                 <option *ngFor="let array of categoria" id="CategorySelector" value={{array.ID_Categoria}}>
                   {{array.Nombre}}</option>
               </select>
             </div>
 
-            <div class="input-group">
+            <div  class="input-group ">
 
               <span class="input-group-addon" style="font-size: 20px;">Type:</span>
 
-              <span class="radio">
+              <span  >
                 <label>
-                  <input type="radio" value="2" class="radiobox" name="style-0a2" style="margin-left: 5px;">
+                  <input formControlName="TipoVacante"  type="radio" value="2" class="radiobox" name="style-0a2" style="margin-left: 5px;">
                   <span style="font-size: 20px;"> Full Time</span>
                 </label>
 
                 <label>
-                  <input type="radio" class="radiobox" value="3" name="style-0a2" style="margin-left: 15px;">
+                  <input type="radio"  class="radiobox" value="3" name="style-0a2" style="margin-left: 15px;">
                   <span style="font-size: 20px; "> Part Time</span>
                 </label>
 
                 <label>
-                  <input type="radio" class="radiobox" value="1" name="style-0a2" style="margin-left: 15px;">
+                  <input type="radio"  class="radiobox" value="1" name="style-0a2" style="margin-left: 15px;">
                   <span style="font-size: 20px; "> Freelance</span>
                 </label>
               </span>
             </div>
-
-
-            <!--<div class="form-row">
-              <div class="form-group col-md-6">
-                <input type="text" class="form-control" id="inputEmail4" placeholder="Company">
+            <div class="form-group">
+              <input formControlName="Posicion" type="text" class="form-control" id="inputEmail4" placeholder="Position">
+            </div>
+            <div class="form-group">
+              <input formControlName="URL" type="text" class="form-control" id="inputEmail4" placeholder="URL">
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <select formControlName="Nombre" class="form-control" (change)="onChange($event.target.value)">
+                    <option value="" id="CountrySelector" disabled>--Selecciona el país--</option>
+                    <option *ngFor="let array of paises" id="CountrySelector" value={{array.Codigo}}>
+                      {{array.Nombre}}</option>
+                  </select>
+                </div>
               </div>
+              <div class="col-md-6">
 
+                <div class="form-group">
+                  <select formControlName="ID_Ciudad" class="form-control">
+                    <option value="" id="CountrySelector" disabled>--Selecciona el ciudad--</option>
+                    <option *ngFor="let array of ciudad" id="CitiesSelector" value={{array.ID_Ciudad}}>
+                      {{array.Nombre}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+
+
+            <div class="d-flex justify-content-center">
               <div class="form-group col-md-6">
-                <div class="custom-file fileInputProfileWrap">
-                  <input type="file" (change)="fileChangeEvent($event)" class="fileInputProfile">
-                  <div class="img-space">
+                <fieldset class="form-group">
+                  {{imageError}}
+                  <div class="custom-file fileInputProfileWrap">
+                    <input formControlName="Logo" type="file" (change)="fileChangeEvent($event)" class="fileInputProfile">
+                    <div class="img-space">
 
-                    <ng-container *ngIf="isImageSaved; else elseTemplate">
-                      <img [src]="cardImageBase64" />
-                    </ng-container>
-                    <ng-template #elseTemplate>
+                      <ng-container *ngIf="isImageSaved; else elseTemplate">
+                        <img [src]="cardImageBase64" />
+                      </ng-container>
+                      <ng-template #elseTemplate>
 
-                      <img src="./../../assets/placeholder.png" class="img-responsive">
-                    </ng-template>
+                        <img src="../../../assets/img/no-img-placeholder.png" class="img-responsive">
+                      </ng-template>
+
+                    </div>
 
                   </div>
-
-                </div>
                 </fieldset>
               </div>
               <a class="btn btn-danger" (click)="removeImage()" *ngIf="isImageSaved">Remove</a>
             </div>
-          -->
-            <div class="form-group col-md-6">
-              <input type="text" class="form-control" id="inputEmail4" placeholder="URL">
-            </div>
-            <div class="form-group col-md-6">
-              <input type="text" class="form-control" id="inputEmail4" placeholder="Position">
-            </div>
-
-            <div class="form-group col-md-6">
-              <select class="form-control" (change)="onChange($event.target.value)">
-                <option value="" id="CountrySelector" disabled>--Selecciona el país--</option>
-                <option *ngFor="let array of paises" id="CountrySelector" value={{array.Codigo}}>
-                  {{array.Nombre}}</option>
-              </select>
-            </div>
-            <div class="form-group col-md-6">
-              <select class="form-control">
-                <option *ngFor="let array of ciudad" id="CitiesSelector" value={{array.ID_Ciudad}} (click)="handleChange(item)">
-                  {{array.Nombre}}</option>
-              </select>
-            </div>
             <div class="form-group w-100">
               <div class="col-md-12">
-                <textarea class="form-control" id="message" name="message" placeholder="Descripcion"
+                <textarea formControlName="Descripcion" class="form-control" id="message" name="message" placeholder="Descripcion"
                   rows="7"></textarea>
               </div>
             </div>
-            <button type="button" style="color: white; " class="btn btn-info  btn-lg btn-block">Send</button>
+            <button type="submit" style="color: white; " class="btn btn-info  btn-lg btn-block">Send</button>
           </form>
 
         </div>
 
         <br><br>
-      </form>
+      
     </div>
   </div>
 </div>

@@ -5,7 +5,7 @@
   <div class="container">
     <div class="row align-self-center text-center">
       <div class="col-md-9 col-sm-5">
-          <button type="button" class="btn btn-info mb-3 ml-5 post-job boton">Volver atras <i
+          <button type="button" (click)="volver()" class="btn btn-info mb-3 ml-5 post-job boton">Volver atras <i
               class="fa fa-bullhorn fa-lg"></i></button>
       </div>
       <div class="col-md-3 col-sm-5">
@@ -14,25 +14,30 @@
       </div>
     </div>
   </div>
-  <div class="card container contenido">
-    <div class="card-body">
-      <div class="row">
-        <div class="col-10">
-          <h3 class="card-title">Litesyt Technology</h3>
-          <h5 class="card-title text-muted"> Santo Domingo, Republica Dominicana</h5>
-          <hr>
-          <p class="card-text">QA- tiempo de completo</p>
-          <hr>
+  
+    <div class="card container contenido">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-10">
+            
+            <h3 class="card-title">{{Title}}</h3>
+            <h5 class="card-title text-muted"> {{City}}, Republica Dominicana</h5>
+            <hr>
+            <p class="card-text">{{Position}}- {{TipoVacant}}</p>
+            <hr>
+          </div>
+          <div class="col-2">
+            <img src="{{img}}">
+          </div>
         </div>
-        <div class="col-2">
-          <img src="../../../assets/img/unnamed.jpg" alt="">
-        </div>
+        <p class="card-text">{{Descripcion}}</p>
+        <p>How to apply?</p>
+        <p>{{Email}}</p>
       </div>
-      <p class="card-text">Estudiante de ingeniería en sistemas o similares con conocimientos: c#, Python</p>
-      <p>How to apply?</p>
-      <p>Send your resume to vacantes@litesyt.com</p>
     </div>
-  </div>
+    
+
+  
 </div>
 <div class="contenido"></div>
 

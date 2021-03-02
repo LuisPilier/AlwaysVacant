@@ -7,6 +7,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http'
 import{Observable} from 'rxjs';
 import {VacantesI} from 'src/app/models/vacantes.interface';
 import{VacantadminI} from 'src/app/models/vacanteadmin.interface';
+import { CitiesI } from '../models/cities.interface';
 
 
 @Injectable({
@@ -38,6 +39,12 @@ url:string = "https://en-linea.app/AlwaysVacant/BackEnd/API/";
 
   }
 
+  postJob(form:VacantesI):Observable<ResponseI>{
+    let direccion = this.url + "vacante.php";
+    return this.http.post<ResponseI>(direccion,form);
+
+  }
+
   putCategory(form:CategoryI):Observable<ResponseI>{
     let direccion = this.url + "categoria.php";
     return this.http.put<ResponseI>(direccion, form);
@@ -58,9 +65,19 @@ url:string = "https://en-linea.app/AlwaysVacant/BackEnd/API/";
     return this.http.delete<ResponseI>(direccion, Opciones);
   }
 
+  getCiudades(Codigo_Pais: string | null):Observable<CitiesI>{
+    let direccion = this.url + "Localidades/ciudades.php?Codigo_pais=" + Codigo_Pais;
+    return this.http.get<CitiesI>(direccion);
+  }
+
   getUnicaCategoria(ID_Categoria: string | null):Observable<CategoryI>{
     let direccion = this.url + "categoria.php?ID_Categoria=" + ID_Categoria;
     return this.http.get<CategoryI>(direccion);
+  }
+
+  getUnicoJob(ID_Vacante: string | null):Observable<VacantesI>{
+    let direccion = this.url + "vacante.php?ID_Vacante=" + ID_Vacante;
+    return this.http.get<VacantesI>(direccion);
   }
 
   getUnicaVacante(ID_Vacante: string | null):Observable<VacantesI>{
