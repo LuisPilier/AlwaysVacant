@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApisService } from 'src/app/services/apis.service';
 import { ResponseI } from 'src/app/models/response.interface';
 import { CategoryI } from 'src/app/models/category.interface';
+import {VacantadminI} from 'src/app/models/vacanteadmin.interface';
 @Component({
   selector: 'app-homepagejobs',
   templateUrl: './homepagejobs.component.html',
@@ -18,11 +19,12 @@ export class HomepagejobsComponent implements OnInit {
   constructor(private http: HttpClient, private api: ApisService) { }
   filterPost = '';
   conversion: [] = [];
- 
+  numbeross: [] = [];
   paginactual: number = 1;
-  numpag: number = 10; 
+  numpag: any; 
 
   ngOnInit(): void {
+    this.getNumber();
     this.getData();
     let Token = localStorage.getItem('Token');
     this.nuevoForm.patchValue({
@@ -35,6 +37,13 @@ export class HomepagejobsComponent implements OnInit {
       .subscribe((data: any) => {
         this.conversion = data;
         console.log(this.conversion);
+      });
+  }
+  getNumber() {
+    this.http.get('https://en-linea.app/AlwaysVacant/BackEnd/API/Usuarios/usuario_admin.php')
+      .subscribe((data: any) => {
+        this.numpag = data[0].Numero_vacantes;
+        console.log(this.numpag);
       });
   }
 }

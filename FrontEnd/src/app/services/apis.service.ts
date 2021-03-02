@@ -6,6 +6,8 @@ import {CategoryI} from 'src/app/models/category.interface';
 import {HttpClient, HttpHeaders} from '@angular/common/http'
 import{Observable} from 'rxjs';
 import {VacantesI} from 'src/app/models/vacantes.interface';
+import{VacantadminI} from 'src/app/models/vacanteadmin.interface';
+
 
 @Injectable({
   providedIn: 'root'
@@ -80,6 +82,11 @@ url:string = "https://en-linea.app/AlwaysVacant/BackEnd/API/";
       body: form
     }
     return this.http.delete<ResponseI>(direccion, Opciones);
+  }
+  
+  putVacantAdmin(form:VacantadminI):Observable<ResponseI>{
+    let direccion = this.url + "Usuarios/" + "usuario_admin.php";
+    return this.http.put<ResponseI>(direccion, form);
   }
 
 }
