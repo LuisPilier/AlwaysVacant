@@ -18,7 +18,10 @@ export class JobsdetailsComponent implements OnInit {
  TipoVacant: any;
  Descripcion: any;
  Email: any;
+ Pais: any;
  img: any;
+ URL: any;
+
  datosJobs!: VacantesI;
 
   ngOnInit(): void {
@@ -27,6 +30,7 @@ export class JobsdetailsComponent implements OnInit {
     this.api.getUnicoJob(ID_Vacante).subscribe(data =>{
       //@ts-ignore
       this.datosJobs = data[0];
+      console.log(this.datosJobs)
       this.Title = this.datosJobs.Compania;
       this.City = this.datosJobs.Ciudad;
      this.Country = this.datosJobs.Nombre;
@@ -35,6 +39,8 @@ export class JobsdetailsComponent implements OnInit {
      this.Descripcion = this.datosJobs.Descripcion;
      this.Email = this.datosJobs.Email;
      this.img = this.datosJobs.Logo;
+     this.Pais=this.datosJobs.Nombre;
+     this.URL=this.datosJobs.URL;
     })
   }
 

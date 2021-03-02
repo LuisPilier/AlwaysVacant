@@ -14,4 +14,5 @@ export interface VacantesI{
     ID_Vacante: number;
     Ciudad: string;
     Nombre: string;
+    Codigo_Pais: string;
 }

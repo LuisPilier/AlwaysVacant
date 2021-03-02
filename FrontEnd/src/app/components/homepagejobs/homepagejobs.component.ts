@@ -29,6 +29,8 @@ export class HomepagejobsComponent implements OnInit {
   numbeross: [] = [];
   paginactual: number = 1;
   numpag: any;
+  confirm: string="";
+  count: number=0;
   categoria: [] = [];
   ciudad: [] = [];
   paises: [] = [];
@@ -43,17 +45,17 @@ export class HomepagejobsComponent implements OnInit {
     Email: new FormControl(''),
     ID_Categoria: new FormControl(''),
     ID_Ciudad:new FormControl(''),
-    TipoVacante: new FormControl(''),
+    ID_Tipo_Vacante: new FormControl(''),
     Posicion: new FormControl(''),
     URL: new FormControl(''),
     Logo: new FormControl(''),
-    Nombre: new FormControl(''),
     Codigo_pais:new FormControl(''),
     Descripcion: new FormControl('')
   });
 
 
   ngOnInit(): void {
+    this.confirm="Send";
     this.getNumber();
     this.getData();
     this.getCategory();
@@ -69,7 +71,21 @@ export class HomepagejobsComponent implements OnInit {
   }
 
   postForm(form:VacantesI){
-    console.log(form);
+    if(this.count==0){
+      this.count ++;
+      this.jobForm.patchValue({
+        'Logo':this.cardImageBase64
+      });
+      this.confirm="Press another time to confirm"
+      let confim = document.getElementById('confirm');
+      //@ts-ignore
+      confim.className='btn btn-danger btn-lg btn-block';
+    }else{
+      console.log(form);
+      this.api.postJob(form).subscribe(data => {
+        console.log(data);
+      })
+    }
   }
 
   verdetails(ID_Vacante: any){
@@ -160,7 +176,6 @@ export class HomepagejobsComponent implements OnInit {
           } else {
             const imgBase64Path = e.target.result;
             this.cardImageBase64 = imgBase64Path;
-            console.log(imgBase64Path)
             this.isImageSaved = true;
             return true;
             //this.previewImagePath = imgBase64Path;

@@ -3,102 +3,144 @@
 <br><br>
 <h2 style="text-align: center;">EDIT VACANT</h2>
 
-    <div class="modal-body">
-      <form [formGroup]="editarForm">
-        <div class="form-row form-group">
+<div class="modal-body">
+  <form [formGroup]="editarForm">
+    <div class="form-row form-group">
 
 
-          <div class="form-group col-md-6">
-            <label >Company</label>
-            <input formControlName="Compania"  type="text" class="form-control" >
-          </div>
+      <div class="form-group col-md-6">
+        <label>Company</label>
+        <input formControlName="Compania" type="text" class="form-control">
+      </div>
+      <div class="form-group col-md-6">
+        <label>Position</label>
+        <input formControlName="Posicion" type="text" class="form-control">
+      </div>
 
-          <div class="form-group col-md-6">
-            <label >Descripcion</label>
-            <input formControlName="Descripcion" type="text" class="form-control"  >
-          </div>
+      <div class="form-group col-md-6">
+        <label>Country</label>
+        <select formControlName="Codigo_Pais" class="form-control" (change)="onChange($event.target.value)">
+          <option value="" id="CountrySelector" disabled>--Selecciona el país--</option>
+          <option *ngFor="let array of paises" value={{array.Codigo}}>
+            {{array.Nombre}}</option>
+        </select>
+      </div>
 
-          <div class="form-group col-md-6">
-            <label >ID City</label>
-            <input formControlName="ID_Ciudad"  type="text" class="form-control"  >
-          </div>
-          <div class="form-group col-md-6">
-            <label >Location</label>
-            <input formControlName="Ubicacion" type="text" class="form-control"  >
-          </div>
+      <div class="form-group col-md-6">
+        <label>City</label>
+        <select formControlName="ID_Ciudad" class="form-control">
+          <option value="" id="CountrySelector" disabled>--Selecciona el ciudad--</option>
+          <option *ngFor="let array of Ciudad" id="CitiesSelector" value={{array.ID_Ciudad}}>
+            {{array.Nombre}}</option>
+        </select>
+      </div>
+      <div class="form-group col-md-6">
+        <label>Location</label>
+        <input formControlName="Ubicacion" type="text" class="form-control">
+      </div>
 
-          <div class="form-group col-md-6">
-            <label >Position</label>
-            <input formControlName="Posicion" type="text" class="form-control"  >
-          </div>
+      <div class="form-group col-md-6">
+        <label>Email</label>
+        <input formControlName="Email" type="text" class="form-control">
+      </div>
 
-          <div class="form-group col-md-6">
-            <label >Pais</label>
-            <input formControlName="Nombre" type="text" class="form-control"  >
-          </div>
+      <div class="form-group col-md-6">
+        <label>URL</label>
+        <input formControlName="URL" type="text" class="form-control">
+      </div>
+      <div class="form-group col-md-6">
+        <label>Category</label>
+        <select formControlName="ID_Categoria" class="form-control">
+          <option value="" id="CategorySelector" disabled>--Selecciona la categoría--</option>
+          <option *ngFor="let array of categoria" id="CategorySelector" value={{array.ID_Categoria}}>
+            {{array.Nombre}}</option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <label>Logo</label>
+        <div class="form-group col-md-4 offset-md-3">
+          <fieldset class="form-group">
+            {{imageError}}
+            <div class="custom-file fileInputProfileWrap">
+              <input type="file" (change)="fileChangeEvent($event)" class="fileInputProfile">
+              <div class="img-space">
 
-          <div class="form-group col-md-6">
-            <label >Email</label>
-            <input formControlName="Email" type="text" class="form-control"  >
-          </div>
+                <ng-container>
+                  <img [src]="cardImageBase64"/>
+                </ng-container>
+                <ng-template #elseTemplate>
 
-          <div class="form-group col-md-6">
-            <label >URL</label>
-            <input formControlName="URL" type="text" class="form-control"  >
-          </div>
+                  <img src="../../../assets/img/no-img-placeholder.png" class="img-responsive">
+                </ng-template>
 
-          <div class="form-group col-md-6">
-            <label >Logo</label>
-            <input formControlName="Logo" class="form-control"  >
-          </div>
+              </div>
 
-          <input type="submit" data-toggle="modal" data-target="#form2" style="color: white; " value="Edit Vacant" class="btn btn-info   btn-lg btn-block">
-          <button type="button" data-toggle="modal" data-target="#form1"  class="btn btn-danger   btn-lg btn-block" >Delete Vacant</button>
+            </div>
+          </fieldset>
+
         </div>
+        <div class="col-md-1 offset-4 mb-md-3">
+          <a class="btn btn-danger" (click)="removeImage()" *ngIf="isImageSaved">Remove</a>
+        </div>
+      </div>
+
+
+      <div class="form-group col-md-6">
+        <label>Descripcion</label>
+        <textarea formControlName="Descripcion" type="text" class="form-control" placeholder="Descripcion"
+          rows="7"></textarea>
+      </div>
+
+      <input type="submit" data-toggle="modal" data-target="#form2" style="color: white; " (click)="confirmando(editarForm)" value="Edit Vacant"
+        class="btn btn-info   btn-lg btn-block">
+      <button type="button" data-toggle="modal" data-target="#form1" class="btn btn-danger   btn-lg btn-block">Delete
+        Vacant</button>
+    </div>
+  </form>
+
+</div>
+<div class="modal fade" id="form1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header border-bottom-0">
+        <h5 class="modal-title" id="exampleModalLabel">Sure you want to delete this Vacant?
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </h5>
+      </div>
+      <form>
+        <div class="modal-body" style="text-align: center;">
+          <input style="margin-right: 12px;" (click)="eliminar()" type="submit" class="btn btn-primary col-md-5 "
+            value="Confirm">
+          <input type="submit" class="btn btn-danger col-md-5 " data-dismiss="modal" value="Cancel">
+        </div>
+
       </form>
-
     </div>
-    <div class="modal fade" id="form1"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header border-bottom-0">
-            <h5 class="modal-title" id="exampleModalLabel">Sure you want to delete this Vacant?
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </h5>
-          </div>
-          <form >
-            <div class="modal-body" style="text-align: center;">
-              <input style="margin-right: 12px;" (click)="eliminar()" type="submit" class="btn btn-primary col-md-5 " value="Confirm" >
-              <input type="submit" class="btn btn-danger col-md-5 " data-dismiss="modal" value="Cancel" >
-            </div>
-
-          </form>
-        </div>
+  </div>
+</div>
+<div class="modal fade" id="form2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header border-bottom-0">
+        <h5 class="modal-title" id="exampleModalLabel">Sure you want to update this vacant?
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </h5>
       </div>
-    </div>
-    <div class="modal fade" id="form2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header border-bottom-0">
-            <h5 class="modal-title" id="exampleModalLabel">Sure you want to update this vacant?
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </h5>
-          </div>
-          <form (ngSubmit)="putForm(editarForm.value)">
-            <div class="modal-body" style="text-align: center;">
-              <input style="margin-right: 12px;"  type="submit" class="btn btn-primary col-md-5 " value="Confirm" >
-              <input type="submit" class="btn btn-danger col-md-5 " data-dismiss="modal" value="Cancel" >
-            </div>
-
-          </form>
+      <form (ngSubmit)="putForm(editarForm.value)">
+        <div class="modal-body" style="text-align: center;">
+          <input style="margin-right: 12px;" type="submit" class="btn btn-primary col-md-5 " value="Confirm">
+          <input type="submit" class="btn btn-danger col-md-5 " data-dismiss="modal" value="Cancel">
         </div>
-      </div>
+
+      </form>
     </div>
-    <br><br>
+  </div>
+</div>
+<br><br>
 
 <br><br><br>
 

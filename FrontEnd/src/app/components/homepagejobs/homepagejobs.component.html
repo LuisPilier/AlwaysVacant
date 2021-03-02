@@ -16,6 +16,7 @@
       </div>
     </div>
     <div class="form-group">
+      <label>Category</label>
               <select class="form-control" name="filterpost" [(ngModel)]="filterPost">
                 <option label="Elija su categoria"> </option>
                 <option *ngFor="let array of categoria" id="CategorySelector">
@@ -75,7 +76,7 @@
           </button>
         </h5>
       </div>
-     
+
         <div class="modal-body">
           <form [formGroup]="jobForm" (ngSubmit)="postForm(jobForm.value)">
             <div class="form-group">
@@ -87,6 +88,7 @@
             <div class="form-group">
               <input type="text" class="form-control" formControlName="Email" id="Email" placeholder="Email">
             </div>
+
             <div class="form-group">
               <select formControlName="ID_Categoria" class="form-control">
                 <option value="" id="CategorySelector" disabled>--Selecciona la categoría--</option>
@@ -95,37 +97,34 @@
               </select>
             </div>
 
-            <div  class="input-group ">
-
               <span class="input-group-addon" style="font-size: 20px;">Type:</span>
 
-              <span  >
+              <span >
                 <label>
-                  <input formControlName="TipoVacante"  type="radio" value="2" class="radiobox" name="style-0a2" style="margin-left: 5px;">
+                  <input  type="radio" formControlName="ID_Tipo_Vacante" value="2" class="radiobox" style="margin-left: 5px;">
                   <span style="font-size: 20px;"> Full Time</span>
                 </label>
 
                 <label>
-                  <input type="radio"  class="radiobox" value="3" name="style-0a2" style="margin-left: 15px;">
+                  <input type="radio" formControlName="ID_Tipo_Vacante" class="radiobox" value="3" style="margin-left: 15px;">
                   <span style="font-size: 20px; "> Part Time</span>
                 </label>
 
                 <label>
-                  <input type="radio"  class="radiobox" value="1" name="style-0a2" style="margin-left: 15px;">
+                  <input  type="radio" formControlName="ID_Tipo_Vacante"  class="radiobox" value="1" style="margin-left: 15px;">
                   <span style="font-size: 20px; "> Freelance</span>
                 </label>
               </span>
+            <div class="form-group">
+              <input formControlName="Posicion" type="text" class="form-control" placeholder="Position">
             </div>
             <div class="form-group">
-              <input formControlName="Posicion" type="text" class="form-control" id="inputEmail4" placeholder="Position">
-            </div>
-            <div class="form-group">
-              <input formControlName="URL" type="text" class="form-control" id="inputEmail4" placeholder="URL">
+              <input formControlName="URL" type="text" class="form-control" placeholder="URL">
             </div>
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
-                  <select formControlName="Nombre" class="form-control" (change)="onChange($event.target.value)">
+                  <select formControlName="Codigo_pais" class="form-control" (change)="onChange($event.target.value)">
                     <option value="" id="CountrySelector" disabled>--Selecciona el país--</option>
                     <option *ngFor="let array of paises" id="CountrySelector" value={{array.Codigo}}>
                       {{array.Nombre}}</option>
@@ -151,7 +150,7 @@
                 <fieldset class="form-group">
                   {{imageError}}
                   <div class="custom-file fileInputProfileWrap">
-                    <input formControlName="Logo" type="file" (change)="fileChangeEvent($event)" class="fileInputProfile">
+                    <input type="file" (change)="fileChangeEvent($event)" class="fileInputProfile">
                     <div class="img-space">
 
                       <ng-container *ngIf="isImageSaved; else elseTemplate">
@@ -159,7 +158,7 @@
                       </ng-container>
                       <ng-template #elseTemplate>
 
-                        <img src="../../../assets/img/no-img-placeholder.png" class="img-responsive">
+                        <img  src="../../../assets/img/no-img-placeholder.png" class="img-responsive">
                       </ng-template>
 
                     </div>
@@ -171,17 +170,22 @@
             </div>
             <div class="form-group w-100">
               <div class="col-md-12">
-                <textarea formControlName="Descripcion" class="form-control" id="message" name="message" placeholder="Descripcion"
+                <label >Descripcion</label>
+                <textarea formControlName="Descripcion" class="form-control" placeholder="Descripcion"
                   rows="7"></textarea>
               </div>
             </div>
-            <button type="submit" style="color: white; " class="btn btn-info  btn-lg btn-block">Send</button>
+            <button type="submit" id="confirm" style="color: white; " class="btn btn-info btn-lg btn-block">{{confirm}}</button>
+
           </form>
+         <!--<div class="alert alert-danger" role="alert">
+            You need to complete all fields!!
+          </div>-->
 
         </div>
 
         <br><br>
-      
+
     </div>
   </div>
 </div>
