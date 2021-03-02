@@ -22,6 +22,10 @@ export class FilterPipe implements PipeTransform {
       {
         resultPosts.push(post);     
       };
+       if (post.Categoria.toLowerCase().indexOf(arg.toLowerCase()) > -1)
+      {
+        resultPosts.push(post);
+      };
     };
     return resultPosts;
   }
