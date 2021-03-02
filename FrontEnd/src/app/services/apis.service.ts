@@ -30,24 +30,24 @@ url:string = "https://en-linea.app/AlwaysVacant/BackEnd/API/";
     return this.http.post<ResponseI>(direccion,form);
 
   }
-  
+
   postCategory(form:CategoryI):Observable<ResponseI>{
 
     let direccion = this.url + "categoria.php" ;
     return this.http.post<ResponseI>(direccion,form);
 
   }
-  
+
   putCategory(form:CategoryI):Observable<ResponseI>{
     let direccion = this.url + "categoria.php";
     return this.http.put<ResponseI>(direccion, form);
   }
 
-  
-  
+
+
   deleteCategory(form:CategoryI):Observable<ResponseI>{
     let direccion = this.url + "categoria.php";
-    
+
     let Opciones = {
       headers: new HttpHeaders({
         'conten-type': 'application/json'
@@ -74,7 +74,7 @@ url:string = "https://en-linea.app/AlwaysVacant/BackEnd/API/";
 
   deleteVacant(form:VacantesI):Observable<ResponseI>{
     let direccion = this.url + "vacante.php";
-    
+
     let Opciones = {
       headers: new HttpHeaders({
         'conten-type': 'application/json'
@@ -83,7 +83,7 @@ url:string = "https://en-linea.app/AlwaysVacant/BackEnd/API/";
     }
     return this.http.delete<ResponseI>(direccion, Opciones);
   }
-  
+
   putVacantAdmin(form:VacantadminI):Observable<ResponseI>{
     let direccion = this.url + "Usuarios/" + "usuario_admin.php";
     return this.http.put<ResponseI>(direccion, form);

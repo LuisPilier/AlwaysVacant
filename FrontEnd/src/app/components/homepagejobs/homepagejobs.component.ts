@@ -4,7 +4,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApisService } from 'src/app/services/apis.service';
 import { ResponseI } from 'src/app/models/response.interface';
 import { CategoryI } from 'src/app/models/category.interface';
-import {VacantadminI} from 'src/app/models/vacanteadmin.interface';
+import { VacantadminI } from 'src/app/models/vacanteadmin.interface';
+import { CitiesI } from 'src/app/models/cities.interface';
 import * as _ from 'lodash';
 @Component({
   selector: 'app-homepagejobs',
@@ -17,6 +18,7 @@ export class HomepagejobsComponent implements OnInit {
     Nombre: new FormControl('', Validators.required),
     Token: new FormControl('', Validators.required)
   });
+
   constructor(private http: HttpClient, private api: ApisService) { }
   filterPost = '';
   conversion: [] = [];
@@ -26,9 +28,9 @@ export class HomepagejobsComponent implements OnInit {
   categoria: [] = [];
   ciudad: [] = [];
   paises: [] = [];
-  imageError: string="";
-  isImageSaved: boolean=false;
-  cardImageBase64: string="";
+  imageError: string = "";
+  isImageSaved: boolean = false;
+  cardImageBase64: string = "";
 
   ngOnInit(): void {
     this.getNumber();
@@ -64,13 +66,13 @@ export class HomepagejobsComponent implements OnInit {
       })
   }
 
- /* getCity() {
-    this.http.get('http://en-linea.app/AlwaysVacant/BackEnd/API/ciudades.php')
-      .subscribe((data: any) => {
-        this.ciudad = data;
-        console.log(this.ciudad);
-      })
-  }*/
+  /* getCity() {
+     this.http.get('http://en-linea.app/AlwaysVacant/BackEnd/API/ciudades.php')
+       .subscribe((data: any) => {
+         this.ciudad = data;
+         console.log(this.ciudad);
+       })
+   }*/
   getCountry() {
     this.http.get('https://en-linea.app/AlwaysVacant/BackEnd/API/Localidades/paises.php')
       .subscribe((data: any) => {
@@ -78,7 +80,12 @@ export class HomepagejobsComponent implements OnInit {
         console.log(this.paises);
       })
   }
-  handleChange(pais:any) {
-    console.log("aasd" + pais)
- }
+  onChange(pais: any) {
+    localStorage.setItem("Pais", pais);
+    
+    this.http.get('https://en-linea.app/AlwaysVacant/BackEnd/API/Localidades/ciudades.php')
+      .subscribe((data: any) => {
+        console.log(this.categoria);
+      })
+  }
 }
