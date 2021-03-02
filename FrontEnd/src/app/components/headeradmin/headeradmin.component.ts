@@ -12,7 +12,7 @@ export class HeaderadminComponent implements OnInit {
   private sidebarVisible: boolean;
 
   model: any;
-  constructor(public location: Location, private element : ElementRef) 
+  constructor(public location: Location, private element : ElementRef)
   {
     this.sidebarVisible = false;
   }
@@ -22,20 +22,20 @@ export class HeaderadminComponent implements OnInit {
     this.model  = JSON.stringify (localStorage.getItem('Usuario'));
   }
 
-  
+
 
   ngOnInit() {
     this.getsession();
     const navbar: HTMLElement = this.element.nativeElement;
     this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
   }
-  
+
   logout(){
       localStorage.clear();
-      document.location.href = (`http://localhost:4200/homepage`)
+      document.location.href = (`https://alwaysvacant.netlify.app/homepage`)
   }
 
-  
+
 
   sidebarOpen() {
     const toggleButton = this.toggleButton;

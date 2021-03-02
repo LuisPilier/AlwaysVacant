@@ -82,7 +82,7 @@ export class EditvacantComponent implements OnInit {
     console.log(form)
     this.api.putVacant(form).subscribe(data => {
       console.log(data);
-      document.location.href = (`http://localhost:4200/editjob`);
+      document.location.href = (`https://alwaysvacant.netlify.app/editjob`);
     })
   }
   confirmando() {
@@ -100,7 +100,7 @@ export class EditvacantComponent implements OnInit {
     let datos: VacantesI = this.editarForm.value;
     this.api.deleteVacant(datos).subscribe(data => {
       console.log(data);
-      document.location.href = (`http://localhost:4200/editjob`);
+      document.location.href = (`https://alwaysvacant.netlify.app/editjob`);
     })
   }
   getCategory() {
@@ -189,16 +189,16 @@ export class EditvacantComponent implements OnInit {
     console.log(id_rol)
     switch (id_rol) {
       case "1":
-        document.location.href = (`http://localhost:4200/homepagejobs`);
+        document.location.href = (`https://alwaysvacant.netlify.app/homepagejobs`);
         break;
       case "2":
-        document.location.href = (`http://localhost:4200/homepagejobs`);
+        document.location.href = (`https://alwaysvacant.netlify.app/homepagejobs`);
         break;
       case "3":
-        document.location.href = (`http://localhost:4200/adminpage`);
+        document.location.href = (`https://alwaysvacant.netlify.app/adminpage`);
         break;
       default:
-        document.location.href = (`http://localhost:4200/homepage`);
+        document.location.href = (`https://alwaysvacant.netlify.app/homepage`);
     }
   }
 

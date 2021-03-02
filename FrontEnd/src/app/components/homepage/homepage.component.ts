@@ -52,13 +52,13 @@ export class HomepageComponent implements OnInit {
     console.log(id_rol)
     switch (id_rol) {
       case "1":
-        document.location.href = (`http://localhost:4200/homepagejobs`);
+        document.location.href = (`https://alwaysvacant.netlify.app/homepagejobs`);
         break;
       case "2":
-        document.location.href = (`http://localhost:4200/homepagejobs`);
+        document.location.href = (`https://alwaysvacant.netlify.app/homepagejobs`);
         break;
       case "3":
-        document.location.href = (`http://localhost:4200/adminpage`);
+        document.location.href = (`https://alwaysvacant.netlify.app/adminpage`);
         break;
     }
   }
@@ -82,7 +82,7 @@ export class HomepageComponent implements OnInit {
   postForm(form: RegisterI) {
     this.api.postUser(form).subscribe(data => {
       console.log(data);
-      document.location.href = (`http://localhost:4200/homepage`);
+      document.location.href = (`https://alwaysvacant.netlify.app/homepage`);
     })
   }
 

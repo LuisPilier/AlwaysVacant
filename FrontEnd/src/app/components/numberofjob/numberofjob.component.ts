@@ -30,23 +30,23 @@ export class NumberofjobComponent implements OnInit {
   putForm(form: VacantadminI) {
     this.api.putVacantAdmin(form).subscribe(data => {
       console.log(data);
-      document.location.href = (`http://localhost:4200/numberofjobs`);
+      document.location.href = (`https://alwaysvacant.netlify.app/numberofjobs`);
     })
   }
   RedirigirPorTipoUsuario(id_rol: any) {
     console.log(id_rol)
     switch (id_rol) {
       case "1":
-        document.location.href = (`http://localhost:4200/homepagejobs`);
+        document.location.href = (`https://alwaysvacant.netlify.app/homepagejobs`);
         break;
       case "2":
-        document.location.href = (`http://localhost:4200/homepagejobs`);
+        document.location.href = (`https://alwaysvacant.netlify.app/homepagejobs`);
         break;
       case "3":
-        document.location.href = (`http://localhost:4200/adminpage`);
+        document.location.href = (`https://alwaysvacant.netlify.app/adminpage`);
         break;
       default:
-        document.location.href = (`http://localhost:4200/homepage`);
+        document.location.href = (`https://alwaysvacant.netlify.app/homepage`);
     }
   }
 
