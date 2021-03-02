@@ -8,7 +8,7 @@ export class SortingPipe implements PipeTransform {
 
   transform(value:Array<any>): any {
     if(!value) return[]
-    return _.sortBy(value, function(categoria){return categoria.Nombre;})
+    return _.sortBy(value, function(categoria){return categoria.ID_Categoria;})
   }
 
 }
