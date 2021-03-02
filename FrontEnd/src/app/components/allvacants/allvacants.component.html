@@ -9,18 +9,18 @@
     </div>
     <div class="col-5 margen">
       <div class="input-group">
+        <div>
+          <button type="button" (click)="goback()" class="btn btn-outline-info pr-md-3">return</button>
+        </div>
         <div class="form-group pr-md-2 ">
           <select class="form-control" name="filterpost" [(ngModel)]="filterPost">
             <option label="Elija su categoria"> </option>
             <option *ngFor="let array of categoria" id="CategorySelector">
-              {{array.Nombre}}</option>
+              {{ array.Nombre }}</option>
           </select>
-      </div>
-        <input type="text" class="form-control" name="filterPost" placeholder="Search..." [(ngModel)]="filterPost"
-          aria-label="" aria-describedby="basic-addon1">
-        <div class="input-group-append">
-          <button class="btn btn-info" type="button "><i class="fa fa-search fa-lg"></i></button>
         </div>
+        <input type="text" class="form-control" name="filterPost" placeholder="🔎 Search..." [(ngModel)]="filterPost"
+          aria-label="" aria-describedby="basic-addon1">
       </div>
     </div>
   </div>
@@ -51,10 +51,10 @@
                   <tr
                     *ngFor="let array of conversion| sorting | filter:filterPost  | paginate: { itemsPerPage: 20, currentPage: paginactual }"
                     (click)="verdetails(array.ID_Vacante)">
-                    <td>{{array.Categoria}}</td>
-                    <td>{{array.Ciudad}}</td>
-                    <td>{{array.Posicion}}</td>
-                    <td>{{array.Compania}}</td>
+                    <td>{{ array.Categoria }}</td>
+                    <td>{{ array.Ciudad }}</td>
+                    <td>{{ array.Posicion }}</td>
+                    <td>{{ array.Compania }}</td>
                   </tr>
                 </tbody>
               </table>
@@ -62,7 +62,8 @@
             <br>
           </tbody>
         </table>
-        <pagination-controls (pageChange)="paginactual = $event " class="d-flex justify-content-center"></pagination-controls>
+        <pagination-controls (pageChange)="paginactual = $event " class="d-flex justify-content-center">
+        </pagination-controls>
       </div>
     </div>
   </div>
@@ -102,8 +103,8 @@
               <label>Category:</label>
               <select formControlName="ID_Categoria" class="form-control">
                 <option value="" id="CategorySelector" disabled>--Selecciona la categoría--</option>
-                <option *ngFor="let array of categoria" id="CategorySelector" value={{array.ID_Categoria}}>
-                  {{array.Nombre}}</option>
+                <option *ngFor="let array of categoria" id="CategorySelector" value={{ array.ID_Categoria }}>
+                  {{ array.Nombre }}</option>
               </select>
             </div>
             <div class="form-group col-md-12 offset-md-3">
@@ -141,8 +142,8 @@
               <label>Country:</label>
               <select formControlName="Codigo_pais" class="form-control" (change)="onChange($event.target.value)">
                 <option value="" id="CountrySelector" disabled>--Selecciona el país--</option>
-                <option *ngFor="let array of paises" id="CountrySelector" value={{array.Codigo}}>
-                  {{array.Nombre}}</option>
+                <option *ngFor="let array of paises" id="CountrySelector" value={{ array.Codigo }}>
+                  {{ array.Nombre }}</option>
               </select>
             </div>
 
@@ -150,8 +151,8 @@
               <label>City:</label>
               <select formControlName="ID_Ciudad" class="form-control">
                 <option value="" id="CountrySelector" disabled>--Selecciona el ciudad--</option>
-                <option *ngFor="let array of ciudad" id="CitiesSelector" value={{array.ID_Ciudad}}>
-                  {{array.Nombre}}</option>
+                <option *ngFor="let array of ciudad" id="CitiesSelector" value={{ array.ID_Ciudad }}>
+                  {{ array.Nombre }}</option>
               </select>
             </div>
 
@@ -161,7 +162,7 @@
               <div class="form-group col-md-6">
                 <label>Logo:</label>
                 <fieldset class="form-group">
-                  {{imageError}}
+                  {{ imageError }}
                   <div class="custom-file fileInputProfileWrap">
                     <input type="file" (change)="fileChangeEvent($event)" class="fileInputProfile">
                     <div class="img-space">
@@ -189,7 +190,7 @@
               </div>
             </div>
             <button type="submit" id="confirm" style="color: white; "
-              class="btn btn-info btn-lg btn-block">{{confirm}}</button>
+              class="btn btn-info btn-lg btn-block">{{ confirm }}</button>
           </div>
         </form>
         <!--<div class="alert alert-danger" role="alert">

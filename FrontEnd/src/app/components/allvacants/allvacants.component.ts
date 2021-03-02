@@ -225,6 +225,10 @@ export class AllvacantsComponent implements OnInit {
     this.isImageSaved = false;
   }
 
+  goback() {
+    document.location.href = (`http://localhost:4200/homepagejobs`);
+  }
+
 
 
 }
