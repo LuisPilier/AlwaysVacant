@@ -29,7 +29,6 @@ export class EditcategoryComponent implements OnInit {
         'Token': Token,
         'Nombre': this.datosCategoria.Nombre,
         'ID_Categoria': this.datosCategoria.ID_Categoria
-
       });
       console.log(this.editarForm.value);
     })

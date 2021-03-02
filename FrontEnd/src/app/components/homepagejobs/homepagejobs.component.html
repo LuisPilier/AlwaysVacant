@@ -40,7 +40,8 @@
 
                 <tbody>
                   <tr
-                    *ngFor="let array of conversion | filter:filterPost | paginate: { itemsPerPage: numpag, currentPage: paginactual }" (click)="verdetails(array.ID_Vacante)">
+                    *ngFor="let array of conversion | filter:filterPost | paginate: { itemsPerPage: numpag, currentPage: paginactual }"
+                    (click)="verdetails(array.ID_Vacante)">
                     <td>{{array.Ciudad}}</td>
                     <td>{{array.Posicion}}</td>
                     <td>{{array.Compania}}</td>
@@ -99,53 +100,56 @@
                 </label>
               </span>
             </div>
-
-
-            <!--<div class="form-row">
-              <div class="form-group col-md-6">
-                <input type="text" class="form-control" id="inputEmail4" placeholder="Company">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="inputEmail4" placeholder="URL">
+                </div>
+                <div class="form-group">
+                  <select class="form-control" (change)="onChange($event.target.value)">
+                    <option value="" id="CountrySelector" disabled>--Selecciona el país--</option>
+                    <option *ngFor="let array of paises" id="CountrySelector" value={{array.Codigo}}>
+                      {{array.Nombre}}</option>
+                  </select>
+                </div>
               </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="inputEmail4" placeholder="Position">
+                </div>
+                <div class="form-group">
+                  <select class="form-control">
+                    <option *ngFor="let array of ciudad" id="CitiesSelector" value={{array.ID_Ciudad}}>
+                      {{array.Nombre}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
 
+
+
+            <div class="d-flex justify-content-center">
               <div class="form-group col-md-6">
-                <div class="custom-file fileInputProfileWrap">
-                  <input type="file" (change)="fileChangeEvent($event)" class="fileInputProfile">
-                  <div class="img-space">
+                <fieldset class="form-group">
+                  {{imageError}}
+                  <div class="custom-file fileInputProfileWrap">
+                    <input type="file" (change)="fileChangeEvent($event)" class="fileInputProfile">
+                    <div class="img-space">
 
-                    <ng-container *ngIf="isImageSaved; else elseTemplate">
-                      <img [src]="cardImageBase64" />
-                    </ng-container>
-                    <ng-template #elseTemplate>
+                      <ng-container *ngIf="isImageSaved; else elseTemplate">
+                        <img [src]="cardImageBase64" />
+                      </ng-container>
+                      <ng-template #elseTemplate>
 
-                      <img src="./../../assets/placeholder.png" class="img-responsive">
-                    </ng-template>
+                        <img src="../../../assets/img/no-img-placeholder.png" class="img-responsive">
+                      </ng-template>
+
+                    </div>
 
                   </div>
-
-                </div>
                 </fieldset>
               </div>
               <a class="btn btn-danger" (click)="removeImage()" *ngIf="isImageSaved">Remove</a>
-            </div>
-          -->
-            <div class="form-group col-md-6">
-              <input type="text" class="form-control" id="inputEmail4" placeholder="URL">
-            </div>
-            <div class="form-group col-md-6">
-              <input type="text" class="form-control" id="inputEmail4" placeholder="Position">
-            </div>
-
-            <div class="form-group col-md-6">
-              <select class="form-control" (change)="onChange($event.target.value)">
-                <option value="" id="CountrySelector" disabled>--Selecciona el país--</option>
-                <option *ngFor="let array of paises" id="CountrySelector" value={{array.Codigo}}>
-                  {{array.Nombre}}</option>
-              </select>
-            </div>
-            <div class="form-group col-md-6">
-              <select class="form-control">
-                <option *ngFor="let array of ciudad" id="CitiesSelector" value={{array.ID_Ciudad}} (click)="handleChange(item)">
-                  {{array.Nombre}}</option>
-              </select>
             </div>
             <div class="form-group w-100">
               <div class="col-md-12">

@@ -7,6 +7,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http'
 import{Observable} from 'rxjs';
 import {VacantesI} from 'src/app/models/vacantes.interface';
 import{VacantadminI} from 'src/app/models/vacanteadmin.interface';
+import { CitiesI } from '../models/cities.interface';
 
 
 @Injectable({
@@ -56,6 +57,11 @@ url:string = "https://en-linea.app/AlwaysVacant/BackEnd/API/";
     }
 
     return this.http.delete<ResponseI>(direccion, Opciones);
+  }
+
+  getCiudades(Codigo_Pais: string | null):Observable<CitiesI>{
+    let direccion = this.url + "Localidades/ciudades.php?Codigo_pais=" + Codigo_Pais;
+    return this.http.get<CitiesI>(direccion);
   }
 
   getUnicaCategoria(ID_Categoria: string | null):Observable<CategoryI>{
