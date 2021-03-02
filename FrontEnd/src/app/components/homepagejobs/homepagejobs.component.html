@@ -119,6 +119,7 @@
                 </div>
                 <div class="form-group">
                   <select class="form-control">
+                    <option value="" id="CountrySelector" disabled>--Selecciona el país--</option>
                     <option *ngFor="let array of ciudad" id="CitiesSelector" value={{array.ID_Ciudad}}>
                       {{array.Nombre}}</option>
                   </select>

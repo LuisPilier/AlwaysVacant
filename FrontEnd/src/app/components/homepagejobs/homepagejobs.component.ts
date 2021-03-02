@@ -135,6 +135,7 @@ export class HomepagejobsComponent implements OnInit {
           } else {
             const imgBase64Path = e.target.result;
             this.cardImageBase64 = imgBase64Path;
+            console.log(imgBase64Path)
             this.isImageSaved = true;
             return true;
             //this.previewImagePath = imgBase64Path;
