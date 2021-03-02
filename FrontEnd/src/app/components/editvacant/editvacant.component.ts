@@ -39,39 +39,42 @@ export class EditvacantComponent implements OnInit {
   })
 
   ngOnInit(): void {
-    this.getCategory();
-    this.getCountry();
-    let ID_Vacante = this.activerouter.snapshot.paramMap.get('ID_Vacante');
-    let Token = this.getToken();
-    this.api.getUnicaVacante(ID_Vacante).subscribe(data => {
+    if (localStorage.getItem('ID_Rol') != '3') {
+      this.RedirigirPorTipoUsuario(localStorage.getItem('ID_Rol'));
+    } else {
+      this.getCategory();
+      this.getCountry();
+      let ID_Vacante = this.activerouter.snapshot.paramMap.get('ID_Vacante');
+      let Token = this.getToken();
+      this.api.getUnicaVacante(ID_Vacante).subscribe(data => {
 
-      //@ts-ignore
-      this.datosVacante = data[0];
-      //@ts-ignore
-      console.log(data[0])
+        //@ts-ignore
+        this.datosVacante = data[0];
+        //@ts-ignore
+        console.log(data[0])
 
-      this.onChange(this.datosVacante.Codigo_Pais)
-      this.isImageSaved=true;
-      this.cardImageBase64="https://"+this.datosVacante.Logo
-      this.editarForm.setValue({
-        'Token': Token,
-        'Compania': this.datosVacante.Compania,
-        'ID_Tipo_Vacante': this.datosVacante.ID_Tipo_Vacante,
-        'Posicion': this.datosVacante.Posicion,
-        'Ubicacion': this.datosVacante.Ubicacion,
-        'ID_Categoria': this.datosVacante.ID_Categoria,
-        'URL': this.datosVacante.URL,
-        'ID_Vacante': ID_Vacante,
-        'Descripcion': this.datosVacante.Descripcion,
-        'Codigo_Pais': this.datosVacante.Codigo_Pais,
-        'Email': this.datosVacante.Email,
-        'Nombre': this.datosVacante.Nombre,
-        'Logo': "",
-        'ID_Ciudad': this.datosVacante.ID_Ciudad
-      });
-      console.log(this.editarForm.value)
-    })
-
+        this.onChange(this.datosVacante.Codigo_Pais)
+        this.isImageSaved = true;
+        this.cardImageBase64 = "https://" + this.datosVacante.Logo
+        this.editarForm.setValue({
+          'Token': Token,
+          'Compania': this.datosVacante.Compania,
+          'ID_Tipo_Vacante': this.datosVacante.ID_Tipo_Vacante,
+          'Posicion': this.datosVacante.Posicion,
+          'Ubicacion': this.datosVacante.Ubicacion,
+          'ID_Categoria': this.datosVacante.ID_Categoria,
+          'URL': this.datosVacante.URL,
+          'ID_Vacante': ID_Vacante,
+          'Descripcion': this.datosVacante.Descripcion,
+          'Codigo_Pais': this.datosVacante.Codigo_Pais,
+          'Email': this.datosVacante.Email,
+          'Nombre': this.datosVacante.Nombre,
+          'Logo': "",
+          'ID_Ciudad': this.datosVacante.ID_Ciudad
+        });
+        console.log(this.editarForm.value)
+      })
+    }
 
   }
 
@@ -85,7 +88,7 @@ export class EditvacantComponent implements OnInit {
   confirmando() {
     console.log()
     this.editarForm.patchValue({
-      'Logo':this.cardImageBase64
+      'Logo': this.cardImageBase64
     });
   }
 
@@ -181,6 +184,22 @@ export class EditvacantComponent implements OnInit {
   removeImage() {
     this.cardImageBase64 = "";
     this.isImageSaved = false;
+  }
+  RedirigirPorTipoUsuario(id_rol: any) {
+    console.log(id_rol)
+    switch (id_rol) {
+      case "1":
+        document.location.href = (`http://localhost:4200/homepagejobs`);
+        break;
+      case "2":
+        document.location.href = (`http://localhost:4200/homepagejobs`);
+        break;
+      case "3":
+        document.location.href = (`http://localhost:4200/adminpage`);
+        break;
+      default:
+        document.location.href = (`http://localhost:4200/homepage`);
+    }
   }
 
 }

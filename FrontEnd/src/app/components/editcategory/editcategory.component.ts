@@ -20,21 +20,25 @@ export class EditcategoryComponent implements OnInit {
     ID_Categoria: new FormControl('')
   })
   ngOnInit(): void {
-    let ID_Categoria = this.activerouter.snapshot.paramMap.get('ID_Categoria');
-    let Token = this.getToken();
-    this.api.getUnicaCategoria(ID_Categoria).subscribe(data => {
-      //@ts-ignore
-      this.datosCategoria = data[0];
-      this.editarForm.setValue({
-        'Token': Token,
-        'Nombre': this.datosCategoria.Nombre,
-        'ID_Categoria': this.datosCategoria.ID_Categoria
-      });
-      console.log(this.editarForm.value);
-    })
+    if (localStorage.getItem('ID_Rol') != '3') {
+      this.RedirigirPorTipoUsuario(localStorage.getItem('ID_Rol'));
+    } else {
+      let ID_Categoria = this.activerouter.snapshot.paramMap.get('ID_Categoria');
+      let Token = this.getToken();
+      this.api.getUnicaCategoria(ID_Categoria).subscribe(data => {
+        //@ts-ignore
+        this.datosCategoria = data[0];
+        this.editarForm.setValue({
+          'Token': Token,
+          'Nombre': this.datosCategoria.Nombre,
+          'ID_Categoria': this.datosCategoria.ID_Categoria
+        });
+        console.log(this.editarForm.value);
+      })
+    }
   }
 
-  putForm(form: CategoryI){
+  putForm(form: CategoryI) {
     this.api.putCategory(form).subscribe(data => {
       console.log(data);
       document.location.href = (`http://localhost:4200/createcategory`);
@@ -51,5 +55,21 @@ export class EditcategoryComponent implements OnInit {
 
   getToken() {
     return localStorage.getItem('Token')
+  }
+  RedirigirPorTipoUsuario(id_rol: any) {
+    console.log(id_rol)
+    switch (id_rol) {
+      case "1":
+        document.location.href = (`http://localhost:4200/homepagejobs`);
+        break;
+      case "2":
+        document.location.href = (`http://localhost:4200/homepagejobs`);
+        break;
+      case "3":
+        document.location.href = (`http://localhost:4200/adminpage`);
+        break;
+      default:
+        document.location.href = (`http://localhost:4200/homepage`);
+    }
   }
 }
