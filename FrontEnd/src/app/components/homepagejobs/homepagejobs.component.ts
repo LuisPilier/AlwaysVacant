@@ -4,8 +4,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApisService } from 'src/app/services/apis.service';
 import { ResponseI } from 'src/app/models/response.interface';
 import { CategoryI } from 'src/app/models/category.interface';
-import {VacantadminI} from 'src/app/models/vacanteadmin.interface';
-import {VacantesI} from 'src/app/models/vacantes.interface';
+import { VacantadminI } from 'src/app/models/vacanteadmin.interface';
+import { VacantesI } from 'src/app/models/vacantes.interface';
 import { CitiesI } from 'src/app/models/cities.interface';
 import * as _ from 'lodash';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -29,8 +29,8 @@ export class HomepagejobsComponent implements OnInit {
   numbeross: [] = [];
   paginactual: number = 1;
   numpag: any;
-  confirm: string="";
-  count: number=0;
+  confirm: string = "";
+  count: number = 0;
   categoria: [] = [];
   ciudad: [] = [];
   paises: [] = [];
@@ -44,43 +44,47 @@ export class HomepagejobsComponent implements OnInit {
     Ubicacion: new FormControl(''),
     Email: new FormControl(''),
     ID_Categoria: new FormControl(''),
-    ID_Ciudad:new FormControl(''),
+    ID_Ciudad: new FormControl(''),
     ID_Tipo_Vacante: new FormControl(''),
     Posicion: new FormControl(''),
     URL: new FormControl(''),
     Logo: new FormControl(''),
-    Codigo_pais:new FormControl(''),
+    Codigo_pais: new FormControl(''),
     Descripcion: new FormControl('')
   });
 
 
   ngOnInit(): void {
-    this.confirm="Send";
-    this.getNumber();
-    this.getData();
-    this.getCategory();
-    this.getCountry();
-    let Token = localStorage.getItem('Token');
-    this.nuevoForm.patchValue({
-      'Token': Token
-    });
+    if (localStorage.getItem('ID_Rol') != '1'&&localStorage.getItem('ID_Rol') != '2') {
+      this.RedirigirPorTipoUsuario(localStorage.getItem('ID_Rol'));
+    } else {
+      this.confirm = "Send";
+      this.getNumber();
+      this.getData();
+      this.getCategory();
+      this.getCountry();
+      let Token = localStorage.getItem('Token');
+      this.nuevoForm.patchValue({
+        'Token': Token
+      });
 
-    this.jobForm.patchValue({
-      'Token':Token
-    });
+      this.jobForm.patchValue({
+        'Token': Token
+      });
+    }
   }
 
-  postForm(form:VacantesI){
-    if(this.count==0){
-      this.count ++;
+  postForm(form: VacantesI) {
+    if (this.count == 0) {
+      this.count++;
       this.jobForm.patchValue({
-        'Logo':this.cardImageBase64
+        'Logo': this.cardImageBase64
       });
-      this.confirm="Press another time to confirm"
+      this.confirm = "Press another time to confirm"
       let confim = document.getElementById('confirm');
       //@ts-ignore
-      confim.className='btn btn-danger btn-lg btn-block';
-    }else{
+      confim.className = 'btn btn-danger btn-lg btn-block';
+    } else {
       console.log(form);
       this.api.postJob(form).subscribe(data => {
         console.log(data);
@@ -89,12 +93,12 @@ export class HomepagejobsComponent implements OnInit {
     }
   }
 
-  moreJobs(){
+  moreJobs() {
     document.location.href = (`http://localhost:4200/allvacants`);
   }
 
-  verdetails(ID_Vacante: any){
-   this.router.navigate(['jobsdetails', ID_Vacante]);
+  verdetails(ID_Vacante: any) {
+    this.router.navigate(['jobsdetails', ID_Vacante]);
 
   }
 
@@ -196,6 +200,21 @@ export class HomepagejobsComponent implements OnInit {
     this.cardImageBase64 = "";
     this.isImageSaved = false;
   }
-
+  RedirigirPorTipoUsuario(id_rol: any) {
+    console.log(id_rol)
+    switch (id_rol) {
+      case "1":
+        document.location.href = (`http://localhost:4200/homepagejobs`);
+        break;
+      case "2":
+        document.location.href = (`http://localhost:4200/homepagejobs`);
+        break;
+      case "3":
+        document.location.href = (`http://localhost:4200/adminpage`);
+        break;
+      default:
+        document.location.href = (`http://localhost:4200/homepage`);
+    }
+  }
 
 }

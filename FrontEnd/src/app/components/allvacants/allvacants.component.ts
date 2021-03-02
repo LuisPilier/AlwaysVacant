@@ -37,7 +37,9 @@ ciudad: [] = [];
 paises: [] = [];
 imageError: string = "";
 isImageSaved: boolean = false;
-cardImageBase64: string = ""; 
+cardImageBase64: string = "";
+
+
 
 jobForm = new FormGroup({
   Token: new FormControl('', Validators.required),
@@ -54,9 +56,27 @@ jobForm = new FormGroup({
   Descripcion: new FormControl('')
 });
 
-
+RedirigirPorTipoUsuario(id_rol: any) {
+  console.log(id_rol)
+  switch (id_rol) {
+    case "1":
+      document.location.href = (`http://localhost:4200/homepagejobs`);
+      break;
+    case "2":
+      document.location.href = (`http://localhost:4200/homepagejobs`);
+      break;
+    case "3":
+      document.location.href = (`http://localhost:4200/adminpage`);
+      break;
+    default:
+      document.location.href = (`http://localhost:4200/homepage`);
+  }
+}
 
 ngOnInit(): void {
+  if (localStorage.getItem('ID_Rol') != '1' && localStorage.getItem('ID_Rol') != '2') {
+    this.RedirigirPorTipoUsuario(localStorage.getItem('ID_Rol'));
+  }else{
   this.confirm="Send";
     this.getData();
     this.getCategory();
@@ -69,6 +89,7 @@ ngOnInit(): void {
     this.jobForm.patchValue({
       'Token':Token
     });
+  }
 
 }
 

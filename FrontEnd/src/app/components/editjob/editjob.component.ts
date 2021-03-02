@@ -26,7 +26,11 @@ export class EditjobComponent implements OnInit {
 
 
   ngOnInit(): void {
-   this.getData();
+    if (localStorage.getItem('ID_Rol') != '3') {
+      this.RedirigirPorTipoUsuario(localStorage.getItem('ID_Rol'));
+    }else{
+      this.getData();
+    }
   }
   getData(){
     this.http.get('https://en-linea.app/AlwaysVacant/BackEnd/API/vacante.php')
@@ -39,7 +43,22 @@ export class EditjobComponent implements OnInit {
   editarvacante(ID_Vacante: any){
     this.router.navigate(['editvacant',ID_Vacante]);
   }
-
+  RedirigirPorTipoUsuario(id_rol: any) {
+    console.log(id_rol)
+    switch (id_rol) {
+      case "1":
+        document.location.href = (`http://localhost:4200/homepagejobs`);
+        break;
+      case "2":
+        document.location.href = (`http://localhost:4200/homepagejobs`);
+        break;
+      case "3":
+        document.location.href = (`http://localhost:4200/adminpage`);
+        break;
+      default:
+        document.location.href = (`http://localhost:4200/homepage`);
+    }
+  }
 
 
 }

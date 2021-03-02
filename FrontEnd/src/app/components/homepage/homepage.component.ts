@@ -82,6 +82,7 @@ export class HomepageComponent implements OnInit {
   postForm(form: RegisterI) {
     this.api.postUser(form).subscribe(data => {
       console.log(data);
+      document.location.href = (`http://localhost:4200/homepage`);
     })
   }
 
