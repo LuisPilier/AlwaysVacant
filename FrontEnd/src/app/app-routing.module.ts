@@ -20,7 +20,7 @@ const routes: Routes = [
 {path: 'createcategory', component:CreatecategoryComponent},
 {path: 'numberofjobs', component: NumberofjobComponent},
 {path: 'homepagejobs', component: HomepagejobsComponent},
-{path: 'jobsdetails', component: JobsdetailsComponent},
+{path: 'jobsdetails/:ID_Vacante', component: JobsdetailsComponent},
 {path: 'editvacant/:ID_Vacante', component: EditvacantComponent},
 {path: 'editcategory/:ID_Categoria', component:EditcategoryComponent},
 {path: 'allvacants', component: AllvacantsComponent}

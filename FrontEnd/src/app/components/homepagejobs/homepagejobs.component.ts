@@ -5,6 +5,7 @@ import { ApisService } from 'src/app/services/apis.service';
 import { ResponseI } from 'src/app/models/response.interface';
 import { CategoryI } from 'src/app/models/category.interface';
 import {VacantadminI} from 'src/app/models/vacanteadmin.interface';
+import {Router} from '@angular/router'
 import * as _ from 'lodash';
 @Component({
   selector: 'app-homepagejobs',
@@ -17,7 +18,7 @@ export class HomepagejobsComponent implements OnInit {
     Nombre: new FormControl('', Validators.required),
     Token: new FormControl('', Validators.required)
   });
-  constructor(private http: HttpClient, private api: ApisService) { }
+  constructor(private http: HttpClient, private api: ApisService, private router: Router) { }
   filterPost = '';
   conversion: [] = [];
   numbeross: [] = [];
@@ -39,6 +40,11 @@ export class HomepagejobsComponent implements OnInit {
     this.nuevoForm.patchValue({
       'Token': Token
     });
+  }
+
+  verdetails(ID_Vacante: any){
+   this.router.navigate(['jobsdetails', ID_Vacante]);
+
   }
 
   getData() {
