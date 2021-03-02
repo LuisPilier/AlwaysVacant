@@ -6,6 +6,7 @@ include('../ApiTest.php');
 #Require de la del composer 
 require "../../../vendor/autoload.php";
 
+
 use GuzzleHttp\Client;
 
 #instancia
@@ -23,7 +24,7 @@ $client = new Client(['base_uri' => $server['conexion']['url']]);
 $response = $client->request('GET','AlwaysVacant/BackEnd/API/Usuarios/usuario.php',
 [
     'json' =>[
-               'Token' => 'db76d0f9f7dd2aca292ede964445ccfd'
+               'Token' => '090d29d178301d4dc604950e76cbb094'
            ]
 ]
 );
