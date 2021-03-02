@@ -66,8 +66,8 @@
 </div>
 
 
-<div class="modal fade" id="formJob" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal fade bd-example-modal-lg" id="formJob" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header border-bottom-0">
         <h5 class="modal-title" id="exampleModalLabel">POST A JOB
@@ -79,10 +79,11 @@
 
         <div class="modal-body">
           <form [formGroup]="jobForm" (ngSubmit)="postForm(jobForm.value)">
-            <div class="form-group">
+            <div class="form-row form-group">
+            <div class="form-group col-md-6">
               <input type="text" formControlName="Compania" class="form-control" id="Compania" placeholder="Company">
             </div>
-            <div class="form-group">
+            <div class="form-group col-md-6">
               <input type="text" formControlName="Ubicacion" class="form-control" id="Ubicacion" placeholder="Ubication">
             </div>
             <div class="form-group">
@@ -176,7 +177,7 @@
               </div>
             </div>
             <button type="submit" id="confirm" style="color: white; " class="btn btn-info btn-lg btn-block">{{confirm}}</button>
-
+          </div>
           </form>
          <!--<div class="alert alert-danger" role="alert">
             You need to complete all fields!!
