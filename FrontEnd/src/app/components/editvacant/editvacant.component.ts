@@ -3,7 +3,7 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {VacantesI} from 'src/app/models/vacantes.interface';
 import {ApisService} from 'src/app/services/apis.service';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
-
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -13,8 +13,9 @@ import {FormGroup, FormControl, Validators} from '@angular/forms';
 })
 export class EditvacantComponent implements OnInit {
 
-  constructor(private activerouter: ActivatedRoute, private router: Router, private api: ApisService) { }
-//@ts-ignore
+  constructor(private activerouter: ActivatedRoute, private router: Router, private api: ApisService, private http: HttpClient) { }
+  Ciudad: [] = [];
+  //@ts-ignore
  datosVacante!: VacantesI;
  editarForm = new FormGroup({
   Token: new FormControl(''),
@@ -79,6 +80,8 @@ export class EditvacantComponent implements OnInit {
   document.location.href = (`http://localhost:4200/editjob`);
   })
   }
+
+ 
  
 
 }

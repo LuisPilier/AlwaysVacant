@@ -34,6 +34,7 @@ editarForm = new FormGroup({
      console.log(this.editarForm.value);
    })
   }
+  
   putForm(form: CategoryI){
     this.api.putCategory(form).subscribe(data => {
       console.log(data);
