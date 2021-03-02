@@ -22,7 +22,7 @@ export class HomepagejobsComponent implements OnInit {
   });
   constructor(private http: HttpClient, private api: ApisService, private router: Router) { }
 
- 
+  filterPost = '';
   conversion: [] = [];
   numbeross: [] = [];
   paginactual: number = 1;
@@ -89,7 +89,7 @@ export class HomepagejobsComponent implements OnInit {
   }
   onChange(pais: any) {
     localStorage.setItem("Pais", pais);
-    
+
     this.http.get('https://en-linea.app/AlwaysVacant/BackEnd/API/Localidades/ciudades.php')
       .subscribe((data: any) => {
         console.log(this.categoria);
