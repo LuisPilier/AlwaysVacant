@@ -5,7 +5,7 @@ import { ApisService } from 'src/app/services/apis.service';
 import { ResponseI } from 'src/app/models/response.interface';
 import { CategoryI } from 'src/app/models/category.interface';
 import {VacantadminI} from 'src/app/models/vacanteadmin.interface';
-
+import {VacantesI} from 'src/app/models/vacantes.interface';
 import { CitiesI } from 'src/app/models/cities.interface';
 import * as _ from 'lodash';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -36,6 +36,23 @@ export class HomepagejobsComponent implements OnInit {
   isImageSaved: boolean = false;
   cardImageBase64: string = "";
 
+  jobForm = new FormGroup({
+    Token: new FormControl('', Validators.required),
+    Compania: new FormControl(''),
+    Ubicacion: new FormControl(''),
+    Email: new FormControl(''),
+    ID_Categoria: new FormControl(''),
+    ID_Ciudad:new FormControl(''),
+    TipoVacante: new FormControl(''),
+    Posicion: new FormControl(''),
+    URL: new FormControl(''),
+    Logo: new FormControl(''),
+    Nombre: new FormControl(''),
+    Codigo_pais:new FormControl(''),
+    Descripcion: new FormControl('')
+  });
+
+
   ngOnInit(): void {
     this.getNumber();
     this.getData();
@@ -45,6 +62,14 @@ export class HomepagejobsComponent implements OnInit {
     this.nuevoForm.patchValue({
       'Token': Token
     });
+
+    this.jobForm.patchValue({
+      'Token':Token
+    });
+  }
+
+  postForm(form:VacantesI){
+    console.log(form);
   }
 
   verdetails(ID_Vacante: any){
@@ -151,4 +176,6 @@ export class HomepagejobsComponent implements OnInit {
     this.cardImageBase64 = "";
     this.isImageSaved = false;
   }
+
+
 }

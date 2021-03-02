@@ -39,6 +39,12 @@ url:string = "https://en-linea.app/AlwaysVacant/BackEnd/API/";
 
   }
 
+  postJob(form:VacantesI):Observable<ResponseI>{
+    let direccion = this.url + "vacante.php";
+    return this.http.post<ResponseI>(direccion,form);
+
+  }
+
   putCategory(form:CategoryI):Observable<ResponseI>{
     let direccion = this.url + "categoria.php";
     return this.http.put<ResponseI>(direccion, form);
