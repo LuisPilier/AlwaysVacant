@@ -1,0 +1,68 @@
+<app-headeradmin></app-headeradmin>
+<app-sidebar></app-sidebar>
+<br><br>
+<h2 style="text-align: center;">EDIT Category</h2>
+<div class="modal-body">
+    <form [formGroup]="editarForm"  >
+      
+
+
+      <div class="form-group">
+        <label>Name Category</label>
+        <input formControlName="Nombre" type="text" class="form-control" >
+      </div>
+       
+        
+        <input type="button" data-toggle="modal" data-target="#form2"  style="color: white; " value="Edit Category" class="btn btn-info   btn-lg btn-block">
+        <button type="button" data-toggle="modal" data-target="#form1"  class="btn btn-danger   btn-lg btn-block" >Delete Category</button>
+      
+    </form>
+
+  </div>
+  <div class="modal fade" id="form1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header border-bottom-0">
+          <h5 class="modal-title" id="exampleModalLabel">Sure you want to delete this category?
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </h5>
+        </div>
+        <form >
+          <div class="modal-body" style="text-align: center;">
+            <input style="margin-right: 12px;" (click)="eliminar()" type="submit" class="btn btn-primary col-md-5 " value="Confirm" >
+            <input type="submit" class="btn btn-danger col-md-5 " data-dismiss="modal" value="Cancel" >
+          </div>
+  
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="form2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header border-bottom-0">
+          <h5 class="modal-title" id="exampleModalLabel">Sure you want to update this category?
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </h5>
+        </div>
+        <form (ngSubmit)="putForm(editarForm.value)">
+          <div class="modal-body" style="text-align: center;">
+            <input style="margin-right: 12px;"  type="submit" class="btn btn-primary col-md-5 " value="Confirm" >
+            <input type="submit" class="btn btn-danger col-md-5 " data-dismiss="modal" value="Cancel" >
+          </div>
+  
+        </form>
+      </div>
+    </div>
+  </div>
+  <br><br>
+
+<br><br><br>
+
+
+<app-footer class="fixed-bottom"></app-footer>

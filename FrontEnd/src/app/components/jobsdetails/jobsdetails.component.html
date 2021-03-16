@@ -1,0 +1,199 @@
+<app-headeradmin></app-headeradmin>
+<br><br>
+
+<div class="container-fluid mt-5">
+  <div class="container">
+    <div class="row align-self-center text-center">
+      <div class="col-md-9 col-sm-5">
+        <button type="button" (click)="volver()" class="btn btn-info mb-3 ml-5 post-job boton">Volver atras <i
+            class="fa fa-bullhorn fa-lg"></i></button>
+      </div>
+      <div class="col-md-3 col-sm-5">
+        <button data-toggle="modal" [attr.data-target]="'#' + modal" type="button"
+          class="btn btn-info mb-3 ml-5 post-job boton" (click)="validateModal()">Post a Job <i
+            class="fa fa-bullhorn fa-lg"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card container contenido">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-10">
+
+          <h3 class="card-title">{{Title}}</h3>
+          <h5 class="card-title text-muted"> {{City}}, {{Pais}}</h5>
+          <hr>
+          <p class="card-text">{{Position}}- {{TipoVacant}}</p>
+          <hr>
+        </div>
+        <div class="col-2">
+          <img src="https://{{img}}">
+        </div>
+      </div>
+      <p class="card-text">{{Descripcion}}</p>
+      <p>How to apply?</p>
+      <p>Send your resume to {{Email}}</p>
+      <a href={{URL}}>Go to our page</a>
+    </div>
+  </div>
+
+
+
+</div>
+<div class="contenido"></div>
+<div class="modal fade bd-example-modal-lg" id="formJob" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header border-bottom-0">
+        <h5 class="modal-title" id="exampleModalLabel">POST A JOB
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </h5>
+      </div>
+
+      <div class="modal-body">
+        <form [formGroup]="jobForm" (ngSubmit)="postForm(jobForm.value)">
+          <div class="form-row form-group">
+            <div class="form-group col-md-6">
+              <label>Company:</label>
+              <input type="text" formControlName="Compania" class="form-control" id="Compania" placeholder="Company">
+            </div>
+            <div class="form-group col-md-6">
+              <label>Ubication:</label>
+              <input type="text" formControlName="Ubicacion" class="form-control" id="Ubicacion"
+                placeholder="Ubication">
+            </div>
+            <div class="form-group col-md-6">
+              <label>Email:</label>
+              <input type="text" class="form-control" formControlName="Email" id="Email" placeholder="Email">
+            </div>
+
+            <div class="form-group col-md-6">
+              <label>Category:</label>
+              <select formControlName="ID_Categoria" class="form-control">
+                <option value="" id="CategorySelector" disabled>--Selecciona la categoría--</option>
+                <option *ngFor="let array of categoria" id="CategorySelector" value={{array.ID_Categoria}}>
+                  {{array.Nombre}}</option>
+              </select>
+            </div>
+            <div class="form-group col-md-12 offset-md-3">
+              <span class="input-group-addon" style="font-size: 20px;">Type of job:</span>
+
+              <span>
+                <label>
+                  <input type="radio" formControlName="ID_Tipo_Vacante" value="2" class="radiobox"
+                    style="margin-left: 5px;">
+                  <span style="font-size: 20px;"> Full Time</span>
+                </label>
+
+                <label>
+                  <input type="radio" formControlName="ID_Tipo_Vacante" class="radiobox" value="3"
+                    style="margin-left: 15px;">
+                  <span style="font-size: 20px; "> Part Time</span>
+                </label>
+
+                <label>
+                  <input type="radio" formControlName="ID_Tipo_Vacante" class="radiobox" value="1"
+                    style="margin-left: 15px;">
+                  <span style="font-size: 20px; "> Freelance</span>
+                </label>
+              </span>
+            </div>
+            <div class="form-group col-md-6">
+              <label>Position:</label>
+              <input formControlName="Posicion" type="text" class="form-control" placeholder="Position">
+            </div>
+            <div class="form-group col-md-6">
+              <label>URL:</label>
+              <input formControlName="URL" type="text" class="form-control" placeholder="URL">
+            </div>
+            <div class="form-group col-md-6">
+              <label>Country:</label>
+              <select formControlName="Codigo_pais" class="form-control" (change)="onChange($event.target.value)">
+                <option value="" id="CountrySelector" disabled>--Selecciona el país--</option>
+                <option *ngFor="let array of paises" id="CountrySelector" value={{array.Codigo}}>
+                  {{array.Nombre}}</option>
+              </select>
+            </div>
+
+            <div class="form-group col-md-6">
+              <label>City:</label>
+              <select formControlName="ID_Ciudad" class="form-control">
+                <option value="" id="CountrySelector" disabled>--Selecciona el ciudad--</option>
+                <option *ngFor="let array of ciudad" id="CitiesSelector" value={{array.ID_Ciudad}}>
+                  {{array.Nombre}}</option>
+              </select>
+            </div>
+
+
+
+            <div class="d-flex justify-content-center">
+              <div class="form-group col-md-6">
+                <label>Logo:</label>
+                <fieldset class="form-group">
+                  {{imageError}}
+                  <div class="custom-file fileInputProfileWrap">
+                    <input type="file" (change)="fileChangeEvent($event)" class="fileInputProfile">
+                    <div class="img-space">
+
+                      <ng-container *ngIf="isImageSaved; else elseTemplate">
+                        <img [src]="cardImageBase64" />
+                      </ng-container>
+                      <ng-template #elseTemplate>
+
+                        <img src="../../../assets/img/no-img-placeholder.png" class="img-responsive">
+                      </ng-template>
+
+                    </div>
+
+                  </div>
+                </fieldset>
+              </div>
+              <a class="btn btn-danger" (click)="removeImage()" *ngIf="isImageSaved">Remove</a>
+            </div>
+            <div class="form-group w-100">
+              <div class="col-md-12">
+                <label>Descripcion</label>
+                <textarea formControlName="Descripcion" class="form-control" placeholder="Descripcion"
+                  rows="7"></textarea>
+              </div>
+            </div>
+            <button type="submit" id="confirm" style="color: white; "
+              class="btn btn-info btn-lg btn-block">{{confirm}}</button>
+          </div>
+        </form>
+        <!--<div class="alert alert-danger" role="alert">
+            You need to complete all fields!!
+          </div>-->
+
+      </div>
+
+      <br><br>
+
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="alert" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header border-bottom-0">
+        <h3 class="modal-title">Lack of permits.
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </h3>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-danger" role="alert">
+
+          You must have Postman permissions to access this option!!
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer class="fixed-bottom"></app-footer>

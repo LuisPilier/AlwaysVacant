@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.19, for macos10.15 (x86_64)
 --
--- Host: freedb.tech    Database: freedbtech_Always_Vacant
+-- Host: freedb.tech    Database: freedbtech_AlwaysVacant
 -- ------------------------------------------------------
 -- Server version	5.7.33-0ubuntu0.18.04.1
 

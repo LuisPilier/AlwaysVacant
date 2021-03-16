@@ -1,15 +1,13 @@
 <?php
 
 
-require_once '../clases/token_class.php';
+require_once '../Models/Token.php';
 
 $_token = new token();
 $fecha = date('Y-m-d H:i');
 
-$_token->InactivarToken($conn,$fecha);
+$_token->Actualizar($fecha);
 
-$_token->EliminarToken($conn,$fecha);
-
-
+$_token->Eliminar($fecha);
 
 ?>

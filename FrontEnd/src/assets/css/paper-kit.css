@@ -184,7 +184,10 @@
   font-size: 12px;
   line-height: 1.5;
 }
-
+.content{
+  left: 0!important;
+  margin-left: 0!important;
+}
 .bootstrap-switch.bootstrap-switch-large .bootstrap-switch-handle-on,
 .bootstrap-switch.bootstrap-switch-large .bootstrap-switch-handle-off,
 .bootstrap-switch.bootstrap-switch-large .bootstrap-switch-label {
@@ -6630,7 +6633,7 @@ License - nucleoapp.com/license/
 }
 
 .page-header.page-header-small {
-  min-height: 65vh !important;
+  min-height: 20vh !important;
   max-height: 700px;
 }
 

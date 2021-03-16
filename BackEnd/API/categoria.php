@@ -1,33 +1,46 @@
 <?php
 
 
-//Header
+//Header que retorna el JSON
 header("Content-Type: application/json");
 
-//Include de la clase Categoria para utilizar los metodos
-include('../Class/Categoria.php');
+//Header de Acces Control
+header("Access-Control-Allow-Origin: *");
 
-//Instancia
-$_categoria= new categoria();
+
+//Include de la clase Categoria para utilizar los metodos
+include('../Controllers/CategoriaController.php');
+
 
 //Switch(Desicion)
-switch($_SERVER['REQUEST_METHOD']){
-
+switch($_SERVER['REQUEST_METHOD'])
+{
 
     case 'GET':
         //Recibiendo los datos del JSON
-        $array = json_decode(file_get_contents("php://input"),true);
+        $datos = json_decode(file_get_contents("php://input"),true);
        
         //Si recibimos el ID de la categoria
-        if(isset($array['ID_Categoria']))
+        if(isset($datos['ID_Categoria']))
         {
             //Retorna la categoria especificada por el ID
-          $listaCategoria = $_categoria->Obtener($conn,$array);
+          $listaCategoria = CategoriaController::Obtener($datos);
         }
         else
         {
             //Retorna todas las categorias que se encuentren registradas
-          $listaCategoria = $_categoria->ObtenerTodo($conn,$array);
+          $listaCategoria = CategoriaController::ObtenerTodo($datos);
+        }
+
+        if (isset($listaCategoria["result"]["error_id"])) 
+        {
+            // code...
+            $responseCode = $listaCategoria["result"]["error_id"];
+            http_response_code($responseCode);
+        }
+        else
+        {
+          http_response_code(200);
         }
         
         //Mostrar el contenido
@@ -38,10 +51,10 @@ switch($_SERVER['REQUEST_METHOD']){
     case 'POST':
              
             //Recibiendo los datos del JSON
-            $postBody = file_get_contents("php://input");
+            $postBody = json_decode(file_get_contents("php://input"),true);
             
             //Llamando al metodo guardar que se encuentra en la clase Categoria        
-            $datosArray = $_categoria->Guardar($conn,$postBody);
+            $datosArray = CategoriaController::Guardar($postBody);
 
             // Si existe algun error al guardar la categoria
             if (isset($datosArray["result"]["error_id"])) {
@@ -56,18 +69,16 @@ switch($_SERVER['REQUEST_METHOD']){
             //Mostrar el contenido
             echo json_encode($datosArray);
 
-
-
         break;
 
 
     case 'PUT':
          
         //Recibiendo los datos del JSON 
-        $postBody = file_get_contents("php://input");
+        $postBody = json_decode(file_get_contents("php://input"),true);
                     
         //Llamando al metodo actualizar que se encuentra en la clase Categoria 
-        $datosArray = $_categoria->Actualizar($conn,$postBody);
+        $datosArray = CategoriaController::Actualizar($postBody);
 
          // Si existe algun error al actualizar la categoria
         if (isset($datosArray["result"]["error_id"])) {
@@ -87,10 +98,10 @@ switch($_SERVER['REQUEST_METHOD']){
     case 'DELETE':
         
         //Recibiendo los datos del JSON 
-        $postBody = file_get_contents("php://input");
+        $postBody = json_decode(file_get_contents("php://input"),true);
                   
          //Llamando al metodo eliminar que se encuentra en la clase Categoria 
-        $datosArray = $_categoria->Eliminar($conn,$postBody);
+        $datosArray = CategoriaController::Eliminar($postBody);
 
           // Si existe algun error al eliminar la categoria
         if (isset($datosArray["result"]["error_id"])) {
@@ -107,14 +118,12 @@ switch($_SERVER['REQUEST_METHOD']){
 
        break;
 
-
     //Solicitud no encontrada  
     default:
         $resultado["mensaje"] = "Enviaste una solicitud incorrecta";
+        http_response_code(405);
         echo json_encode($resultado["mensaje"]);
         break;
-          
-
 
 }
 

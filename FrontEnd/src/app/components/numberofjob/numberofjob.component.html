@@ -1,0 +1,23 @@
+<app-headeradmin></app-headeradmin>
+<app-sidebar></app-sidebar>
+<br><br>
+<div class="container">
+    <h3 style="background-color: #2fa7c5; color: white;" class="card-header text-center font-weight-bold text-uppercase py-4">Number of Jobs</h3>
+</div>
+<br>
+<form [formGroup]="editarForm" (ngSubmit)="putForm(editarForm.value)" >
+    <div class="container">
+        <div class="form-group has-success ">
+            <input formControlName="Numero_vacantes" type="number" class="form-control input-group mb-3"   placeholder="Enter the number of jobs you want to view">
+          </div>
+    </div>
+    <br>
+    <div class="container">
+        <button type="submit" class="btn btn-success btn-lg btn-block">Update</button>
+    </div>
+</form>
+
+
+    
+
+<app-footer class="fixed-bottom"></app-footer>

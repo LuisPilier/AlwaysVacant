@@ -1,0 +1,39 @@
+<app-headeradmin></app-headeradmin>
+<app-sidebar></app-sidebar>
+<br><br>
+<!-- Editable table -->
+<div class="container">
+    <h3 style="background-color: #2fa7c5; color: white;" class="card-header text-center font-weight-bold text-uppercase py-4">Edit Vacant</h3>
+    <div class="card-body">
+      <div id="table" class="table-editable">
+
+        <table style="cursor: pointer;" class="table table-bordered table-responsive-md table-hover table-striped text-center">
+          <thead>
+            <tr>
+              <th class="text-center">ID</th>
+              <th class="text-center">Company</th>
+              <th class="text-center">Category</th>
+              <th class="text-center">City</th>
+              <th class="text-center">Country</th>
+              <th class="text-center">Position</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let array of conversion | paginate: { itemsPerPage: 8, currentPage: paginactual }" (click)="editarvacante(array.ID_Vacante)">
+              <td>{{array.ID_Vacante}}</td>
+              <td>{{array.Compania}}</td>
+              <td>{{array.Categoria}}</td>
+              <td>{{array.Ciudad}}</td>
+              <td>{{array.Codigo_Pais}}</td>
+              <td>{{array.Posicion}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <pagination-controls (pageChange)="paginactual = $event " class="d-flex justify-content-center"></pagination-controls>   
+      </div>
+    </div>
+  </div>
+<br><br><br><br>
+
+
+<app-footer class="fixed-bottom"></app-footer>

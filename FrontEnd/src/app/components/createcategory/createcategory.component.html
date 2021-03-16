@@ -1,0 +1,65 @@
+<app-headeradmin></app-headeradmin>
+<app-sidebar></app-sidebar>
+<br><br>
+<div class="container">
+  <h3 style="background-color: #2fa7c5; color: white;"
+    class="card-header text-center font-weight-bold text-uppercase py-4">Create Category</h3>
+
+  <div class="card-body">
+    <div id="table" class="table-editable">
+
+      <table style="cursor: pointer;"  class="table table-bordered table-hover table-responsive-ml table-striped text-center">
+        <thead>
+          <tr>
+            <th class="text-center">ID</th>
+            <th class="text-center">Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let array of conversion | paginate: { itemsPerPage: 8, currentPage: paginactual }" (click)="editarcategoria(array.ID_Categoria)">
+            <td class="pt-3-half">{{array.ID_Categoria}}</td>
+            <td class="pt-3-half">{{array.Nombre}}</td>
+
+          </tr>
+        </tbody>
+      </table>
+      <pagination-controls (pageChange)="paginactual = $event" class="d-flex justify-content-center"></pagination-controls> 
+    </div>
+    <button data-toggle="modal" data-target="#form2" class="btn btn-lg btn-block btn-success">Create</button>
+  </div>
+
+</div>
+
+
+
+
+
+
+<div class="modal fade" id="form2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header border-bottom-0">
+        <h5 class="modal-title" id="exampleModalLabel">Create Category
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </h5>
+      </div>
+      <form [formGroup]="nuevoForm" (ngSubmit)="postForm(nuevoForm.value)">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="Nombre">Name Category</label>
+            <input type="text" formControlName="Nombre" class="form-control" aria-describedby="emailHelp">
+            <small id="emailHelp" class="form-text text-muted"></small>
+          </div>
+        </div>
+        <div class="modal-footer border-top-0 d-flex justify-content-center">
+          <input type="submit" class="btn btn-success" value="Create">
+        </div>
+        <br><br>
+      </form>
+    </div>
+  </div>
+</div>
+<br><br><br><br><br><br>
+<app-footer class="fixed-bottom"></app-footer>

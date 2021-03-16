@@ -1,0 +1,12 @@
+Connection Details 
+Name:  AlwaysVacant UNFINISHED 
+Host: freedb.tech 
+Port: 3306 
+Login User: freedbtech_rootJ 
+Current User: freedbtech_rootJ@% 
+SSL cipher: ECDHE-RSA-AES128-GCM-SHA256 
+Server 
+Product: (Ubuntu) 
+Version: 5.7.33-0ubuntu0.18.04.1 
+Connector 
+Version: C++ 8.0.23

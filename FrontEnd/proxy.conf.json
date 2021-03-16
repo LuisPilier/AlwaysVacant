@@ -1,0 +1,7 @@
+{
+    "/apis/*": {
+      "target": "https://en-linea.app",
+      "secure": false,
+      "changeOrigin":true
+    }
+  }
