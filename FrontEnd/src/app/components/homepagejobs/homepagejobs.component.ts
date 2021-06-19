@@ -56,9 +56,9 @@ export class HomepagejobsComponent implements OnInit {
 
 
   ngOnInit(): void {
-    if (localStorage.getItem('ID_Rol') != '1' && localStorage.getItem('ID_Rol') != '2') {
+    /*if (localStorage.getItem('ID_Rol') != '1' && localStorage.getItem('ID_Rol') != '2') {
       this.RedirigirPorTipoUsuario(localStorage.getItem('ID_Rol'));
-    } else {
+    } else {*/
       this.modal = "#formJob";
       this.confirm = "Send";
       this.getNumber();
@@ -73,7 +73,7 @@ export class HomepagejobsComponent implements OnInit {
       this.jobForm.patchValue({
         'Token': Token
       });
-    }
+    //}
   }
   validateModal() {
     if (localStorage.getItem('ID_Rol') == '2') {
@@ -115,7 +115,7 @@ export class HomepagejobsComponent implements OnInit {
   }
 
   getData() {
-    this.http.get('https://en-linea.app/AlwaysVacant/BackEnd/API/vacante.php')
+    this.http.get('https://gentle-springs-23001.herokuapp.com/api/vacantes')
       .subscribe((data: any) => {
         this.conversion = data;
         console.log(this.conversion);
@@ -213,20 +213,20 @@ export class HomepagejobsComponent implements OnInit {
     this.isImageSaved = false;
   }
   RedirigirPorTipoUsuario(id_rol: any) {
-    console.log(id_rol)
-    switch (id_rol) {
-      case "1":
-        this.router.navigate(['/homepagejobs'])
-        break;
-      case "2":
-        this.router.navigate(['/homepagejobs'])
-        break;
-      case "3":
-        this.router.navigate(['/adminpage'])
-        break;
-      default:
-        this.router.navigate(['/homepage'])
-    }
+    // console.log(id_rol)
+    // switch (id_rol) {
+    //   case "1":
+    //     this.router.navigate(['/homepagejobs'])
+    //     break;
+    //   case "2":
+    //     this.router.navigate(['/homepagejobs'])
+    //     break;
+    //   case "3":
+    //     this.router.navigate(['/adminpage'])
+    //     break;
+    //   default:
+    //     this.router.navigate(['/homepage'])
+    // }
   }
   pasarPagina() {
 

@@ -14,7 +14,7 @@ import { CitiesI } from '../models/cities.interface';
 })
 
 export class ApisService {
-url:string = "https://en-linea.app/AlwaysVacant/BackEnd/API/";
+url:string = "https://gentle-springs-23001.herokuapp.com/api/";
 
 
   constructor(private http:HttpClient) { }
@@ -39,7 +39,7 @@ url:string = "https://en-linea.app/AlwaysVacant/BackEnd/API/";
   }
 
   postJob(form:VacantesI):Observable<ResponseI>{
-    let direccion = this.url + "vacante.php";
+    let direccion = this.url + "vacante";
     return this.http.post<ResponseI>(direccion,form);
 
   }
@@ -82,12 +82,12 @@ url:string = "https://en-linea.app/AlwaysVacant/BackEnd/API/";
     return this.http.get<VacantesI>(direccion);
   }
   putVacant(form:VacantesI):Observable<ResponseI>{
-    let direccion = this.url + "vacante.php";
+    let direccion = this.url + "vacante";
     return this.http.put<ResponseI>(direccion, form);
   }
 
   deleteVacant(form:VacantesI):Observable<ResponseI>{
-    let direccion = this.url + "vacante.php";
+    let direccion = this.url + "vacante";
 
     let Opciones = {
       headers: new HttpHeaders({
